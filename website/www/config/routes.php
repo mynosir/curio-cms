@@ -39,6 +39,11 @@
 */
 
 $route['default_controller'] = 'home';
+
+$route['scaffolding_trigger'] = "";
+$route['(sc|ch)(:any)'] = "$2";
+$route['sc|ch'] = "home";
+
 $route['404_override'] = '';
 
 /* End of file routes.php */
