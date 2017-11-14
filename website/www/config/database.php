@@ -51,10 +51,10 @@ $active_record = TRUE;
 if($_SERVER['HTTP_HOST']=='dev.curio.com') {
     $db['default']['hostname'] = 'dev.curio.com:3306';
     $db['default']['username'] = 'root';
-    $db['default']['password'] = '123456';
+    $db['default']['password'] = 'root';
     $db['default']['database'] = 'curio';
 } else {
-    $db['default']['hostname'] = 'localhost:3306';
+    $db['default']['hostname'] = '127.0.0.1:3306';
     $db['default']['username'] = 'curio';
     $db['default']['password'] = 'c9f6a71b06d1ee68d790593b7f356b3d';
     $db['default']['database'] = 'curio';
