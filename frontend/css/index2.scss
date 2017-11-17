@@ -110,6 +110,99 @@ body{
   }
 }
 .mid{
+  margin-top: 50px;
+  height: 928px;
+  .menu{
+    width: 239px;
+    float: left;
+    .nav{
+      .tit{
+        font-size: 16px;
+        color: #191919;
+        font-weight: bold;
+        width: 239px;
+        height: 49px;
+        line-height: 50px;
+        text-indent: 36px;
+        border-bottom: 1px solid #ddd;
+        background: url(../img/menu_bg.jpg) no-repeat 0px 14px, url(../img/arrow_black.png) no-repeat 225px 19px;
+      }
+      .sub-nav{
+        display: none
+      }
+    }
+    .nav.cur{
+      .tit{
+        color: #b8262b;
+        background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px, url(../img/btn_arrow_red.png) no-repeat 225px 19px;
+      }
+      .sub-nav{
+        display: inline-block;
+        color: #686868;
+        font-size: 14px;
+        .sub-tit.cur{
+          color: #b8262b;
+        }
+        .sub-tit{
+          width: 239px;
+          height: 49px;
+          border-bottom: 1px solid #ddd;
+          line-height: 49px;
+          text-indent: 36px;
+        }
+      }
+    }
+  }
+  .container{
+    float: right;
+    width: 878px;
+    .wrap2{
+      width: 798px;
+      margin: 0 auto;
+    }
+    .item:first-child{
+      border-top: 1px solid #ddd;
+    }
+    .item{
+      width: 878px;
+      height: 244px;
+      border: 1px solid #ddd;
+      border-top: 0;
+        .top{
+          width: 878px;
+          height: 42px;
+          background-color: #f6f6f6;
+          border-bottom: 1px solid #ddd;
+          line-height: 42px;
+          font-size: 14px;
+          color: #191919;
+          .tit{
+            font-weight: bold;
+            // display: inline-block;
+            float: left;
+          }
+          .result{
+            display: inline-block;
+            margin-left: 15px;
+            padding-left: 20px;
+            background: url(../img/file.png) no-repeat 0 14px;
+          }
+          .date{
+            float: right;
+            // display: inline-block;
+          }
+        }
+        .pics{
+          img{
+            width: 140px;
+            height: 140px;
+            display: inline-block;
+            margin-right: 16px;
+            margin-top: 30px;
+          }
+        }
+    }
+  }
   .banner{
     position: relative;
     width: 100%;
