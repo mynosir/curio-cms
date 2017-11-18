@@ -93,8 +93,19 @@ body{
           color: #d1494d;
         }
       }
+      .navbg{
+        text-align: center;
+        display: block;
+        position: relative;
+        top: 8px;
+        height: 0px;
+        img{
+          display: inline;
+        }
+      }
       .sub-nav{
         position: absolute;
+        width: 200px;
         top: 60px;
         list-style: none;
         z-index: 99;
@@ -571,6 +582,104 @@ body{
       .tit.cur{
         color: #b8262b;
         background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px;
+      }
+    }
+  }
+}
+.mid3{
+  margin-top: 50px;
+  .item{
+    .pics{
+      float: left;
+      position: relative;
+      width: 440px;
+      height: 440px;
+      background: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#fff;
+      margin: 0;
+      padding: 0;
+      .swiper-container {
+        width: 100%;
+        height: 440px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+      }
+      .gallery-top {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        left: 100px;
+      }
+      .gallery-thumbs {
+        height: 440px;
+        box-sizing: border-box;
+        padding: 10px 0;
+        position: relative;
+        top: -440px;
+        .swiper-button-next{
+          background-image: url(../img/arrow_down.png);
+          width: 19px;
+          height: 18px;
+          position: absolute;
+          top: 440px;
+          left: 29px;
+          background-size: 18px;
+        }
+        .swiper-button-prev{
+          width: 19px;
+          height: 18px;
+          background-image: url(../img/arrow_up.png);
+          position: absolute;
+          top: 21px;
+          left: 29px;
+          background-size: 18px;
+        }
+      }
+      .gallery-thumbs .swiper-slide {
+        width: 76px;
+        height: 76px;
+        opacity: 1;
+      }
+      .gallery-thumbs .swiper-slide-active {
+        opacity: 1;
+        width: 76px;
+        height: 76px;
+        background: rgba(255, 255, 255, 0.40);
+        // position: relative;
+        // top: -8px;
+      }
+
+    }
+    .detail{
+      width: 575px;
+      float: right;
+      margin-left: 70px;
+      .name{
+        font-size: 30px;
+        color: #b8262b;
+      }
+      .lot{
+        font-size: 18px;
+        color: #191919;
+        margin-bottom: 40px;
+      }
+      .estimated, .instruction{
+        font-size: 16px;
+        color: #191919;
+      }
+      .estimated{
+        width: 574px;
+        border-bottom: 1px solid #ddd;
+      }
+      .instruction{
+        margin-top: 40px;
+        color: #686868;
       }
     }
   }
