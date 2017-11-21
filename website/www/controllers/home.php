@@ -31,6 +31,11 @@ class home extends MY_Controller {
         $this->data['subnavi1'] = lang('index_subnavi1');
         $this->data['subnavi2'] = lang('index_subnavi2');
         $this->data['subnavi3'] = lang('index_subnavi3');
+        $this->data['contact'] = lang('index_contact');
+        $this->data['sitemap'] = lang('index_sitemap');
+        $this->data['terms'] = lang('index_terms');
+        $this->data['privacy'] = lang('index_privacy');
+        $this->data['copyright'] = lang('index_copyright');
         $this->showPage2('index', $this->data);
     }
 

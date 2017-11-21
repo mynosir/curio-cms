@@ -1,3 +1,63 @@
+<body>
+  <div class="header">
+    <div class="line"></div>
+    <div class="wrap">
+      <div class="top">
+          <div class="logo">
+            <img src="<?php echo $resource_url; ?>img/logo.png" alt="">
+          </div>
+          <div class="search">
+            <input type="text" name="" value="" placeholder="<?=$placeholder?>">
+          </div>
+          <div class="lang">
+            <span><a href="#en">ENG</a>&nbsp/&nbsp<a href="#ch" class="cur">繁</a></span>
+          </div>
+      </div>
+      <div class="nav">
+          <div class="navi cur">
+            <a href=""><?=$navi1?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+          </div>
+          <div class="navi">
+            <a href=""><?=$navi2?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+            <div class="sub">
+              <ul class="sub-nav">
+                <li><?=$subnavi1?></li>
+                <li style="border-bottom:1px solid #979797"><?=$subnavi2?></li>
+              </ul>
+            </div>
+          </div>
+          <div class="navi">
+            <a href=""><?=$navi3?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+          </div>
+          <div class="navi">
+            <a href=""><?=$navi4?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+          </div>
+          <div class="navi">
+            <a href=""><?=$navi5?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+          </div>
+          <div class="navi" style="border-right:1px solid #979797">
+            <a href=""><?=$navi6?></a>
+            <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
+            <div class="sub">
+              <ul class="sub-nav">
+                <li><?=$navi6?></li>
+                <li style="border-bottom:1px solid #979797"><?=$subnavi3?></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- <div class="bottom">
+      <div class="locate wrap">
+        <span class="content">新聞中心 > 媒體報導</span>
+      </div>
+    </div> -->
+  </div>
   <div class="mid" style="height:3877px">
     <div class="banner">
       <!-- Swiper -->
@@ -293,6 +353,7 @@
     </div>
   </div>
 <script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>
+<script src="<?php echo $resource_url; ?>js/jquery.min.js"></script>
 <!-- Initialize Swiper -->
 <script>
 var galleryTop = new Swiper('.gallery-top', {
@@ -310,4 +371,22 @@ var galleryThumbs = new Swiper('.gallery-thumbs', {
 galleryTop.params.control = galleryThumbs;
 galleryThumbs.params.control = galleryTop;
 
+</script>
+<script type="text/javascript">
+// 导航控制鼠标经过
+  var flag = 1;
+  $('.navi a').mouseover(function(){
+    if($(this).parent().hasClass('cur')){
+      flag = 0;
+    }
+    $(this).parent().addClass('cur');
+    $(this).parent().children('.sub-nav').addClass('cur');
+  })
+  $('.navi a').mouseleave(function(){
+    if(flag == 1){
+      $(this).parent().removeClass('cur');
+      $(this).parent().children('.sub-nav').removeClass('cur');
+    }
+    flag = 1;
+  })
 </script>

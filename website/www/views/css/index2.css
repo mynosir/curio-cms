@@ -77,14 +77,24 @@ body {
       .header .nav .navi.cur a {
         color: #d1494d; }
       .header .nav .navi .navbg {
+        opacity: 0;
         text-align: center;
         display: block;
         position: relative;
         top: 8px;
         height: 0px; }
+        .header .nav .navi.cur .navbg {
+          opacity: 1;
+          }
         .header .nav .navi .navbg img {
           display: inline; }
+      .header .nav .navi .sub{
+        width: 202px;
+        height: 177px;
+        position: absolute;
+      }
       .header .nav .navi .sub-nav {
+        display: none;
         position: absolute;
         width: 200px;
         top: 60px;
@@ -93,6 +103,9 @@ body {
         background-color: white;
         border-left: 1px solid #979797;
         border-right: 1px solid #979797; }
+        .header .nav .navi .sub-nav.cur {
+          display: block;
+          }
         .header .nav .navi .sub-nav li {
           border-top: 1px solid #979797;
           padding: 18px 0px;
@@ -539,15 +552,17 @@ body {
     width: 100%;
     height: 124px;
     display: table; }
-    .footer .content .logo, .footer .content .nav {
+    .footer .content .logo{
       float: left; }
     .footer .content .logo {
       padding-top: 20px; }
     .footer .content .nav {
-      margin-left: 202px;
-      margin-top: 39px;
+      padding-left: 80px;
       font-size: 14px;
-      color: #fff; }
+      color: #fff;
+      display: table-cell;
+      vertical-align: middle;
+      }
       .footer .content .nav ul {
         list-style: none; }
         .footer .content .nav ul li {
