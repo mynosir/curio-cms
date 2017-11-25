@@ -24,6 +24,12 @@ class MY_Controller extends CI_Controller {
         $this->load->view($page, $data);
         $this->load->view('include/_footer', $data);
     }
+    
+    public function showPage2($page, $data) {
+        $this->load->view('include/index_header', $data);
+        $this->load->view($page, $data);
+        $this->load->view('include/index_footer', $data);
+    }
 
 
     public function https_request($url, $data=null) {

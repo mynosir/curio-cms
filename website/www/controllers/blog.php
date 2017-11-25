@@ -22,6 +22,6 @@ class Blog extends MY_Controller {
         // 不同的语言使用同一主体模板示例
         $this->load->view('blog_body', $this->data);
         // 不同的语言使用不同的页脚示例
-        $this->load->view('blog_footer', $this->config->item('post_lang'), $this->data);
+        $this->load->view('blog_footer'. $this->config->item('post_lang'), $this->data);
     }
 }
