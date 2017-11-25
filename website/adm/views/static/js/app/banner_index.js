@@ -20,7 +20,7 @@ $(function() {
                         listTpl += '<tr>';
                         listTpl += '<td>' + (idx++) + '</td>';
                         listTpl += '<td>' + list[i]['status'] + '</td>';
-                        listTpl += '<td>' + list[i]['image'] + '</td>';
+                        listTpl += '<td>' + '<img style="width:145px;height:90px" src='+list[i]['image']+' alt=""/>' + '</td>';
                         listTpl += '<td>' + list[i]['urlen'] + '</td>';
                         listTpl += '<td>' + list[i]['urltc'] + '</td>';
                         listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-toggle="modal" data-target="#editModal" data-id="' + list[i]['id'] + '">编辑</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
@@ -71,7 +71,7 @@ $(function() {
                 if(res.status==0) {
                     $('.js_update_id').val(res['data'].id);
                     $('.js_update_status').val(res['data'].status);
-                    $('.js_update_image').val(res['data'].image);
+                    $('#editModal').find('.pics').find('img').attr('src',res['data'].image);
                     $('.js_update_urlen').val(res['data'].urlen);
                     $('.js_update_urltc').val(res['data'].urltc);
                 } else {
@@ -97,7 +97,7 @@ $(function() {
 
     $('body').delegate('.js_add_saveBtn', 'click', function() {
         var status = $('.js_add_status').val(),
-            image = $('.js_add_image').val(),
+            image = $('#addModal').find('.js_add_image')[0] && $('#addModal').find('.js_add_image')[0].src,
             urlen = $('.js_add_urlen').val(),
             urltc = $('.js_add_urltc').val();
         var json = {
@@ -127,7 +127,7 @@ $(function() {
     $('body').delegate('.js_saveBtn', 'click', function() {
         var id = $('.js_update_id').val(),
             status = $('.js_update_status').val(),
-            image = $('.js_update_image').val(),
+            image = $('#editModal').find('.js_update_image')[0] && $('#editModal').find('.js_update_image')[0].src,
             urlen = $('.js_update_urlen').val(),
             urltc = $('.js_update_urltc').val();
         var json = {

@@ -37,16 +37,14 @@ class Banner_model extends MY_Model {
         );
     }
 
-
     /**
      * 添加菜单
      * @param [type] $params [description]
      */
     public function add($params) {
-
         $msg = '';
         if($params['status']=='') $msg = '狀態不可為空！';
-        if($params['image']=='') $msg = '圖片不可为空！';
+        if(!isset($params['image'])) $msg = '圖片不可为空！';
         if($msg != '') {
             return array(
                 'status'    => -1,
