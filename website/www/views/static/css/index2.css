@@ -119,6 +119,7 @@ body {
         margin-left: 30px; }
 
   .mid .menu {
+    margin-top: 70px;
     width: 239px;
     float: left; }
     .mid .menu .nav .tit {
@@ -222,6 +223,7 @@ body {
         .mid .container3 .item .detail .date {
           margin-top: 15px; }
   .mid .container2 {
+    margin-top: 70px;
     position: relative;
     float: right;
     width: 880px;

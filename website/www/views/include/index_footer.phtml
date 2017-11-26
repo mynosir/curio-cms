@@ -24,15 +24,18 @@
 </body>
 </html>
 <script type="text/javascript">
-var curNav = '<?=$curNav?>';
-if(!curNav){
-  $('.home').addClass('cur');
-}else{
-  curNav = '.' + curNav;
-  if($(curNav)){
-    $(curNav).addClass('cur');
+// 当前目录高亮
+  var curNav = '<?=$curNav?>',
+      curLang = '<?=$curLang?>';
+  if(!curNav){
+    $('.home').addClass('cur');
+  }else{
+    curNav = '.' + curNav;
+    if($(curNav)){
+      $(curNav).addClass('cur');
+    }
   }
-}
+  $('.'+curLang).addClass('cur');
 // 导航控制鼠标经过
   $('.navi').mouseover(function(){
     $(this).parent().find('.hover').removeClass('hover');
@@ -43,4 +46,25 @@ if(!curNav){
     $('.sub-nav').removeClass('hover');
     $('.navi').removeClass('hover');
   })
+  $('.header .top').mouseover(function(){
+    $('.sub-nav').removeClass('hover');
+    $('.navi').removeClass('hover');
+  })
+// 控制切换语言url
+  $('.tc').click(function(event) {
+    /* Act on the event */
+    var str = window.location.href;
+    if(str.indexOf(/en/)>0){
+      str = str.replace(/\/en\//, "/tc/");
+    }
+    window.location.href=str;
+  });
+  $('.en').click(function(event) {
+    /* Act on the event */
+    var str = window.location.href;
+    if(str.indexOf(/en/)<0){
+      str = str.replace(/\/tc\//, "/en/");
+    }
+    window.location.href=str;
+  });
 </script>
