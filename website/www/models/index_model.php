@@ -29,11 +29,7 @@ class Index_model extends MY_Model {
             $item['status'] = '';
           }
         }
-        return array(
-            'status'    => 0,
-            'msg'       => '操作成功！',
-            'data'      => array_values($list)
-        );
+        return $list;
     }
 
 

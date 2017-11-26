@@ -5,7 +5,7 @@
  * @author linzequan <lowkey361@gmail.com>
  *
  */
-class Home extends MY_Controller {
+class Auction extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -38,8 +38,10 @@ class Home extends MY_Controller {
 
 
     public function index() {
-        $this->data['bannerlist'] = $this->index_model->search();
-        $this->showPage('index', $this->data);
+      $this->showPage('auction_index', $this->data);
+    }
+
+    public function auction() {
     }
 
 
@@ -47,9 +49,9 @@ class Home extends MY_Controller {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
-          // case 'search':
-          //     $result = $this->index_model->search();
-          //     break;
+          case 'search':
+              $result = $this->index_model->search();
+              break;
         }
         echo json_encode($result);
     }

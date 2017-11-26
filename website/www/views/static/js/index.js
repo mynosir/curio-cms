@@ -25,6 +25,7 @@ $(function() {
                     alert(res.msg);
                 }
             };
+
             json.callback = callback;
             Utils.requestData(json);
         },
@@ -32,7 +33,8 @@ $(function() {
 
     };
 
-
-
     page.init();
+
+
+
 });
