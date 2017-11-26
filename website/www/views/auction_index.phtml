@@ -6,18 +6,4 @@
     </div>
 
   </div>
-<script type="text/javascript">
-// 导航控制鼠标经过
-  $('.navi').mouseover(function(){
-    $(this).parent().find('.hover').removeClass('hover');
-    if(!$(this).hasClass('cur')){
-      $(this).addClass('hover');
-      $(this).children('.sub-nav').addClass('hover');
-    }
-  })
-  $('.mid').mouseover(function(){
-    $('.sub-nav').removeClass('hover');
-    $('.navi').removeClass('hover');
-  })
-</script>
-<script src="<?php echo $resource_url; ?>js/index.js" charset="utf-8"></script>
+<script src="<?php echo $resource_url; ?>js/auction.js" charset="utf-8"></script>

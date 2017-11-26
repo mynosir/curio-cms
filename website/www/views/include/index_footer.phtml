@@ -24,15 +24,20 @@
 </body>
 </html>
 <script type="text/javascript">
-var cur = '<?=$cur?>';
-$('.'+cur).addClass('cur');
+var curNav = '<?=$curNav?>';
+if(!curNav){
+  $('.home').addClass('cur');
+}else{
+  curNav = '.' + curNav;
+  if($(curNav)){
+    $(curNav).addClass('cur');
+  }
+}
 // 导航控制鼠标经过
   $('.navi').mouseover(function(){
     $(this).parent().find('.hover').removeClass('hover');
-    if(!$(this).hasClass('cur')){
-      $(this).addClass('hover');
-      $(this).children('.sub-nav').addClass('hover');
-    }
+    $(this).addClass('hover');
+    $(this).children('.sub-nav').addClass('hover');
   })
   $('.mid').mouseover(function(){
     $('.sub-nav').removeClass('hover');

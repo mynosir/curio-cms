@@ -33,7 +33,8 @@ class Auction extends MY_Controller {
         $this->data['terms'] = lang('hf_terms');
         $this->data['privacy'] = lang('hf_privacy');
         $this->data['copyright'] = lang('hf_copyright');
-        $this->data['cur'] = $this->uri->segment(1);
+        $this->data['curNav'] = $this->uri->segment(2);
+        $this->data['curLang'] = $this->uri->segment(1);
     }
 
 

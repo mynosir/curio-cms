@@ -33,11 +33,16 @@ class Home extends MY_Controller {
         $this->data['terms'] = lang('hf_terms');
         $this->data['privacy'] = lang('hf_privacy');
         $this->data['copyright'] = lang('hf_copyright');
-        $this->data['cur'] = $this->uri->segment(1);
+        $this->data['curNav'] = $this->uri->segment(2);
+        $this->data['curLang'] = $this->uri->segment(1);
     }
 
 
     public function index() {
+        if($_SERVER['REQUEST_URI'] == '/') {
+          $this->load->helper('url');
+          redirect($this->data['base_url'].'tc/', 'location');
+        }
         $this->data['bannerlist'] = $this->index_model->search();
         $this->showPage('index', $this->data);
     }

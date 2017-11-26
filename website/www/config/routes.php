@@ -41,8 +41,8 @@
 $route['default_controller'] = 'home';
 
 $route['scaffolding_trigger'] = "";
-$route['(en|ch)(:any)'] = "$2";
-$route['en|ch'] = "home";
+$route['(en|tc)(:any)'] = "$2";
+$route['en|tc'] = "home";
 
 $route['404_override'] = '';
 
