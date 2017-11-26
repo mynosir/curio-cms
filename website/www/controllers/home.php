@@ -9,6 +9,7 @@ class home extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('index_model');
         $data['resource_url'] = $this->resource_url;
         $data['base_url'] = $this->config->item('base_url');
         $this->data = $data;
@@ -36,7 +37,7 @@ class home extends MY_Controller {
         $this->data['terms'] = lang('index_terms');
         $this->data['privacy'] = lang('index_privacy');
         $this->data['copyright'] = lang('index_copyright');
-        $this->showPage2('index', $this->data);
+        $this->showPage('index', $this->data);
     }
 
 
@@ -44,6 +45,9 @@ class home extends MY_Controller {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
+          case 'search':
+              $result = $this->index_model->search();
+              break;
         }
         echo json_encode($result);
     }

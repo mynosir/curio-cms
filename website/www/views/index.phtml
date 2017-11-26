@@ -10,7 +10,7 @@
             <input type="text" name="" value="" placeholder="<?=$placeholder?>">
           </div>
           <div class="lang">
-            <span><a href="#en">ENG</a>&nbsp/&nbsp<a href="#ch" class="cur">繁</a></span>
+            <span><a href="#en">ENG</a> / <a href="#ch" class="cur">繁</a></span>
           </div>
       </div>
       <div class="nav">
@@ -21,12 +21,10 @@
           <div class="navi">
             <a href=""><?=$navi2?></a>
             <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
-            <div class="sub">
-              <ul class="sub-nav">
-                <li><?=$subnavi1?></li>
-                <li style="border-bottom:1px solid #979797"><?=$subnavi2?></li>
-              </ul>
-            </div>
+            <ul class="sub-nav">
+              <li><a href=""><?=$subnavi1?></a></li>
+              <li style="border-bottom:1px solid #979797"><a href=""><?=$subnavi2?></a></li>
+            </ul>
           </div>
           <div class="navi">
             <a href=""><?=$navi3?></a>
@@ -43,12 +41,10 @@
           <div class="navi" style="border-right:1px solid #979797">
             <a href=""><?=$navi6?></a>
             <div class="navbg"><img src="<?php echo $resource_url; ?>img/btn_nav_selected.png" alt=""></div>
-            <div class="sub">
-              <ul class="sub-nav">
-                <li><?=$navi6?></li>
-                <li style="border-bottom:1px solid #979797"><?=$subnavi3?></li>
-              </ul>
-            </div>
+            <ul class="sub-nav">
+              <li><a href=""><?=$navi6?></a></li>
+              <li style="border-bottom:1px solid #979797"><a href=""><?=$subnavi3?></a></li>
+            </ul>
           </div>
       </div>
     </div>
@@ -63,8 +59,6 @@
       <!-- Swiper -->
       <div class="swiper-container gallery-top">
           <div class="swiper-wrapper">
-             <div class="swiper-slide" style="background-image:url(<?php echo $resource_url; ?>img/img1.jpg)"></div>
-             <div class="swiper-slide" style="background-image:url(<?php echo $resource_url; ?>img/img2.jpg)"></div>
           </div>
           <!-- Add Arrows -->
           <div class="swiper-button-next swiper-button-white"></div>
@@ -72,8 +66,6 @@
       </div>
       <div class="swiper-container gallery-thumbs">
           <div class="swiper-wrapper">
-              <div class="swiper-slide" style="background-image:url(<?php echo $resource_url; ?>img/img1.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(<?php echo $resource_url; ?>img/img2.jpg)"></div>
           </div>
       </div>
     </div>
@@ -353,7 +345,6 @@
     </div>
   </div>
 <script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>
-<script src="<?php echo $resource_url; ?>js/jquery.min.js"></script>
 <!-- Initialize Swiper -->
 <script>
 var galleryTop = new Swiper('.gallery-top', {
@@ -374,19 +365,16 @@ galleryThumbs.params.control = galleryTop;
 </script>
 <script type="text/javascript">
 // 导航控制鼠标经过
-  var flag = 1;
-  $('.navi a').mouseover(function(){
-    if($(this).parent().hasClass('cur')){
-      flag = 0;
+  $('.navi').mouseover(function(){
+    $(this).parent().find('.hover').removeClass('hover');
+    if(!$(this).hasClass('cur')){
+      $(this).addClass('hover');
+      $(this).children('.sub-nav').addClass('hover');
     }
-    $(this).parent().addClass('cur');
-    $(this).parent().children('.sub-nav').addClass('cur');
   })
-  $('.navi a').mouseleave(function(){
-    if(flag == 1){
-      $(this).parent().removeClass('cur');
-      $(this).parent().children('.sub-nav').removeClass('cur');
-    }
-    flag = 1;
+  $('.mid').mouseover(function(){
+    $('.sub-nav').removeClass('hover');
+    $('.navi').removeClass('hover');
   })
 </script>
+<script src="<?php echo $resource_url; ?>js/index.js" charset="utf-8"></script>

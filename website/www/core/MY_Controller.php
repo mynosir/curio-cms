@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->resource_url = $this->config->item('base_url') . 'www/views/';
+        $this->resource_url = $this->config->item('base_url') . 'www/views/static/';
     }
 
 
@@ -19,13 +19,8 @@ class MY_Controller extends CI_Controller {
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
+
     public function showPage($page, $data) {
-        $this->load->view('include/_header', $data);
-        $this->load->view($page, $data);
-        $this->load->view('include/_footer', $data);
-    }
-    
-    public function showPage2($page, $data) {
         $this->load->view('include/index_header', $data);
         $this->load->view($page, $data);
         $this->load->view('include/index_footer', $data);

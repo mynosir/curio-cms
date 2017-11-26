@@ -74,7 +74,7 @@ body {
       padding: 0 57px;
       font-size: 18px;
       border-left: 1px solid #979797; }
-      .header .nav .navi.cur a {
+      .header .nav .navi.cur>a, .header .nav .navi.hover>a {
         color: #d1494d; }
       .header .nav .navi .navbg {
         opacity: 0;
@@ -83,33 +83,36 @@ body {
         position: relative;
         top: 8px;
         height: 0px; }
-        .header .nav .navi.cur .navbg {
+        .header .nav .navi.cur .navbg,.header .nav .navi.hover .navbg {
           opacity: 1;
           }
         .header .nav .navi .navbg img {
           display: inline; }
-      .header .nav .navi .sub{
+      /*.header .nav .navi .sub{
         width: 202px;
         height: 177px;
         position: absolute;
-      }
+      }*/
       .header .nav .navi .sub-nav {
         display: none;
         position: absolute;
-        width: 200px;
+        width: 185px;
         top: 60px;
         list-style: none;
         z-index: 99;
         background-color: white;
         border-left: 1px solid #979797;
         border-right: 1px solid #979797; }
-        .header .nav .navi .sub-nav.cur {
+        .header .nav .navi .sub-nav.cur,.header .nav .navi .sub-nav.hover {
           display: block;
           }
         .header .nav .navi .sub-nav li {
           border-top: 1px solid #979797;
           padding: 18px 0px;
           text-align: center;
+        }
+        .header .nav .navi .sub-nav a {
+          display: inline
         }
 
 .mid {
