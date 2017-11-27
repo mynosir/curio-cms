@@ -2,7 +2,7 @@
 /**
  * 首页控制器
  *
- * @author linzequan <lowkey361@gmail.com>
+ * @author qoohj <qoohj@qq.com>
  *
  */
 class Auction extends MY_Controller {
@@ -28,6 +28,11 @@ class Auction extends MY_Controller {
         $this->data['subnavi1'] = lang('hf_subnavi1');
         $this->data['subnavi2'] = lang('hf_subnavi2');
         $this->data['subnavi3'] = lang('hf_subnavi3');
+        $this->data['subnavi4'] = lang('hf_subnavi4');
+        $this->data['subnavi5'] = lang('hf_subnavi5');
+        $this->data['subnavi6'] = lang('hf_subnavi6');
+        $this->data['subnavi7'] = lang('hf_subnavi7');
+        $this->data['subnavi8'] = lang('hf_subnavi8');
         $this->data['contact'] = lang('hf_contact');
         $this->data['sitemap'] = lang('hf_sitemap');
         $this->data['terms'] = lang('hf_terms');

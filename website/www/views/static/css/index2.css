@@ -150,6 +150,7 @@ body {
         line-height: 49px;
         text-indent: 36px; }
   .mid .menu2 {
+    margin-top: 70px;
     width: 239px;
     float: left; }
     .mid .menu2 .nav .tit {
@@ -193,6 +194,7 @@ body {
       .mid .menu2 .nav.cur .sub-nav .sub-navi.cur .download {
         background: url(../img/btn_xiazai_blue.png) center center/100% 100% no-repeat; }
   .mid .container3 {
+    margin-top: 70px;
     position: relative;
     float: right;
     width: 880px; }
