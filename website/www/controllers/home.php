@@ -14,6 +14,7 @@ class Home extends MY_Controller {
         $data['base_url'] = $this->config->item('base_url');
         $this->data = $data;
         $this->lang->load('headfoot');
+        $this->data['home'] = lang('hf_home');
         $this->data['css'] = lang('hf_css');
         $this->data['title'] = lang('hf_title');
         $this->data['og_description'] = lang('hf_og_description');

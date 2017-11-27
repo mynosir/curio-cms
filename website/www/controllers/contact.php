@@ -10,10 +10,12 @@ class Contact extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('index_model');
+        $this->load->model('index_model');
         $data['resource_url'] = $this->resource_url;
         $data['base_url'] = $this->config->item('base_url');
         $this->data = $data;
         $this->lang->load('headfoot');
+        $this->data['home'] = lang('hf_home');
         $this->data['css'] = lang('hf_css');
         $this->data['title'] = lang('hf_title');
         $this->data['og_description'] = lang('hf_og_description');
