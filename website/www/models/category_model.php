@@ -5,12 +5,12 @@
  * @author qoohj <qoohj@qq.com>
  *
  */
-class Banner_model extends MY_Model {
+class Category_model extends MY_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'app_banner';
-        $this->fields = 'id, status, image, urlen, urltc';
+        $this->table = 'app_category';
+        $this->fields = 'id, status, name_en, name_tc';
     }
 
 
@@ -19,7 +19,7 @@ class Banner_model extends MY_Model {
      * @return [type] [description]
      */
     public function search() {
-        $query = $this->db->order_by('id asc')->get($this->table);
+      $query = $this->db->order_by('id desc')->where('status', '1')->get($this->table);
         $list = $query->result_array();
         $status = ['hide', 'show'];
         foreach($list as &$item) {

@@ -18,7 +18,6 @@ class Home extends MY_Controller {
           $this->load->helper('url');
           redirect($this->data['base_url'].'tc/', 'location');
         }
-        $this->data['bannerlist'] = $this->banner_model->search();
         $this->showPage('index', $this->data);
     }
 

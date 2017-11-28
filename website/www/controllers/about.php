@@ -26,7 +26,7 @@ class About extends MY_Controller {
         $result = array();
         switch($actionxm) {
           case 'search':
-              $result = $this->banner_model->search();
+              // $result = $this->banner_model->search();
               break;
         }
         echo json_encode($result);
