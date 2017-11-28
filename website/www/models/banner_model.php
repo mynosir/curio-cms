@@ -5,7 +5,7 @@
  * @author linzequan <lowkey361@gmail.com>
  *
  */
-class Index_model extends MY_Model {
+class Banner_model extends MY_Model {
 
     public function __construct() {
         parent::__construct();
