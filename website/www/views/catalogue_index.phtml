@@ -6,6 +6,35 @@
     </div>
     <div class="wrap">
       <div class="menu2">
+
+        <?php if ($curLang === 'tc'): ?>
+          <?php foreach ($categorylist as $category): ?>
+            <div class="nav">
+              <div class="tit">
+                <?php echo $category['name_tc']?>
+              </div>
+              <div class="sub-navi">
+                <a href="" class="sub-tit"></a>
+                <span></span>
+                <a href="" class="download"></a>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <?php foreach ($categorylist as $category): ?>
+            <div class="nav">
+              <div class="tit">
+                <?php echo $category['name_en']?>
+              </div>
+              <div class="sub-navi">
+                <a href="" class="sub-tit"></a>
+                <span></span>
+                <a href="" class="download"></a>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+<!--
         <div class="nav">
           <div class="tit">
             第十屆-2017秋拍
@@ -30,7 +59,7 @@
           <div class="tit">
             第十屆-2017秋拍
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="container container2">
         <div class="news">
