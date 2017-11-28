@@ -2,7 +2,7 @@
 /**
  * 系统菜单模型
  *
- * @author linzequan <lowkey361@gmail.com>
+ * @author qoohj <qoohj@qq.com>
  *
  */
 class Category_model extends MY_Model {
@@ -44,7 +44,8 @@ class Category_model extends MY_Model {
     public function add($params) {
         $msg = '';
         if($params['status']=='') $msg = '狀態不可為空！';
-        if(!isset($params['image'])) $msg = '圖片不可为空！';
+        if($params['name_en']=='') $msg = '英文名不可為空！';
+        if($params['name_tc']=='') $msg = '中文名不可為空！';
         if($msg != '') {
             return array(
                 'status'    => -1,
@@ -53,9 +54,8 @@ class Category_model extends MY_Model {
         }
         $data = array(
             'status'          => $params['status'],
-            'image'           => $params['image'],
-            'urlen'     => $params['urlen'],
-            'urltc'          => $params['urltc']
+            'name_en'     => $params['name_en'],
+            'name_tc'          => $params['name_tc']
         );
         $this->db->insert($this->table, $data);
         return array(
@@ -75,9 +75,8 @@ class Category_model extends MY_Model {
     public function update($params, $where) {
         $data = array(
             'status'          => $params['status'],
-            'image'           => $params['image'],
-            'urlen'     => $params['urlen'],
-            'urltc'          => $params['urltc']
+            'name_en'     => $params['name_en'],
+            'name_tc'          => $params['name_tc']
         );
         $this->db->where($where)->update($this->table, $data);
         return array(

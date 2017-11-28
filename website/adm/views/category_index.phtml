@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <form class="form-horizontal" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="status" class="col-sm-4 control-label">Status</label>
+                        <label for="status" class="col-sm-4 control-label">Status<label for="must" class="must">(*)</label></label>
                         <div class="col-sm-8">
                           <select class="form-control js_add_status">
                             <option value="">/</option>
@@ -25,26 +25,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="image" class="col-sm-4 control-label">Image</label>
+                        <label for="nameen" class="col-sm-4 control-label">Name(en)<label for="must" class="must">(*)</label></label>
                         <div class="col-sm-8">
-                            <!-- <input type="text" class="form-control js_add_image" id="image" placeholder="image"> -->
-                            <div id="queue"></div>
-                            <input id="file_upload" name="file_upload" type="file" multiple="true">
-                            <div class="pics">
-                            </div>
-                            <label for="pics" style="color:red">In jpg, jpeg or gif format,<br>width 1440 pixels and height 900 pixels</label>
+                          <input type="text" class="form-control js_add_nameen" id="nameen" placeholder="Name(en)">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="urlen" class="col-sm-4 control-label">URL(en)</label>
+                        <label for="nametc" class="col-sm-4 control-label">Name(tc)<label for="must" class="must">(*)</label></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control js_add_urlen" id="urlen" placeholder="URL(en)">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="urltc" class="col-sm-4 control-label">URL(tc)</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control js_add_urltc" id="urltc" placeholder="URL(tc)">
+                            <input type="text" class="form-control js_add_nametc" id="nametc" placeholder="Name(tc)">
                         </div>
                     </div>
                     <div class="alert alert-warning alert-dismissible fade in" role="alert">
@@ -83,27 +72,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="image" class="col-sm-4 control-label">Image</label>
+                        <label for="nameen" class="col-sm-4 control-label">Name(en)<label for="must" class="must">(*)</label></label>
                         <div class="col-sm-8">
-                            <!-- <input type="text" class="form-control js_update_image" id="image" placeholder="image"> -->
-                            <div id="queue"></div>
-                            <input id="file_upload2" name="file_upload2" type="file" multiple="true">
-                            <div class="pics">
-                              <img class="form-control" style="width:145px;height:90px" src="" alt="">
-                            </div>
-                            <label for="pics" style="color:red">In jpg, jpeg or gif format,<br>width 1440 pixels and height 900 pixels</label>
+                          <input type="text" class="form-control js_update_nameen" id="nameen" placeholder="Name(en)">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="urlen" class="col-sm-4 control-label">URL(en)</label>
+                        <label for="nametc" class="col-sm-4 control-label">Name(tc)<label for="must" class="must">(*)</label></label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control js_update_urlen" id="urlen" placeholder="URL(en)">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="urltc" class="col-sm-4 control-label">URL(tc)</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control js_update_urltc" id="urltc" placeholder="URL(tc)">
+                            <input type="text" class="form-control js_update_nametc" id="nametc" placeholder="Name(tc)">
                         </div>
                     </div>
                     <div class="alert alert-warning alert-dismissible fade in" role="alert">
@@ -156,49 +133,4 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script src="<?php echo $resource_url; ?>js/app/banner_index.js"></script>
-<script type="text/javascript">
-<?php $timestamp = time();?>
-$(function() {
-  $('#file_upload').uploadifive({
-    'formData'     : {
-      'timestamp' : '<?php echo $timestamp;?>',
-      'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
-    },
-    'uploadScript' : config.apiServer + 'banner/uploadify',
-    'fileSizeLimit' : '2MB',
-    'buttonText'      : 'SELECT FILE',
-    'multi'           : false,
-    'removeCompleted': true,
-    'onUploadComplete' : function(file, data) {
-      $('#addModal').find('.pics').empty();
-      $('#addModal').find('.pics').append('<img id="image" class="form-control js_add_image" src="<?php echo $base_url.'adm/uploads/';?>'+file.name+'" alt="" style="width:145px;height:90px"><a style="width: 145px;text-align: center;display: block;margin-top: 5px;" class="delete">delete</a>');
-    },
-  });
-
-  $('#file_upload2').uploadifive({
-    'formData'     : {
-      'timestamp' : '<?php echo $timestamp;?>',
-      'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
-    },
-    'uploadScript' : config.apiServer + 'banner/uploadify',
-    'fileSizeLimit' : '2MB',
-    'buttonText'      : 'SELECT FILE',
-    'multi'           : false,
-    'removeCompleted': true,
-    'onUploadComplete' : function(file, data) {
-      $('#editModal').find('.pics').empty();
-      $('#editModal').find('.pics').append('<img id="image" class="form-control js_update_image" src="<?php echo $base_url.'adm/uploads/';?>'+file.name+'" alt="" style="width:145px;height:90px">');
-    },
-  });
-
-  $('#addModal').find('.pics').on('click', '.delete', function(){
-    $('#confirmModal2').modal('show');
-  })
-
-  $('body').delegate('.js_sure_confirm', 'click', function(e) {
-      $('#addModal').find('.pics').empty();
-      $('#confirmModal2').modal('hide');
-  });
-});
-</script>
+<script src="<?php echo $resource_url; ?>js/app/category_index.js"></script>
