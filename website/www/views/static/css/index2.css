@@ -465,8 +465,7 @@ body {
   .mid .product3 {
     background: url(../img/bg3.jpg) no-repeat center center; }
 
-.mid.mid2 {
-  margin-top: 34px; }
+.mid.mid2 {}
   .mid.mid2 .menu .nav .tit {
     background: url(../img/menu_bg.jpg) no-repeat 0px 14px; }
   .mid.mid2 .menu .nav .tit.cur {
