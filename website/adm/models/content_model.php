@@ -62,6 +62,40 @@ class Content_model extends MY_Model {
         $limitStart = ($page - 1) * $size;
         $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by create_time desc limit ' . $limitStart . ', ' . $size);
         $result = $query->result_array();
+
+        $this->load->model('clazz_model');
+        $this->load->model('admin_model');
+        $CI = &get_instance();
+        foreach($result as &$item) {
+            if($item['clazz_id'] && $clazz_info = $CI->clazz_model->getClazzById($item['clazz_id'])) {
+                $item['clazz_name_en'] = $clazz_info['data']['name_en'];
+                $item['clazz_name_tc'] = $clazz_info['data']['name_tc'];
+            } else {
+                $item['clazz_name_en'] = '';
+                $item['clazz_name_tc'] = '';
+            }
+            if($item['create_userid'] && $userinfo = $CI->admin_model->getAdminById($item['create_userid'])) {
+                $item['create_user'] = $userinfo['data']['username'];
+            } else {
+                $item['create_user'] = '';
+            }
+            if($item['update_userid'] && $userinfo = $CI->admin_model->getAdminById($item['update_userid'])) {
+                $item['update_user'] = $userinfo['data']['username'];
+            } else {
+                $item['update_user'] = '';
+            }
+            if($item['create_time']) {
+                $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
+            } else {
+                $item['create_time'] = '';
+            }
+            if($item['update_time']) {
+                $item['update_time'] = date('Y-m-d H:i:s', $item['update_time']);
+            } else {
+                $item['update_time'] = '';
+            }
+        }
+
         $pageQuery = $this->db->query('select count(1) as num from ' . $this->table . $where);
         $pageResult = $pageQuery->result_array();
         $num = $pageResult[0]['num'];

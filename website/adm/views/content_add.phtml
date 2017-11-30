@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="<?php echo $resource_url; ?>css/uploadifive.css">
+<link rel="stylesheet" href="<?php echo $resource_url; ?>libs/summernote/summernote.css">
+
+<div class="form-group">
+    <label for="title">标题（en）</label>
+    <input type="text" class="form-control" id="title_en" placeholder="请输入标题（en）">
+</div>
+<div class="form-group">
+    <label for="title">标题（tc）</label>
+    <input type="text" class="form-control" id="title_tc" placeholder="请输入标题（tc）">
+</div>
+<div class="form-group">
+    <label for="clazz_id">分类</label>
+    <select class="form-control" id="clazz_id"></select>
+</div>
+<div class="form-group">
+    <label for="pic">封面图</label>
+    <input id="pic" type="file" multiple="false" value="" />
+    <div>
+        <img src="" id="prevArea" style="max-width: 100px; max-height: 100px; ">
+    </div>
+</div>
+<div class="form-group">
+    <label for="content_en">正文内容（en）</label>
+    <div id="content_en"></div>
+</div>
+<div class="form-group">
+    <label for="content_tc">正文内容（tc）</label>
+    <div id="content_tc"></div>
+</div>
+<div class="form-group">
+    <label for="author">作者</label>
+    <input type="text" class="form-control" id="author" placeholder="请输入作者" value="admin">
+</div>
+
+<input type="hidden" name="nid" value="<?php echo $nid; ?>" class="js_nid">
+
+<button type="submit" class="btn btn-primary js_submit">保存</button>
+
+<script src="<?php echo $resource_url; ?>js/jquery.uploadifive.js"></script>
+<script src="<?php echo $resource_url; ?>libs/summernote/summernote.js"></script>
+<script src="<?php echo $resource_url; ?>libs/summernote/lang/summernote-zh-CN.js"></script>
+<script src="<?php echo $resource_url; ?>libs/summernote/lang/summernote-zh-TW.js"></script>
+<script src="<?php echo $resource_url; ?>js/system/content_add.js"></script>
