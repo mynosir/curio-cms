@@ -31,10 +31,10 @@ create table `curio_content` (
 
 -- linzequan 20171129
 -- 添加轮播图表
-create table `curio_banners` (
+create table `curio_banner` (
     `id` int not null auto_increment comment '自增id',
-    `title_en` varchar(512) comment '链接英文',
-    `title_tc` varchar(512) comment '链接繁体',
+    `url_en` varchar(512) comment '链接英文',
+    `url_tc` varchar(512) comment '链接繁体',
     `pic` varchar(255) default '' comment '图片',
     `sort` int(8) default 0 comment '排序。数值越大，越靠前',
     primary key(`id`)

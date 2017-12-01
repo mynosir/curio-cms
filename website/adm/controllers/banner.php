@@ -10,13 +10,15 @@ class Banner extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->checkLogin();
+        $this->load->model('banner_model');
         $data['resource_url'] = $this->resource_url;
+        $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'banner';
         $data['sub_menu'] = array();
         $data['current_menu_text'] = '轮播图管理';
+        $data['menu_list'] = $this->getMenuList();
         $this->data = $data;
-        $this->load->model('banner_model');
     }
 
 
@@ -67,6 +69,7 @@ class Banner extends MY_Controller {
                     $tempFile = $_FILES['uploadfile']['tmp_name'];
                     $targetFolder = '/public/banner/index/';
                     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+                    if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
                     $now = time();
                     $fileName = $now . '_org.' . $fileParts['extension'];
                     $compressFileName = $now . '.' . $fileParts['extension'];
