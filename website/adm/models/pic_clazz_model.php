@@ -20,7 +20,7 @@ class Pic_clazz_model extends MY_Model {
      * @return [type] [description]
      */
     public function search() {
-        $query = $this->db->select($this->fields)->order_by('pid asc, `sort` desc')->get($this->table);
+        $query = $this->db->select($this->fields)->order_by('parent_id asc, `sort` desc')->get($this->table);
         $list = $query->result_array();
         $tree = array();
         create_tree_list($list, $tree, 0, 0, array('id_key'=>'id', 'pid_key'=> 'parent_id'));
@@ -39,7 +39,7 @@ class Pic_clazz_model extends MY_Model {
      */
     public function add($params) {
         $msg = '';
-        if($params['pid']=='') $msg = '上级菜单不可为空！';
+        if($params['parent_id']=='') $msg = '上级菜单不可为空！';
         if($params['name_en']=='') $msg = '分类英文名称不可为空！';
         if($params['name_tc']=='') $msg = '分类繁体名称不可为空！';
 
@@ -143,7 +143,7 @@ class Pic_clazz_model extends MY_Model {
         }
         // 删除无用的非根节点数据
         foreach($tree as $k=>$v) {
-            if($v['pid'] != 0) {
+            if($v['parent_id'] != 0) {
                 unset($tree[$k]);
             }
         }
