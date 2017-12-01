@@ -14,20 +14,18 @@ $(function() {
             var callback = function(res) {
                 // 处理表格数据
                 var list = res['list'],
-                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>封面图</th><th>正文内容（en）</th><th>正文内容（tc）</th><th>发布者</th><th>发布时间</th><th>操作</th></tr>';
+                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>封面图</th><th>发布者</th><th>发布时间</th><th>操作</th></tr>';
                 for(var i in list) {
                     listTpl += '<tr>';
                     listTpl += '<td>' + list[i]['id'] + '</td>';
-                    listTpl += '<td>' + list[i]['title_en'] + '</td>';
-                    listTpl += '<td>' + list[i]['title_tc'] + '</td>';
+                    listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_en'] + '</a></td>';
+                    listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_tc'] + '</a></td>';
                     if(list[i]['clazz_name_en'] == '') {
                         listTpl += '<td>/（/）</td>';
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
                     }
                     listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
-                    listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_en'] + '</a></td>';
-                    listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_tc'] + '</a></td>';
                     listTpl += '<td>' + list[i]['create_user'] + '</td>';
                     listTpl += '<td>' + list[i]['create_time'] + '</td>';
                     listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-id="' + list[i]['id'] + '">修改</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
