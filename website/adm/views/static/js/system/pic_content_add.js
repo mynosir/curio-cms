@@ -139,10 +139,6 @@ $(function() {
             num = $('#num').val(),
             prize_en = $('#prize_en').val(),
             prize_tc = $('#prize_tc').val(),
-            size_en = $('#size_en').val(),
-            size_tc = $('#size_tc').val(),
-            standard_en = $('#standard_en').val(),
-            standard_tc = $('#standard_tc').val(),
             descript_en = $('#descript_en').summernote('code'),
             descript_tc = $('#descript_tc').summernote('code'),
             sort = $('#sort').val();
@@ -166,7 +162,7 @@ $(function() {
             return;
         }
         if(pic == '') {
-            alert('请上传封面图！');
+            alert('请上传图片！');
             return;
         }
         if(num == '') {
@@ -174,27 +170,11 @@ $(function() {
             return;
         }
         if(prize_en == '') {
-            alert('请输入价格（en）！');
+            alert('请输入估计价格！');
             return;
         }
         if(prize_tc == '') {
-            alert('请输入价格（en）！');
-            return;
-        }
-        if(size_en == '') {
-            alert('请输入尺寸（en）！');
-            return;
-        }
-        if(size_tc == '') {
-            alert('请输入尺寸（en）！');
-            return;
-        }
-        if(standard_en == '') {
-            alert('请输入规格（en）！');
-            return;
-        }
-        if(standard_tc == '') {
-            alert('请输入规格（en）！');
+            alert('请输入成交价格！');
             return;
         }
         if(descript_en == '') {
@@ -224,10 +204,6 @@ $(function() {
                     num: num,
                     prize_en: prize_en,
                     prize_tc: prize_tc,
-                    size_en: size_en,
-                    size_tc: size_tc,
-                    standard_en: standard_en,
-                    standard_tc: standard_tc,
                     descript_en: descript_en,
                     descript_tc: descript_tc,
                     sort: sort
