@@ -106,6 +106,9 @@ $(function() {
                     if($('.js_update_clazz_id').val() != '') {
                         $('#clazz_id').val($('.js_update_clazz_id').val());
                     }
+                    if($('.js_add_clazz_id').val() == 'add') {
+                        $('#clazz_id').val(0);
+                    }
                 } else {
                     alert(res.msg);
                 }
