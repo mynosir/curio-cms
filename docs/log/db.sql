@@ -59,6 +59,7 @@ create table `curio_pic_content` (
     `id` int not null auto_increment comment '自增id',
     `title_en` varchar(255) comment '名称英文',
     `title_tc` varchar(255) comment '名称繁体',
+    `clazz_id` int comment '分类id',
     `pic` varchar(512) comment '图片json',
     `num` varchar(255) comment '标号',
     `prize_en` varchar(255) comment '价格英文',

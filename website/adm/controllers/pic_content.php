@@ -10,21 +10,20 @@ class Pic_content extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->checkLogin();
+        $this->load->model('pic_content_model');
         $data['resource_url'] = $this->resource_url;
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'pic_content';
         $data['current_menu_text'] = '图录管理';
         $data['sub_menu'] = array();
+        $data['menu_list'] = $this->getMenuList();
         $this->data = $data;
-        $this->load->model('pic_content_model');
     }
 
 
     public function index() {
-        $this->load->view('include/_header', $this->data);
-        $this->load->view('pic_content_index', $this->data);
-        $this->load->view('include/_footer', $this->data);
+        $this->showPage('pic_content_index', $this->data);
     }
 
 
@@ -32,15 +31,11 @@ class Pic_content extends MY_Controller {
         $this->data['nid'] = $nid;
         if($nid > 0) {
             // 更新
-            $this->data['info'] = $this->news_model->getDetail($nid);
-            $this->load->view('include/_header', $this->data);
-            $this->load->view('news_update', $this->data);
-            $this->load->view('include/_footer', $this->data);
+            $this->data['info'] = $this->pic_content_model->getDetail($nid);
+            $this->showPage('pic_content_update', $this->data);
         } else {
             // 新增
-            $this->load->view('include/_header', $this->data);
-            $this->load->view('news_add', $this->data);
-            $this->load->view('include/_footer', $this->data);
+            $this->showPage('pic_content_add', $this->data);
         }
     }
 
@@ -53,7 +48,7 @@ class Pic_content extends MY_Controller {
                 $page = $this->get_request('page');
                 $size = $this->get_request('size');
                 $keyword = $this->get_request('keyword');
-                $result = $this->news_model->getList($page, $size, $keyword);
+                $result = $this->pic_content_model->getList($page, $size, $keyword);
                 break;
         }
         echo json_encode($result);
@@ -67,9 +62,10 @@ class Pic_content extends MY_Controller {
                 if(!empty($_FILES)) {
                     $fileParts = pathinfo($_FILES['uploadfile']['name']);
                     $tempFile = $_FILES['uploadfile']['tmp_name'];
-                    $targetFolder = '/public/news/img/';
+                    $targetFolder = '/public/pic_content/img/';
                     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
-                    $now = time();
+                    if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
+                    $now = time() . myrandom(8);
                     $fileName = $now . '_org.' . $fileParts['extension'];
                     $compressFileName = $now . '.' . $fileParts['extension'];
                     $targetFile = rtrim($targetPath, '/') . '/' . $fileName;
@@ -89,9 +85,10 @@ class Pic_content extends MY_Controller {
                 if(!empty($_FILES)) {
                     $fileParts = pathinfo($_FILES['file']['name']);
                     $tempFile = $_FILES['file']['tmp_name'];
-                    $targetFolder = '/public/news/img_contents/';
+                    $targetFolder = '/public/pic_content/img_contents/';
                     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
-                    $now = time();
+                    if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
+                    $now = time() . myrandom(8);
                     $fileName = $now . '_org.' . $fileParts['extension'];
                     $compressFileName = $now . '.' . $fileParts['extension'];
                     $targetFile = rtrim($targetPath, '/') . '/' . $fileName;
@@ -110,11 +107,11 @@ class Pic_content extends MY_Controller {
             case 'add':
                 $params = $this->get_request('params');
                 $nid = $this->get_request('nid');
-                $result = $this->news_model->add($nid, $params);
+                $result = $this->pic_content_model->add($nid, $params);
                 break;
             case 'delete':
                 $id = $this->get_request('id');
-                $result = $this->news_model->delete($id);
+                $result = $this->pic_content_model->delete($id);
                 break;
         }
         echo json_encode($result);

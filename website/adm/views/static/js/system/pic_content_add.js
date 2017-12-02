@@ -4,17 +4,18 @@ $(function() {
 
             // 渲染编辑菜单的选项
             this.renderMenuTree();
+            this.renderPicPrev();
 
-            $('#content_en').summernote({
+            $('#descript_en').summernote({
                 minHeight: 200,
-                placeholder: 'Please enter the text content',
+                placeholder: 'Please enter the description(en)',
                 dialogsFade: true,
                 dialogsInBody: true,
                 disableDragAndDrop: false,
                 callbacks: {
                     onImageUpload: function(files) {
                         var $files = $(files),
-                            url = config.apiServer + 'content/post?actionxm=upload_contentImg';
+                            url = config.apiServer + 'pic_content/post?actionxm=upload_contentImg';
                         $files.each(function() {
                             var file = this;
                             var data = new FormData();
@@ -28,7 +29,7 @@ $(function() {
                                 processData: false,
                                 success: function(res) {
                                     var data = JSON.parse(res);
-                                    $('#content_en').summernote('insertImage', data.name, function($image) { });
+                                    $('#descript_en').summernote('insertImage', data.name, function($image) { });
 
                                 },
                                 error: function() {
@@ -39,17 +40,17 @@ $(function() {
                     }
                 }
             });
-            $('#content_tc').summernote({
+            $('#descript_tc').summernote({
                 lang: 'zh-TW',
                 minHeight: 200,
-                placeholder: '请输入正文内容',
+                placeholder: '请输入描述（tc）',
                 dialogsFade: true,
                 dialogsInBody: true,
                 disableDragAndDrop: false,
                 callbacks: {
                     onImageUpload: function(files) {
                         var $files = $(files),
-                            url = config.apiServer + 'content/post?actionxm=upload_contentImg';
+                            url = config.apiServer + 'pic_content/post?actionxm=upload_contentImg';
                         $files.each(function() {
                             var file = this;
                             var data = new FormData();
@@ -63,7 +64,7 @@ $(function() {
                                 processData: false,
                                 success: function(res) {
                                     var data = JSON.parse(res);
-                                    $('#content_tc').summernote('insertImage', data.name, function($image) { });
+                                    $('#descript_tc').summernote('insertImage', data.name, function($image) { });
 
                                 },
                                 error: function() {
@@ -84,7 +85,7 @@ $(function() {
         renderMenuTree: function() {
             var self = this,
                 json = {
-                    api: config.apiServer + 'clazz/get',
+                    api: config.apiServer + 'pic_clazz/get',
                     type: 'get',
                     data: {
                         actionxm: 'search'
@@ -113,6 +114,16 @@ $(function() {
             json.callback = callback;
             Utils.requestData(json);
         },
+
+        // 渲染预览图片
+        renderPicPrev: function() {
+            var picJson = $('.js_update_pic').val().split(','),
+                picHtml = '';
+            for(var i=0; i<picJson.length; i++) {
+                picHtml += '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + picJson[i] + '">x</em><img src="' + picJson[i] + '" class="prev-pic"></div></div>';
+            }
+            $('.js_picPrevArea').append(picHtml);
+        }
     };
 
     page.init();
@@ -121,10 +132,24 @@ $(function() {
         var title_en = $('#title_en').val(),
             title_tc = $('#title_tc').val(),
             clazz_id = $('#clazz_id').val(),
-            pic = $('#prevArea').attr('src'),
-            content_en = $('#content_en').summernote('code'),
-            content_tc = $('#content_tc').summernote('code'),
-            author = $('#author').val();
+            pic = '',
+            num = $('#num').val(),
+            prize_en = $('#prize_en').val(),
+            prize_tc = $('#prize_tc').val(),
+            size_en = $('#size_en').val(),
+            size_tc = $('#size_tc').val(),
+            standard_en = $('#standard_en').val(),
+            standard_tc = $('#standard_tc').val(),
+            descript_en = $('#descript_en').summernote('code'),
+            descript_tc = $('#descript_tc').summernote('code'),
+            sort = $('#sort').val();
+        // 获取图片json
+        var prevPicDom = $('.prev-pic'),
+            picArr = new Array();
+        for(var i=0; i<prevPicDom.length; i++) {
+            picArr.push($(prevPicDom[i]).attr('src'));
+        }
+        pic =  picArr.toString();
         if(title_en == '') {
             alert('请输入标题（en）！');
             return;
@@ -141,21 +166,49 @@ $(function() {
             alert('请上传封面图！');
             return;
         }
-        if(content_en == '') {
-            alert('请输入正文内容（en）!');
+        if(num == '') {
+            alert('请输入标号！');
             return;
         }
-        if(content_tc == '') {
-            alert('请输入正文内容（tc）!');
+        if(prize_en == '') {
+            alert('请输入价格（en）！');
             return;
         }
-        if(author == '') {
-            alert('请输入作者!');
+        if(prize_tc == '') {
+            alert('请输入价格（en）！');
+            return;
+        }
+        if(size_en == '') {
+            alert('请输入尺寸（en）！');
+            return;
+        }
+        if(size_tc == '') {
+            alert('请输入尺寸（en）！');
+            return;
+        }
+        if(standard_en == '') {
+            alert('请输入规格（en）！');
+            return;
+        }
+        if(standard_tc == '') {
+            alert('请输入规格（en）！');
+            return;
+        }
+        if(descript_en == '') {
+            alert('请输入描述（en）!');
+            return;
+        }
+        if(descript_tc == '') {
+            alert('请输入描述（tc）!');
+            return;
+        }
+        if(sort == '') {
+            alert('请输入排序!');
             return;
         }
         var nid = $('.js_nid').val();
         var json = {
-            api: config.apiServer + 'content/post',
+            api: config.apiServer + 'pic_content/post',
             type: 'post',
             data: {
                 actionxm: 'add',
@@ -165,16 +218,23 @@ $(function() {
                     title_tc: title_tc,
                     clazz_id: clazz_id,
                     pic: pic,
-                    content_en: content_en,
-                    content_tc: content_tc,
-                    author: author
+                    num: num,
+                    prize_en: prize_en,
+                    prize_tc: prize_tc,
+                    size_en: size_en,
+                    size_tc: size_tc,
+                    standard_en: standard_en,
+                    standard_tc: standard_tc,
+                    descript_en: descript_en,
+                    descript_tc: descript_tc,
+                    sort: sort
                 }
             }
         };
         var callback = function(res) {
             if(res.status == 0) {
                 alert('保存成功！');
-                window.location.href = "/adm/content";
+                window.location.href = "/adm/pic_content";
             } else {
                 alert(res.msg);
             }
@@ -186,20 +246,21 @@ $(function() {
     $('#pic').uploadifive({
         fileTypeDesc: '上传文件',
         fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png',
-        multi: false,
+        multi: true,
         buttonText: '上传图片',
         height: '25',
         width: '100',
         method: 'post',
         fileObjName: 'uploadfile',
-        uploadScript: config.apiServer + 'content/post',
+        uploadScript: config.apiServer + 'pic_content/post',
         formData: {
             'actionxm': 'upload_photo'
         },
         onUploadComplete: function(file, data, response) {
             result = $.parseJSON(data);
             if(result['status']==0) {
-                $('#prevArea').attr('src', result['name']);
+                var html = '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + result['name'] + '">x</em><img src="' + result['name'] + '" class="prev-pic"></div></div>';
+                $('.js_picPrevArea').append(html);
             } else {
                 alert(result['msg']);
             }

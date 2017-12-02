@@ -8,7 +8,7 @@
 class Pic_content_model extends MY_Model {
 
     private $table = 'curio_pic_content';
-    private $fields = 'id, title_en, title_tc, clazz_id, pic, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort';
+    private $fields = 'id, title_en, title_tc, clazz_id, pic, num, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort';
 
     public function __construct() {
         parent::__construct();
@@ -28,12 +28,24 @@ class Pic_content_model extends MY_Model {
         if($clazz_id > 0) {
             $where = ' where clazz_id = ' . $clazz_id;
         } else {
-            $where = ' 1=1 ';
+            $where = ' where 1=1 ';
         }
         $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by sort desc limit ' . $limitStart . ', ' . $size);
         $result = $query->result_array();
 
-        $pageQuery = $this->db->query('select count(1) as num from ' . $this->ads_table);
+        $this->load->model('pic_clazz_model');
+        $CI = &get_instance();
+        foreach($result as &$item) {
+            if($item['clazz_id'] && $clazz_info = $CI->pic_clazz_model->getClazzById($item['clazz_id'])) {
+                $item['clazz_name_en'] = $clazz_info['data']['name_en'];
+                $item['clazz_name_tc'] = $clazz_info['data']['name_tc'];
+            } else {
+                $item['clazz_name_en'] = '';
+                $item['clazz_name_tc'] = '';
+            }
+        }
+
+        $pageQuery = $this->db->query('select count(1) as num from ' . $this->table);
         $pageResult = $pageQuery->result_array();
         $num = $pageResult[0]['num'];
         $rtn = array(
@@ -47,29 +59,35 @@ class Pic_content_model extends MY_Model {
 
 
     /**
-     * 新增图录
+     * 新增/更新图录
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
-    public function addAds($data) {
-        $data['sort'] = (int)$data['sort'];
-        $this->db->insert($this->table, $data);
-        $result['status'] = 0;
-        $result['msg'] = '新增数据成功';
-        return $result;
+    public function add($nid, $data) {
+        if($nid == 0) {
+            $data['sort'] = (int)$data['sort'];
+            $this->db->insert($this->table, $data);
+            $result['status'] = 0;
+            $result['msg'] = '新增数据成功';
+            return $result;
+        } else {
+            $this->db->where('id', $nid)->update($this->table, $data);
+            $result['status'] = 0;
+            $result['msg'] = '更新数据成功';
+            return $result;
+        }
     }
 
 
     /**
-     * 更新图录
-     * @param  [type] $id   [description]
-     * @param  [type] $data [description]
-     * @return [type]       [description]
+     * 删除图录
+     * @param  [type] $id [description]
+     * @return [type]     [description]
      */
-    public function update($id, $data) {
-        $this->db->where('id', $id)->update($this->table, $data);
+    public function delete($id) {
+        $this->db->where('id', $id)->delete($this->table);
         $result['status'] = 0;
-        $result['msg'] = '更新数据成功';
+        $result['msg'] = '删除成功';
         return $result;
     }
 
