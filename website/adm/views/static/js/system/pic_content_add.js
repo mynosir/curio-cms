@@ -108,6 +108,9 @@ $(function() {
                     if($('.js_update_clazz_id').val() != '') {
                         $('#clazz_id').val($('.js_update_clazz_id').val());
                     }
+                    if($('.js_add_pic').val('true')) {
+                        $('#clazz_id').val(0);
+                    }
                 } else {
                     alert(res.msg);
                 }
@@ -167,14 +170,6 @@ $(function() {
         }
         if(num == '') {
             alert('请输入标号！');
-            return;
-        }
-        if(prize_en == '') {
-            alert('请输入估计价格！');
-            return;
-        }
-        if(prize_tc == '') {
-            alert('请输入成交价格！');
             return;
         }
         if(descript_en == '') {
