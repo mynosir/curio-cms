@@ -8,7 +8,7 @@
 class Content_model extends MY_Model {
 
     private $table = 'curio_content';
-    private $fields = 'id, title_en, title_tc, clazz_id, pic, content_en, content_tc, author, create_time, update_time, create_userid, update_userid';
+    private $fields = 'id, title_en, title_tc, clazz_id, pic, descript_en, descript_tc, content_en, content_tc, author, create_time, update_time, create_userid, update_userid';
 
     public function __construct() {
         parent::__construct();

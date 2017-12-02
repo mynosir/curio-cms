@@ -78,7 +78,6 @@ class Clazz_model extends MY_Model {
             'sort'      => $params['sort']
         );
         $this->db->where($where)->update($this->table, $data);
-        var_dump($this->db->last_query());
         return array(
             'status'    => 0,
             'msg'       => '操作成功！'

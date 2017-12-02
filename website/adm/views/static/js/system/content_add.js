@@ -125,6 +125,8 @@ $(function() {
             title_tc = $('#title_tc').val(),
             clazz_id = $('#clazz_id').val(),
             pic = $('#prevArea').attr('src'),
+            descript_en = $('#descript_en').val(),
+            descript_tc = $('#descript_tc').val(),
             content_en = $('#content_en').summernote('code'),
             content_tc = $('#content_tc').summernote('code'),
             author = $('#author').val();
@@ -168,6 +170,8 @@ $(function() {
                     title_tc: title_tc,
                     clazz_id: clazz_id,
                     pic: pic,
+                    descript_en: descript_en,
+                    descript_tc: descript_tc,
                     content_en: content_en,
                     content_tc: content_tc,
                     author: author

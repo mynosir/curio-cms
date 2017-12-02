@@ -91,3 +91,9 @@ create table `curio_notice` (
 -- linzequan 20171202
 -- 添加默认菜单栏
 INSERT INTO `sys_menu` VALUES (1,0,'内容分类','/adm/clazz',5,'class',1511833914,1512183403,1,1),(2,0,'内容管理','/adm/content',5,'news',1511833938,1512183433,1,1),(3,0,'轮播图管理','/adm/banner',5,'banner',1511833978,1512146899,1,1),(4,0,'图录分类','/adm/pic_clazz',5,'pic_clazz',1511834061,1512148977,1,1),(5,0,'图录管理','/adm/pic_content',5,'pic_content',1511834167,1512149375,1,1),(6,0,'站内通知','/adm/notice',5,'notice',1511834186,NULL,1,NULL);
+
+
+-- linzequan 20171202
+-- 内容管理表添加描述字段
+alter table `curio_content` add `descript_en` varchar(1024) default '' comment '描述英文';
+alter table `curio_content` add `descript_tc` varchar(1024) default '' comment '描述繁体';
