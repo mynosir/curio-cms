@@ -134,6 +134,10 @@ $(function() {
 
     page.init();
 
+    $('body').delegate('.js_delete_pic', 'click', function(e) {
+        $(e.currentTarget).parent().parent().remove();
+    });
+
     $('body').delegate('.js_submit', 'click', function() {
         var title_en = $('#title_en').val(),
             title_tc = $('#title_tc').val(),
