@@ -30,7 +30,7 @@ class Pic_content_model extends MY_Model {
         } else {
             $where = ' where 1=1 ';
         }
-        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by sort desc limit ' . $limitStart . ', ' . $size);
+        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by sort desc, id desc limit ' . $limitStart . ', ' . $size);
         $result = $query->result_array();
 
         $this->load->model('pic_clazz_model');
