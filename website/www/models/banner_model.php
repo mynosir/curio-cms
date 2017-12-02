@@ -9,8 +9,8 @@ class Banner_model extends MY_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'app_banner';
-        $this->fields = 'id, status, image, urlen, urltc';
+        $this->table = 'curio_banner';
+        $this->fields = 'id, url_en, url_tc, pic, sort';
     }
 
 
@@ -21,14 +21,6 @@ class Banner_model extends MY_Model {
     public function search() {
         $query = $this->db->order_by('id asc')->get($this->table);
         $list = $query->result_array();
-        $status = ['hide', 'show'];
-        foreach($list as &$item) {
-          if(isset($item['status'])){
-            $item['status'] = $status[$item['status']];
-          }else{
-            $item['status'] = '';
-          }
-        }
         return $list;
     }
 
