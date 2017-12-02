@@ -1,3 +1,4 @@
+
 $(function() {
     var page = {
         init: function() {
@@ -117,12 +118,14 @@ $(function() {
 
         // 渲染预览图片
         renderPicPrev: function() {
-            var picJson = $('.js_update_pic').val().split(','),
-                picHtml = '';
-            for(var i=0; i<picJson.length; i++) {
-                picHtml += '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + picJson[i] + '">x</em><img src="' + picJson[i] + '" class="prev-pic"></div></div>';
+            if(!!$('.js_update_pic').val()) {
+              var picJson = $('.js_update_pic').val().split(','),
+                  picHtml = '';
+              for(var i=0; i<picJson.length; i++) {
+                  picHtml += '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + picJson[i] + '">x</em><img src="' + picJson[i] + '" class="prev-pic"></div></div>';
+              }
+              $('.js_picPrevArea').append(picHtml);
             }
-            $('.js_picPrevArea').append(picHtml);
         }
     };
 
