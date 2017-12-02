@@ -10,14 +10,15 @@ class Notice extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->checkLogin();
+        $this->load->model('notice_model');
         $data['resource_url'] = $this->resource_url;
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'notice';
         $data['current_menu_text'] = '站内通知';
         $data['sub_menu'] = array();
+        $data['menu_list'] = $this->getMenuList();
         $this->data = $data;
-        $this->load->model('notice_model');
     }
 
 
@@ -32,11 +33,12 @@ class Notice extends MY_Controller {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
-            case 'getList':
-                $page = $this->get_request('page');
-                $size = $this->get_request('size');
-                $keyword = $this->get_request('keyword');
-                $result = $this->news_model->getList($page, $size, $keyword);
+            case 'search':
+                $result = $this->notice_model->search();
+                break;
+            case 'detail':
+                $id = $this->get_request('id');
+                $result = $this->notice_model->getInfoById($id);
                 break;
         }
         echo json_encode($result);
@@ -48,12 +50,16 @@ class Notice extends MY_Controller {
         switch($actionxm) {
             case 'add':
                 $params = $this->get_request('params');
-                $nid = $this->get_request('nid');
-                $result = $this->news_model->add($nid, $params);
+                $result = $this->notice_model->add($params);
+                break;
+            case 'update':
+                $id = $this->get_request('id');
+                $params = $this->get_request('params');
+                $result = $this->notice_model->update($params, array('id'=> $id));
                 break;
             case 'delete':
                 $id = $this->get_request('id');
-                $result = $this->news_model->delete($id);
+                $result = $this->notice_model->delete($id);
                 break;
         }
         echo json_encode($result);

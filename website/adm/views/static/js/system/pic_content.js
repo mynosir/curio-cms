@@ -2,7 +2,7 @@ $(function() {
     var page = {
         init: function(p) {
             var json = {
-                api: config.apiServer + 'content/get',
+                api: config.apiServer + 'pic_content/get',
                 type: 'get',
                 data: {
                     actionxm: 'getList',
@@ -14,7 +14,7 @@ $(function() {
             var callback = function(res) {
                 // 处理表格数据
                 var list = res['list'],
-                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>封面图</th><th>发布者</th><th>发布时间</th><th>操作</th></tr>';
+                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>操作</th></tr>';
                 for(var i in list) {
                     listTpl += '<tr>';
                     listTpl += '<td>' + list[i]['id'] + '</td>';
@@ -25,9 +25,6 @@ $(function() {
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
                     }
-                    listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
-                    listTpl += '<td>' + list[i]['create_user'] + '</td>';
-                    listTpl += '<td>' + list[i]['create_time'] + '</td>';
                     listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-id="' + list[i]['id'] + '">修改</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
                     listTpl += '</tr>';
                 }
@@ -66,7 +63,7 @@ $(function() {
         },
         deleteItem: function(id) {
             var json = {
-                api: config.apiServer + 'content/post',
+                api: config.apiServer + 'pic_content/post',
                 type: 'post',
                 data: {
                     actionxm: 'delete',
@@ -95,7 +92,7 @@ $(function() {
     page.init();
 
     $('body').delegate('.js_addContent', 'click', function() {
-        window.location.href = '/adm/content/add';
+        window.location.href = '/adm/pic_content/add';
     });
     $('.js_searchFrom').submit(function(e) {
         e.preventDefault();
@@ -108,7 +105,7 @@ $(function() {
     });
     $('body').delegate('.js_edit', 'click', function(e) {
         var id = $(e.currentTarget).data('id');
-        window.location.href = '/adm/content/add/' + id;
+        window.location.href = '/adm/pic_content/add/' + id;
     });
     $('body').delegate('.js_pageItem', 'click', function(e) {
         var p = $(e.currentTarget).data('page');

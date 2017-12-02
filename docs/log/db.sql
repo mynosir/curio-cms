@@ -59,6 +59,7 @@ create table `curio_pic_content` (
     `id` int not null auto_increment comment '自增id',
     `title_en` varchar(255) comment '名称英文',
     `title_tc` varchar(255) comment '名称繁体',
+    `clazz_id` int comment '分类id',
     `pic` varchar(512) comment '图片json',
     `num` varchar(255) comment '标号',
     `prize_en` varchar(255) comment '价格英文',
@@ -85,3 +86,8 @@ create table `curio_notice` (
     `sort` int(8) default 0 comment '排序。数值越大，越靠前',
     primary key (`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '站内通知表';
+
+
+-- linzequan 20171202
+-- 添加默认菜单栏
+INSERT INTO `sys_menu` VALUES (1,0,'内容分类','/adm/clazz',5,'class',1511833914,1512183403,1,1),(2,0,'内容管理','/adm/content',5,'news',1511833938,1512183433,1,1),(3,0,'轮播图管理','/adm/banner',5,'banner',1511833978,1512146899,1,1),(4,0,'图录分类','/adm/pic_clazz',5,'pic_clazz',1511834061,1512148977,1,1),(5,0,'图录管理','/adm/pic_content',5,'pic_content',1511834167,1512149375,1,1),(6,0,'站内通知','/adm/notice',5,'notice',1511834186,NULL,1,NULL);
