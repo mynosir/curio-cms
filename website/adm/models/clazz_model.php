@@ -74,9 +74,11 @@ class Clazz_model extends MY_Model {
         $data = array(
             'name_en'   => $params['name_en'],
             'name_tc'   => $params['name_tc'],
-            'parent_id' => $params['parent_id']
+            'parent_id' => $params['parent_id'],
+            'sort'      => $params['sort']
         );
         $this->db->where($where)->update($this->table, $data);
+        var_dump($this->db->last_query());
         return array(
             'status'    => 0,
             'msg'       => '操作成功！'
