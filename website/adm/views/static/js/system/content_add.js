@@ -129,6 +129,7 @@ $(function() {
             descript_tc = $('#descript_tc').val(),
             content_en = $('#content_en').summernote('code'),
             content_tc = $('#content_tc').summernote('code'),
+            pdf = $('.js_pdf').val(),
             author = $('#author').val();
         if(title_en == '') {
             alert('请输入标题（en）！');
@@ -174,7 +175,8 @@ $(function() {
                     descript_tc: descript_tc,
                     content_en: content_en,
                     content_tc: content_tc,
-                    author: author
+                    author: author,
+                    pdf: pdf
                 }
             }
         };

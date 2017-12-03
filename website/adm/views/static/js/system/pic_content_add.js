@@ -148,6 +148,7 @@ $(function() {
             prize_tc = $('#prize_tc').val(),
             descript_en = $('#descript_en').summernote('code'),
             descript_tc = $('#descript_tc').summernote('code'),
+            pdf = $('.js_pdf').val(),
             sort = $('#sort').val();
         // 获取图片json
         var prevPicDom = $('.prev-pic'),
@@ -205,6 +206,7 @@ $(function() {
                     prize_tc: prize_tc,
                     descript_en: descript_en,
                     descript_tc: descript_tc,
+                    pdf: pdf,
                     sort: sort
                 }
             }

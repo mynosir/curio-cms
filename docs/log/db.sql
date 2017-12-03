@@ -103,3 +103,13 @@ alter table `curio_content` add `descript_tc` varchar(1024) default '' comment '
 -- 图录表添加创建时间、更新时间字段
 alter table `curio_pic_content` add `create_time` int comment '创建时间';
 alter table `curio_pic_content` add `update_time` int comment '更新时间';
+
+
+-- linzequan 20171203
+-- 图录表添加pdf记录字段
+alter table `curio_pic_content` add `pdf` varchar(255) comment 'pdf';
+
+
+-- linzequan 20171203
+-- 内容管理表添加pdf记录字段
+alter table `curio_content` add `pdf` varchar(255) comment 'pdf';

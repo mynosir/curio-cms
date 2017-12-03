@@ -8,7 +8,7 @@
 class Pic_content_model extends MY_Model {
 
     private $table = 'curio_pic_content';
-    private $fields = 'id, title_en, title_tc, clazz_id, pic, num, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort, create_time, update_time';
+    private $fields = 'id, title_en, title_tc, clazz_id, pic, num, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort, create_time, update_time, pdf';
 
     public function __construct() {
         parent::__construct();

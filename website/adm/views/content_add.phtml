@@ -37,6 +37,12 @@
     <div id="content_tc"></div>
 </div>
 <div class="form-group">
+    <label for="pdf">pdf</label>
+    <a href="" target="_blank" class="js_pdf_prev" style="margin-left: 20px;"></a>
+    <input type="file" value="" multiple="false" id="js_upload_btn01">
+    <input type="hidden" class="js_pdf" value="">
+</div>
+<div class="form-group">
     <label for="author">作者</label>
     <input type="text" class="form-control" id="author" placeholder="请输入作者" value="admin">
 </div>
@@ -51,3 +57,33 @@
 <script src="<?php echo $resource_url; ?>libs/summernote/lang/summernote-zh-CN.js"></script>
 <script src="<?php echo $resource_url; ?>libs/summernote/lang/summernote-zh-TW.js"></script>
 <script src="<?php echo $resource_url; ?>js/system/content_add.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $('#js_upload_btn01').uploadifive({
+            fileType: 'application/pdf',
+            multi: false,
+            removeCompleted: false,
+            buttonText: '上传PDF',
+            fileSizeLimit: '100MB',
+            method: 'post',
+            buttonClass: 'signup-upload-file',
+            fileObjName: 'uploadfile',
+            uploadScript: config.apiServer + 'content/post',
+            formData: {
+                'actionxm': 'uploadPdf'
+            },
+            onUploadComplete: function(file, data, response) {
+                var result = $.parseJSON(data);
+                if(result['status']==0) {
+                    $('.js_pdf').val(result['name']);
+                    $('.js_pdf_prev').attr('href', result['name']);
+                    $('.js_pdf_prev').html(result['name']);
+                }
+            },
+            onError: function(errorType) {
+                alert('The error was: ' + errorType);
+            }
+        });
+    })
+</script>
