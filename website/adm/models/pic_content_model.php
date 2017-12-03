@@ -8,7 +8,7 @@
 class Pic_content_model extends MY_Model {
 
     private $table = 'curio_pic_content';
-    private $fields = 'id, title_en, title_tc, clazz_id, pic, num, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort';
+    private $fields = 'id, title_en, title_tc, clazz_id, pic, num, prize_en, prize_tc, size_en, size_tc, standard_en, standard_tc, descript_en, descript_tc, sort, create_time, update_time';
 
     public function __construct() {
         parent::__construct();
@@ -43,6 +43,16 @@ class Pic_content_model extends MY_Model {
                 $item['clazz_name_en'] = '';
                 $item['clazz_name_tc'] = '';
             }
+            if($item['create_time']) {
+                $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
+            } else {
+                $item['create_time'] = '';
+            }
+            if($item['update_time']) {
+                $item['update_time'] = date('Y-m-d H:i:s', $item['update_time']);
+            } else {
+                $item['update_time'] = '';
+            }
         }
 
         $pageQuery = $this->db->query('select count(1) as num from ' . $this->table);
@@ -66,11 +76,13 @@ class Pic_content_model extends MY_Model {
     public function add($nid, $data) {
         if($nid == 0) {
             $data['sort'] = (int)$data['sort'];
+            $data['create_time'] = time();
             $this->db->insert($this->table, $data);
             $result['status'] = 0;
             $result['msg'] = '新增数据成功';
             return $result;
         } else {
+            $data['update_time'] = time();
             $this->db->where('id', $nid)->update($this->table, $data);
             $result['status'] = 0;
             $result['msg'] = '更新数据成功';

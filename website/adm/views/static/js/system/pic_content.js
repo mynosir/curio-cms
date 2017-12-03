@@ -14,7 +14,7 @@ $(function() {
             var callback = function(res) {
                 // 处理表格数据
                 var list = res['list'],
-                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>操作</th></tr>';
+                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>创建时间</th><th>修改时间</th><th>操作</th></tr>';
                 for(var i in list) {
                     listTpl += '<tr>';
                     listTpl += '<td>' + list[i]['id'] + '</td>';
@@ -25,6 +25,8 @@ $(function() {
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
                     }
+                    listTpl += '<td>' + list[i]['create_time'] + '</td>';
+                    listTpl += '<td>' + list[i]['update_time'] + '</td>';
                     listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-id="' + list[i]['id'] + '">修改</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
                     listTpl += '</tr>';
                 }

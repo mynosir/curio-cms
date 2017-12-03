@@ -97,3 +97,9 @@ INSERT INTO `sys_menu` VALUES (1,0,'内容分类','/adm/clazz',5,'class',1511833
 -- 内容管理表添加描述字段
 alter table `curio_content` add `descript_en` varchar(1024) default '' comment '描述英文';
 alter table `curio_content` add `descript_tc` varchar(1024) default '' comment '描述繁体';
+
+
+-- linzequan 20171203
+-- 图录表添加创建时间、更新时间字段
+alter table `curio_pic_content` add `create_time` int comment '创建时间';
+alter table `curio_pic_content` add `update_time` int comment '更新时间';
