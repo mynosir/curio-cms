@@ -41,13 +41,16 @@
     $(this).parent().find('.hover').removeClass('hover');
     $(this).addClass('hover');
     $(this).children('.sub-nav').addClass('hover');
+    $(this).children('.sub-nav2').addClass('hover');
   })
   $('.mid').mouseover(function(){
     $('.sub-nav').removeClass('hover');
+    $('.sub-nav2').removeClass('hover');
     $('.navi').removeClass('hover');
   })
   $('.header .top').mouseover(function(){
     $('.sub-nav').removeClass('hover');
+    $('.sub-nav2').removeClass('hover');
     $('.navi').removeClass('hover');
   })
 // 控制切换语言url

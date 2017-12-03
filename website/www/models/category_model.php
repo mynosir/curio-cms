@@ -9,8 +9,8 @@ class Category_model extends MY_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'app_category';
-        $this->fields = 'id, status, name_en, name_tc';
+        $this->table = 'curio_pic_clazz';
+        $this->fields = 'id, name_en, name_tc, parent_id, sort, clazz_id';
     }
 
 
@@ -19,16 +19,27 @@ class Category_model extends MY_Model {
      * @return [type] [description]
      */
     public function search() {
-      $query = $this->db->order_by('id desc')->where('status', '1')->get($this->table);
+        $query = $this->db->where('parent_id', '0')->order_by('sort desc, id asc')->get($this->table);
         $list = $query->result_array();
-        $status = ['hide', 'show'];
-        foreach($list as &$item) {
-          if(isset($item['status'])){
-            $item['status'] = $status[$item['status']];
-          }else{
-            $item['status'] = '';
-          }
+        foreach ($list as $k => &$v) {
+            $id = $v['id'];
+            // var_dump($this->searchSub($id));
+            $subarr = $this->searchSub($id);
+            if (count($subarr)>0) {
+              # code...
+                $v['sub_nav'] = $subarr;
+            }
         }
+        return $list;
+    }
+
+    /**
+     * 查询子菜单数据
+     * @return [type] [description]
+     */
+    public function searchSub($id) {
+        $query = $this->db->where('parent_id', $id)->order_by('sort desc, id asc')->get($this->table);
+        $list = $query->result_array();
         return $list;
     }
 
