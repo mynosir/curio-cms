@@ -73,7 +73,11 @@
           <?php foreach ($items['pic_content'] as $item): ?>
           <div class="item cur">
             <div class="img">
-              <img src="<?php echo strstr($item['pic'], ',', TRUE);  ?>" alt="">
+              <?php if(strpos($item['pic'],',')): ?>
+                <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+              <?php else: ?>
+                <img src="<?php echo $item['pic'] ?>" alt="">
+              <?php endif; ?>
             </div>
             <div class="detail">
               <div class="name">

@@ -14,19 +14,22 @@ class Catalogue extends MY_Controller {
 
 
     public function index() {
+      $cid = $this->get_request('cid');
+      $this->load->model('catalogue_model');
+      $this->data['catalogue'] = $this->catalogue_model->search($cid);
+      $this->data['catalogueParent'] = $this->catalogue_model->searchParent($cid);
       $this->showPage('catalogue_index', $this->data);
-    }
-
-    public function auction() {
     }
 
 
     public function get() {
+        $this->load->model('catalogue_model');
         $actionxm = $this->get_request('actionxm');
+        $id = $this->get_request('id');
         $result = array();
         switch($actionxm) {
-          case 'search':
-              // $result = $this->banner_model->search();
+          case 'getaid':
+              $result = $this->catalogue_model->getParent($id);
               break;
         }
         echo json_encode($result);

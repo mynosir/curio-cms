@@ -1,4 +1,4 @@
-  <div class="mid" style="height:3877px">
+  <div class="mid">
     <div class="bottom">
       <div class="locate wrap">
         <span class="content"><?=$navi2?> > <?=$subnavi2?></span>
@@ -16,52 +16,62 @@
             <?=$subnavi2?>
           </div>
           <div class="sub-nav">
-            <div class="sub-tit cur">
-              第十屆-2017秋拍
-            </div>
-            <div class="sub-tit">
-              第九屆-2017春拍
-            </div>
+            <?php if ($curLang === 'tc'): ?>
+              <?php foreach ($auctionCate as $category): ?>
+                  <div class="sub-tit" data-aid="<?php echo $category['id']?>"><a href="auction_past?aid=<?php echo $category['id']?>"><?php echo $category['name_tc']?></a></div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <?php foreach ($auctionCate as $category): ?>
+                  <div class="sub-tit"><?php echo $category['name_en']?></div>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
         </div>
       </div>
-      <div class="container2">
-        <div class="item">
-          <div class="top">
-            <div class="wrap2">
-              <div class="tit">御養尚品 - 補品及佳釀專場【完整圖錄】</div>
-              <div class="result"><a href="#">拍賣結果例表</a></div>
-              <div class="date">2017-01-03</div>
+      <div class="container2" style="margin-bottom:100px">
+        <?php if ($curLang === 'tc'): ?>
+          <?php foreach ($auctionlist as $auction): ?>
+            <div class="item">
+              <div class="top">
+                <div class="wrap2">
+                  <div class="tit"><?php echo $auction['name_tc']?></div>
+                  <div class="result"><a href="#">拍賣結果例表</a></div>
+                  <div class="date">2017-01-03</div>
+                </div>
+              </div>
+              <div class="pics">
+                <div class="wrap2">
+                  <?php foreach ($auction['img'] as $k=>$pic):?>
+                  <img src="<?php echo $pic?>" alt="">
+                  <?php if ($k==4): break;?>
+                  <?php endif;?>
+                  <?php endforeach; ?>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="pics">
-            <div class="wrap2">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/more.jpg" alt="">
+          <?php endforeach; ?>
+        <?php else: ?>
+          <?php foreach ($auctionlist as $auction): ?>
+            <div class="item">
+              <div class="top">
+                <div class="wrap2">
+                  <div class="tit"><?php echo $auction['name_en']?></div>
+                  <div class="result"><a href="#">Result List</a></div>
+                  <div class="date"><?php echo date("y-m-d",$auction['update_time'])?></div>
+                </div>
+              </div>
+              <div class="pics">
+                <div class="wrap2">
+                  <?php foreach ($auction['img'] as $k=>$pic):?>
+                  <img src="<?php echo $pic?>" alt="">
+                  <?php if ($k==4): break;?>
+                  <?php endif;?>
+                  <?php endforeach; ?>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="top">
-            <div class="wrap2">
-              <div class="tit">御養尚品 - 補品及佳釀專場【完整圖錄】</div>
-              <div class="result"><a href="#">拍賣結果例表</a></div>
-              <div class="date">2017-01-03</div>
-            </div>
-          </div>
-          <div class="pics">
-            <div class="wrap2">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/item1.jpg" alt="">
-              <img src="img/more.jpg" alt="">
-            </div>
-          </div>
-        </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </div>
     </div>
 
