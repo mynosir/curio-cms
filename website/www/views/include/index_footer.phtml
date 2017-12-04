@@ -14,9 +14,9 @@
         <span style="padding-top:2px;"><?=$copyright?></span>
       </div>
       <div class="icon">
-        <a href="#"><img src="<?php echo $resource_url; ?>img/btn_weixin.png" alt=""></a>
-        <a href="#"><img src="<?php echo $resource_url; ?>img/btn_youtube.png" alt=""></a>
-        <a href="#"><img src="<?php echo $resource_url; ?>img/btn_fb.png" alt=""></a>
+        <a target="_blank" href="http://www.lhauction.com.hk/site_upload/edm/edm_wechat.jpg"><img src="<?php echo $resource_url; ?>img/btn_weixin.png" alt=""></a>
+        <a target="_blank" href="http://www.youtube.com/user/lhacution"><img src="<?php echo $resource_url; ?>img/btn_youtube.png" alt=""></a>
+        <a target="_blank" href="http://www.facebook.com/lhauction"><img src="<?php echo $resource_url; ?>img/btn_fb.png" alt=""></a>
       </div>
     </div>
   </div>
@@ -30,6 +30,22 @@
   if(!curNav){
     $('.home').addClass('cur');
   }else{
+    switch(curNav)
+    {
+    case 'auction_past':
+      curNav = 'auction';
+      break;
+    case 'sell':
+      curNav = 'buy';
+      break;
+    case 'press_media':
+      curNav = 'press_release';
+      break;
+    case 'contact':
+      curNav = 'about';
+      break;
+    default:
+    }
     curNav = '.' + curNav;
     if($(curNav)){
       $(curNav).addClass('cur');

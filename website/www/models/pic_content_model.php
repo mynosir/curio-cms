@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统菜单模型
+ * 图录模型
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -15,7 +15,7 @@ class Pic_content_model extends MY_Model {
 
 
     /**
-     * 查询菜单数据
+     * 查询首页图录数据
      * @return [type] [description]
      */
     public function search($id) {

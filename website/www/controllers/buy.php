@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 参与竞拍控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -18,10 +18,6 @@ class Buy extends MY_Controller {
       $this->data['buy'] = $this->content_model->buy();
       $this->showPage('buy_index', $this->data);
     }
-
-    public function auction() {
-    }
-
 
     public function get() {
         $actionxm = $this->get_request('actionxm');

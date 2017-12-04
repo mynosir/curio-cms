@@ -10,6 +10,7 @@ class Press_media_model extends MY_Model {
     public function __construct() {
         parent::__construct();
         $this->table = 'curio_content';
+        $this->table2 = 'curio_clazz';
         // $this->fields = 'id, name_en, name_tc, parent_id, sort';
     }
 

@@ -107,7 +107,6 @@ class MY_Controller extends CI_Controller {
     // 初始化头部脚部
 
     public function init_head_foot(){
-      $this->load->model('category_model');
       $data['resource_url'] = $this->resource_url;
       $data['base_url'] = $this->config->item('base_url');
       $this->data = $data;
@@ -139,6 +138,13 @@ class MY_Controller extends CI_Controller {
       $this->data['copyright'] = lang('hf_copyright');
       $this->data['curNav'] = $this->uri->segment(2);
       $this->data['curLang'] = $this->uri->segment(1);
+      $this->load->model('category_model');
       $this->data['categorylist'] = $this->category_model->search();
+      $my_lang = $this->uri->segment(1);
+      $this->load->helper('url');
+      if($my_lang != 'en' && $my_lang != 'tc'){
+        redirect($this->data['base_url'].'tc/'.$this->uri->segment(1));
+      }
+
     }
 }

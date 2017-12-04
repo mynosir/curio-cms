@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 媒体报导控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -21,9 +21,12 @@ class Press_release extends MY_Controller {
       $this->showPage('press_release_index', $this->data);
     }
 
-    public function auction() {
+    public function detail() {
+      $id = $this->get_request('id');
+      $this->load->model('press_release_model');
+      $this->data['pressDetail'] = $this->press_release_model->searchDetail($id);
+      $this->showPage('press_release_detail', $this->data);
     }
-
 
     public function get() {
         $actionxm = $this->get_request('actionxm');

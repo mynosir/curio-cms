@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 往届拍卖控制器
  *
  * @author qoohj <qoohj@qq.com>
  *

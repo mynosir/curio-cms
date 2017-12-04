@@ -14,45 +14,83 @@
           <div class="sub-nav">
               <?php if ($curLang === 'tc'): ?>
                 <?php foreach ($submenu as $sub): ?>
-                    <div class="sub-tit" data-id="<?=$sub['id']?>"><a href="./press_release?id=<?=$sub['id']?>"><?php echo $sub['name_tc']?></a></div>
+                    <div class="sub-tit" data-id="<?=$sub['id']?>"><a href="press_release?id=<?=$sub['id']?>"><?php echo $sub['name_tc']?></a></div>
                 <?php endforeach; ?>
               <?php else: ?>
                 <?php foreach ($submenu as $sub): ?>
-                    <div class="sub-tit"><a href="./press_release?id=<?=$sub['id']?>"><?php echo $sub['name_en']?></a></div>
+                    <div class="sub-tit"><a href="press_release?id=<?=$sub['id']?>"><?php echo $sub['name_en']?></a></div>
                 <?php endforeach; ?>
               <?php endif; ?>
           </div>
         </div>
         <div class="nav press_media">
           <div class="tit">
-            <?=$subnavi6?>
+            <a href="press_media">
+              <?=$subnavi6?>
+            </a>
           </div>
         </div>
       </div>
       <div class="container3">
-        <?php foreach ($searchNews as $new): ?>
-          <div class="item">
-            <div class="pic">
-              <?php if(strpos($new['pic'],',')): ?>
-                <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
-              <?php else: ?>
-                <img src="<?php echo $new['pic'] ?>" alt="">
-              <?php endif; ?>
+        <?php if ($curLang === 'tc'): ?>
+          <?php foreach ($searchNews as $new): ?>
+            <div class="item">
+              <div class="pic">
+                <a href="press_release/detail?id=<?=$new['id']?>">
+                  <?php if(strpos($new['pic'],',')): ?>
+                    <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
+                  <?php else: ?>
+                    <img src="<?php echo $new['pic'] ?>" alt="">
+                  <?php endif; ?>
+                </a>
+              </div>
+              <div class="detail">
+                <div class="tit">
+                  <a href="press_release/detail?id=<?=$new['id']?>">
+                    <?php echo $new['title_tc'] ?>
+                  </a>
+                </div>
+                <div class="article">
+                  <a href="press_release/detail?id=<?=$new['id']?>">
+                    <?php echo $new['descript_tc'] ?>
+                  </a>
+                </div>
+                <div class="date">
+                  <?php echo date('y-m-d',$new['create_time']) ?>
+                </div>
+              </div>
             </div>
-            <div class="detail">
-              <div class="tit">
-                <?php echo $new['title_tc'] ?>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <?php foreach ($searchNews as $new): ?>
+            <div class="item">
+              <div class="pic">
+                <a href="press_release/detail?id=<?=$new['id']?>">
+                  <?php if(strpos($new['pic'],',')): ?>
+                    <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
+                  <?php else: ?>
+                    <img src="<?php echo $new['pic'] ?>" alt="">
+                  <?php endif; ?>
+                </a>
               </div>
-              <div class="article">
-                <?php echo $new['descript_tc'] ?>
-              </div>
-              <div class="date">
-                <?php echo date('y-m-d',$new['create_time']) ?>
+              <div class="detail">
+                <div class="tit">
+                  <a href="press_release/detail?id=<?=$new['id']?>">
+                    <?php echo $new['title_tc'] ?>
+                  </a>
+                </div>
+                <div class="article">
+                  <a href="press_release/detail?id=<?=$new['id']?>">
+                    <?php echo $new['descript_tc'] ?>
+                  </a>
+                </div>
+                <div class="date">
+                  <?php echo date('y-m-d',$new['create_time']) ?>
+                </div>
               </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-
+          <?php endforeach; ?>
+        <?php endif;?>
       </div>
     </div>
 

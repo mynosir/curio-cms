@@ -16,7 +16,7 @@
               <?php if(isset($category['sub_nav'])): ?>
               <?php foreach ($category['sub_nav'] as $subnav): ?>
               <div class="sub-navi">
-                <a href="./catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
+                <a href="catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
                   <?php echo $subnav['name_tc']?>
                 </a>
                 <a href="" class="download"></a>
@@ -34,7 +34,7 @@
               <?php if(isset($category['sub_nav'])): ?>
               <?php foreach ($category['sub_nav'] as $subnav): ?>
               <div class="sub-navi">
-                <a href="./catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
+                <a href="catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
                   <?php echo $subnav['name_en']?>
                 </a>
                 <a href="" class="download"></a>
@@ -106,17 +106,17 @@
                 <div class="wrap2">
                   <div class="pic">
                     <?php if(strpos($v['pic'],',')): ?>
-                      <a href="./catalogue/detail?id=<?php echo $v['id']?>">
+                      <a href="catalogue/detail?id=<?php echo $v['id']?>">
                         <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
                       </a>
                     <?php else: ?>
-                      <a href="./catalogue/detail?id=<?php echo $v['id']?>">
+                      <a href="catalogue/detail?id=<?php echo $v['id']?>">
                         <img src="<?php echo $v['pic'] ?>" alt="">
                       </a>
                     <?php endif; ?>
                   </div>
                   <div class="detail">
-                    <div class="name"><a href="./catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_tc']; ?></a></div>
+                    <div class="name"><a href="catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_tc']; ?></a></div>
                     <div class="lot">LOT: <span class="no"><?php echo $v['num']; ?></span></div>
                     <div class="estimated">
                       估計價格：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
@@ -126,7 +126,7 @@
                     </div>
                   </div>
                   <div class="more">
-                    <a href="./catalogue/detail?id=<?php echo $v['id']?>">Read More</a>
+                    <a href="catalogue/detail?id=<?php echo $v['id']?>">Read More</a>
                   </div>
                 </div>
               </div>
@@ -139,17 +139,17 @@
                 <div class="wrap2">
                   <div class="pic">
                     <?php if(strpos($v['pic'],',')): ?>
-                      <a href="./catalogue/detail?id=<?php echo $v['id']?>">
+                      <a href="catalogue/detail?id=<?php echo $v['id']?>">
                         <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
                       </a>
                     <?php else: ?>
-                      <a href="./catalogue/detail?id=<?php echo $v['id']?>">
+                      <a href="catalogue/detail?id=<?php echo $v['id']?>">
                         <img src="<?php echo $v['pic'] ?>" alt="">
                       </a>
                     <?php endif; ?>
                   </div>
                   <div class="detail">
-                    <div class="name"><a href="./catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_en']; ?></a></div>
+                    <div class="name"><a href="catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_en']; ?></a></div>
                     <div class="lot">LOT: <span class="no"><?php echo $v['num']; ?></span></div>
                     <div class="estimated">
                       ESTIMATE PRICE：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
@@ -159,7 +159,7 @@
                     </div>
                   </div>
                   <div class="more">
-                    <a href="./catalogue/detail?id=<?php echo $v['id']?>">Read More</a>
+                    <a href="catalogue/detail?id=<?php echo $v['id']?>">Read More</a>
                   </div>
                 </div>
               </div>

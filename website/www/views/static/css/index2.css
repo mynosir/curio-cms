@@ -55,7 +55,7 @@ body {
     top: 21px; }
     .header .nav .navi {
       display: inline-block;
-      padding: 0 57px;
+      padding: 0 56px;
       font-size: 18px;
       border-left: 1px solid #979797; }
       .header .nav .navi.cur>a, .header .nav .navi.hover>a {

@@ -40,6 +40,22 @@ class Press_release_model extends MY_Model {
         return $list;
     }
 
+    /**
+     * 查询新聞稿数据
+     * @return [type] [description]
+     */
+    public function searchDetail($id) {
+        if(!empty($id)){
+          $query = $this->db->where('id', $id)->order_by('id asc')->get($this->table2);
+          $list = $query->row();
+          if(count($list->pic)>0){
+            $list->pic = explode(',', $list->pic);
+          }          
+        }else{
+          $list = array();
+        }
+        return $list;
+    }
 
 
 

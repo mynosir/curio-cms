@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 产品目录控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -27,7 +27,7 @@ class Catalogue extends MY_Controller {
       $id = $this->get_request('id');
       $this->load->model('catalogue_model');
       $this->data['catalogueDetail'] = $this->catalogue_model->searchDetail($id);
-      $this->showPage('catalogue_detail_index', $this->data);
+      $this->showPage('catalogue_detail', $this->data);
     }
 
 
@@ -37,9 +37,9 @@ class Catalogue extends MY_Controller {
         $id = $this->get_request('id');
         $result = array();
         switch($actionxm) {
-          case 'getaid':
-              $result = $this->catalogue_model->getParent($id);
-              break;
+          // case 'getaid':
+          //     $result = $this->catalogue_model->getParent($id);
+          //     break;
         }
         echo json_encode($result);
     }

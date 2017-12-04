@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统菜单模型
+ * 公告菜单模型
  *
  * @author qoohj <qoohj@qq.com>
  *

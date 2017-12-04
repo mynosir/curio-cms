@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 公司简介控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -18,10 +18,7 @@ class About extends MY_Controller {
       $this->data['about'] = $this->content_model->about();
       $this->showPage('about_index', $this->data);
     }
-
-    public function auction() {
-    }
-
+    
 
     public function get() {
         $actionxm = $this->get_request('actionxm');

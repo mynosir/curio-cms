@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 委托拍卖控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -19,8 +19,6 @@ class Sell extends MY_Controller {
       $this->showPage('sell_index', $this->data);
     }
 
-    public function auction() {
-    }
 
 
     public function get() {

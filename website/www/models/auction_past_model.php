@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统菜单模型
+ * 往届拍卖会模型
  *
  * @author qoohj <qoohj@qq.com>
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 联络我们控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -17,9 +17,6 @@ class Contact extends MY_Controller {
       $this->load->model('content_model');
       $this->data['contact1'] = $this->content_model->contact();
       $this->showPage('contact_index', $this->data);
-    }
-
-    public function auction() {
     }
 
 

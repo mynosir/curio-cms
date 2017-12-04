@@ -1,6 +1,6 @@
 <?php
 /**
- * 首页控制器
+ * 新闻稿及相册控制器
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -15,12 +15,12 @@ class Press_media extends MY_Controller {
 
     public function index() {
       $this->load->model('press_media_model');
+      $this->load->model('press_release_model');
+      $this->data['submenu'] = $this->press_release_model->search();
       $this->data['searchNews'] = $this->press_media_model->search();
       $this->showPage('press_media_index', $this->data);
     }
 
-    public function auction() {
-    }
 
 
     public function get() {

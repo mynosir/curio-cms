@@ -1,0 +1,26 @@
+<div class="mid3">
+  <div class="wrap">
+    <?php if ($curLang === 'tc'): ?>
+    <div class="pressitem">
+      <div class="top">
+        <div class="date"><?=date('y-m-d', $pressDetail->create_time)?></div>
+        <div class="pdf">pdf</div>
+        <div class="return">返回</div>
+      </div>
+      <div class="title">
+        <?=$pressDetail->title_tc?>
+      </div>
+      <div class="pics">
+        <?php foreach ($pressDetail->pic as $v): ?>
+          <img src="<?php echo $v?>" alt="">
+        <?php endforeach; ?>
+      </div>
+      <div class="detail">
+        <?=$pressDetail->content_tc?>
+      </div>
+    </div>
+    <?php else:?>
+    <?php endif;?>
+  </div>
+</div>
+<!-- <script src="<?php echo $resource_url; ?>js/catalogue_detail.js" charset="utf-8"></script> -->

@@ -1,6 +1,6 @@
 <?php
 /**
- * 系统菜单模型
+ * 产品菜单模型
  *
  * @author qoohj <qoohj@qq.com>
  *
@@ -23,7 +23,9 @@ class Catalogue_model extends MY_Model {
         if(!empty($cid)){
           $query = $this->db->where('clazz_id', $cid)->order_by('id asc, sort desc')->get($this->table2);
         }else{
-          $query = $this->db->get($this->table2);
+          $query = $this->db->where('parent_id', 1)->order_by('sort desc, id asc')->limit(1)->get($this->table);
+          $arr = $query->row();
+          $query = $this->db->where('clazz_id', $arr->id)->get($this->table2);          
         }
         $list = $query->result_array();
         // foreach ($list as $k=>&$v) {
