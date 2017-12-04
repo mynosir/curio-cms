@@ -8,20 +8,25 @@
     <div class="wrap">
       <div class="menu">
         <div class="nav buy">
-          <div class="tit">
-            <?=$subnavi3?>
+          <div class="tit cur">
+            <a href="/buy"><?=$subnavi3?></a>
           </div>
         </div>
         <div class="nav sell">
           <div class="tit">
-            <?=$subnavi4?>
+            <a href="/sell"><?=$subnavi4?></a>
           </div>
         </div>
       </div>
-      <div class="container3">
+      <div class="container3" style="border:0">
+        <?php if ($curLang === 'tc'): ?>
+            <?php echo $buy->content_tc; ?>
+          <?php else: ?>
+            <?php echo $buy->content_en; ?>
+          <?php endif; ?>
       </div>
     </div>
 
 
   </div>
-<script src="<?php echo $resource_url; ?>js/auction.js" charset="utf-8"></script>
+<script src="<?php echo $resource_url; ?>js/buy.js" charset="utf-8"></script>

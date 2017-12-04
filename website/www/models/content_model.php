@@ -34,6 +34,43 @@ class Content_model extends MY_Model {
         return $row;
     }
 
+    /**
+     * 查询參與拍賣
+     * @return [type] [description]
+     */
+    public function buy() {
+        $query = $this->db->where('clazz_id', 5)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+    /**
+     * 查询委託拍賣
+     * @return [type] [description]
+     */
+    public function sell() {
+        $query = $this->db->where('clazz_id', 6)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+    /**
+     * 查询參與拍賣
+     * @return [type] [description]
+     */
+    public function about() {
+        $query = $this->db->where('clazz_id', 7)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+    /**
+     * 查询委託拍賣
+     * @return [type] [description]
+     */
+    public function contact() {
+        $query = $this->db->where('clazz_id', 8)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+
 
 
 }

@@ -230,6 +230,10 @@ body {
         width: 240px;
         height: 188px;
         float: left; }
+      .mid .container3 .item .pic img{
+        width: 240px;
+        height: 188px;
+      }
       .mid .container3 .item .detail {
         width: 600px;
         height: 188px;
@@ -293,14 +297,14 @@ body {
     position: relative;
     float: right;
     width: 800px; }
-    .mid .container .news {
+    .mid .container .notice {
       position: absolute;
       top: -43px;
       background: url(../img/btn_laba.png) no-repeat 0 2px;
       text-indent: 34px;
       font-size: 14px;
       color: #714646; }
-      .mid .container .news a {
+      .mid .container .notice a {
         display: inline;
         color: #4a90e2;
         text-decoration: underline; }
@@ -518,7 +522,8 @@ body {
     background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px; }
 
 .mid3 {
-  margin-top: 50px; }
+  margin-top: 50px;
+  height: auto; overflow: auto;min-height: 900px}
   .mid3 .item .pics {
     float: left;
     position: relative;

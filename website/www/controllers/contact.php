@@ -14,6 +14,8 @@ class Contact extends MY_Controller {
 
 
     public function index() {
+      $this->load->model('content_model');
+      $this->data['contact1'] = $this->content_model->contact();
       $this->showPage('contact_index', $this->data);
     }
 

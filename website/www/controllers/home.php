@@ -14,6 +14,9 @@ class Home extends MY_Controller {
 
 
     public function index() {
+
+      // var_dump($_SERVER);
+      // if(!strpos($_SERVER['REQUEST_URI'],'tc')){
         if($_SERVER['REQUEST_URI'] == '/') {
           $this->load->helper('url');
           redirect($this->data['base_url'].'tc/', 'location');

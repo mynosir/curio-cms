@@ -14,6 +14,7 @@ class Auction extends MY_Controller {
 
 
     public function index() {
+      // var_dump($_SERVER);      
       $this->load->model('content_model');
       $this->data['newcontent'] = $this->content_model->latest();
       $this->showPage('auction_index', $this->data);

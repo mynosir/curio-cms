@@ -14,6 +14,8 @@ class Sell extends MY_Controller {
 
 
     public function index() {
+      $this->load->model('content_model');
+      $this->data['sell'] = $this->content_model->sell();
       $this->showPage('sell_index', $this->data);
     }
 

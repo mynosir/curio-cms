@@ -1,0 +1,51 @@
+<div class="mid3">
+  <div class="wrap">
+    <div class="item">
+      <div class="pics">
+        <!-- Swiper -->
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+              <?php foreach ($catalogueDetail->pic as $v): ?>
+                <div class="swiper-slide" style="background-image:url(<?php echo $v?>)"></div>
+              <?php endforeach; ?>
+            </div>
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div> -->
+        </div>
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+              <?php foreach ($catalogueDetail->pic as $v): ?>
+                <div class="swiper-slide" style="background-image:url(<?php echo $v?>)"></div>
+              <?php endforeach; ?>
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+      </div>
+      <div class="detail">
+        <?php if ($curLang === 'tc'): ?>
+        <div class="name"><?php echo $catalogueDetail->title_tc?></div>
+        <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
+        <div class="estimated">
+          估計價格：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
+        </div>
+        <div class="instruction">
+          <?php echo $catalogueDetail->descript_tc?>
+        </div>
+        <?php else:?>
+          <div class="name"><?php echo $catalogueDetail->title_en?></div>
+          <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
+          <div class="estimated">
+            ESTIMATE PRICE：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
+          </div>
+          <div class="instruction">
+            <?php echo $catalogueDetail->descript_en?>
+          </div>
+        <?php endif;?>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>
+<script src="<?php echo $resource_url; ?>js/catalogue_detail.js" charset="utf-8"></script>

@@ -29,7 +29,11 @@
         </div>
       </div>
       <div class="container2" style="border:0">
-          <?php echo $newcontent->content_tc; ?>
+        <?php if ($curLang === 'tc'): ?>
+            <?php echo $newcontent->content_tc; ?>
+          <?php else: ?>
+            <?php echo $newcontent->content_en; ?>
+          <?php endif; ?>
       </div>
     </div>
 

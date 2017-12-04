@@ -14,6 +14,8 @@ class Press_media extends MY_Controller {
 
 
     public function index() {
+      $this->load->model('press_media_model');
+      $this->data['searchNews'] = $this->press_media_model->search();
       $this->showPage('press_media_index', $this->data);
     }
 

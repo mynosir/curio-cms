@@ -9,19 +9,23 @@
       <div class="menu">
         <div class="nav about">
           <div class="tit">
-            <?=$subnavi7?>
+            <a href="/about"><?=$subnavi7?></a>
           </div>
         </div>
         <div class="nav contact">
-          <div class="tit">
-            <?=$subnavi8?>
+          <div class="tit cur">
+            <a href="/contact"><?=$subnavi8?></a>
           </div>
         </div>
       </div>
-      <div class="container3">
+      <div class="container3" style="border:0">
+        <?php if ($curLang === 'tc'): ?>
+            <?php echo $contact1->content_tc; ?>
+          <?php else: ?>
+            <?php echo $contact1->content_en; ?>
+          <?php endif; ?>
       </div>
     </div>
 
 
   </div>
-<script src="<?php echo $resource_url; ?>js/auction.js" charset="utf-8"></script>

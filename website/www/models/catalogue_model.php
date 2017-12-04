@@ -61,6 +61,18 @@ class Catalogue_model extends MY_Model {
         return $result;
     }
 
+    /**
+     * 查询子菜单详情
+     * @return [type] [description]
+     */
+    public function searchDetail($id) {
+        $query = $this->db->where('id', $id)->get($this->table2);
+        $list = $query->row();
+        if(count($list->pic)>0){
+          $list->pic = explode(',', $list->pic);
+        }
+        return $list;
+    }
 
 
 }

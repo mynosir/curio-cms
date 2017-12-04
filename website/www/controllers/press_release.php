@@ -14,6 +14,10 @@ class Press_release extends MY_Controller {
 
 
     public function index() {
+      $id = $this->get_request('id');
+      $this->load->model('press_release_model');
+      $this->data['submenu'] = $this->press_release_model->search();
+      $this->data['searchNews'] = $this->press_release_model->searchNews($id);
       $this->showPage('press_release_index', $this->data);
     }
 

@@ -14,6 +14,8 @@ class Buy extends MY_Controller {
 
 
     public function index() {
+      $this->load->model('content_model');
+      $this->data['buy'] = $this->content_model->buy();
       $this->showPage('buy_index', $this->data);
     }
 

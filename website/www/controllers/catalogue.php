@@ -17,8 +17,17 @@ class Catalogue extends MY_Controller {
       $cid = $this->get_request('cid');
       $this->load->model('catalogue_model');
       $this->data['catalogue'] = $this->catalogue_model->search($cid);
+      $this->load->model('notice_model');
+      $this->data['notice'] = $this->notice_model->search();
       $this->data['catalogueParent'] = $this->catalogue_model->searchParent($cid);
       $this->showPage('catalogue_index', $this->data);
+    }
+
+    public function detail() {
+      $id = $this->get_request('id');
+      $this->load->model('catalogue_model');
+      $this->data['catalogueDetail'] = $this->catalogue_model->searchDetail($id);
+      $this->showPage('catalogue_detail_index', $this->data);
     }
 
 
