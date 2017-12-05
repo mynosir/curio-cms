@@ -19,19 +19,45 @@ class Catalogue_model extends MY_Model {
      * 查询菜单数据
      * @return [type] [description]
      */
-    public function search($cid) {
+    public function search($cid, $page=1, $size=2) {
+        if($page==0){
+          $page = 1;
+        }
+        $limitStart = ($page - 1) * $size;
         if(!empty($cid)){
-          $query = $this->db->where('clazz_id', $cid)->order_by('id asc, sort desc')->get($this->table2);
+          $query = $this->db->where('clazz_id', $cid)->order_by('id asc, sort desc')->limit($size, $limitStart)->get($this->table2);
+          $num = $this->db->where('clazz_id', $cid)->count_all_results($this->table2);
         }else{
           $query = $this->db->where('parent_id', 1)->order_by('sort desc, id asc')->limit(1)->get($this->table);
           $arr = $query->row();
-          $query = $this->db->where('clazz_id', $arr->id)->get($this->table2);          
+          var_dump($arr);
+          $query = $this->db->where('clazz_id', $arr->id)->limit($size, $limitStart)->get($this->table2);
+          $num = $this->db->where('clazz_id', $arr->id)->count_all_results($this->table2);
         }
         $list = $query->result_array();
-        // foreach ($list as $k=>&$v) {
-        //
-        // }
-        return $list;
+        $rtn = array(
+            'total' => $num,
+            'size'  => $size,
+            'page'  => $page,
+            'list'  => $list
+        );
+        // var_dump($rtn);
+        return $rtn;
+    }
+
+
+    /**
+     * 获取新聞稿子菜單id
+     * @return [type] [description]
+     */
+    public function getcid() {
+        $query = $this->db->where('parent_id', 0)->order_by('sort desc, id asc')->limit(1)->get($this->table);
+        $arr = $query->row();
+        $id = $arr->id;
+        $query = $this->db->where('parent_id', $id)->order_by('sort desc, id asc')->limit(1)->get($this->table);
+        $arr = $query->row();
+        $id = $arr->id;
+        return $id;
     }
 
 

@@ -18,7 +18,7 @@
                 <?php endforeach; ?>
               <?php else: ?>
                 <?php foreach ($submenu as $sub): ?>
-                    <div class="sub-tit"><a href="<?=$home?>press_release?id=<?=$sub['id']?>"><?php echo $sub['name_en']?></a></div>
+                    <div class="sub-tit" data-id="<?=$sub['id']?>"><a href="<?=$home?>press_release?id=<?=$sub['id']?>"><?php echo $sub['name_en']?></a></div>
                 <?php endforeach; ?>
               <?php endif; ?>
           </div>
@@ -65,7 +65,7 @@
           <?php foreach ($searchNews['list'] as $new): ?>
             <div class="item">
               <div class="pic">
-                <a href="<?=home?>press_release/detail?id=<?=$new['id']?>">
+                <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                   <?php if(strpos($new['pic'],',')): ?>
                     <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
                   <?php else: ?>
@@ -75,12 +75,12 @@
               </div>
               <div class="detail">
                 <div class="tit">
-                  <a href="<?=home?>press_release/detail?id=<?=$new['id']?>">
+                  <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                     <?php echo $new['title_en'] ?>
                   </a>
                 </div>
                 <div class="article">
-                  <a href="<?=home?>press_release/detail?id=<?=$new['id']?>">
+                  <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                     <?php echo $new['descript_en'] ?>
                   </a>
                 </div>

@@ -37,7 +37,12 @@ body {
       letter-spacing: -0.39px;
       text-align: left;
       text-indent: 20px;
-      background: url(../img/btn_search.png) no-repeat 360px 10px; }
+    }
+    .header .top .search .searchimg {
+      position: absolute;
+      top: 35px;
+      right: 160px
+    }
     .header .top .lang {
       position: absolute;
       top: 30px;

@@ -15,12 +15,47 @@ class Catalogue extends MY_Controller {
 
     public function index() {
       $cid = $this->get_request('cid');
+      $page = $this->get_request('page');
       $this->load->model('catalogue_model');
-      $this->data['catalogue'] = $this->catalogue_model->search($cid);
+      if(empty($cid)){
+        $cid = $this->catalogue_model->getcid();
+        $this->load->helper('url');
+        redirect($this->data['base_url'].$this->uri->segment(1).'/'.$this->uri->segment(2).'?cid='.$cid);
+      }
+      $this->data['catalogue'] = $this->catalogue_model->search($cid, $page);
       $this->load->model('notice_model');
       $this->data['notice'] = $this->notice_model->search();
       $this->data['catalogueParent'] = $this->catalogue_model->searchParent($cid);
+      $this->load->library('pagination');
+      $config['page_query_string'] = true;
+      $config['use_page_numbers'] = TRUE;
+      $config['query_string_segment'] = 'page';
+      $config['base_url'] = $this->config->item('base_url').'/'.$this->uri->segment(1).'/'.$this->uri->segment(2).'/?cid='.$cid;
+      $config['total_rows'] = $this->data['catalogue']['total'];//总共多少条数据
+      $config['per_page'] = $this->data['catalogue']['size'];//每页显示几条数据
+      $config['full_tag_open'] = '<p>';
+      $config['full_tag_close'] = '</p>';
+      $config['first_link'] = '首页';
+      $config['first_tag_open'] = '<li>';//“第一页”链接的打开标签。
+      $config['first_tag_close'] = '</li>';//“第一页”链接的关闭标签。
+      $config['last_link'] = '尾页';//你希望在分页的右边显示“最后一页”链接的名字。
+      $config['last_tag_open'] = '<li>';//“最后一页”链接的打开标签。
+      $config['last_tag_close'] = '</li>';//“最后一页”链接的关闭标签。
+      $config['next_link'] = '下一页';//你希望在分页中显示“下一页”链接的名字。
+      $config['next_tag_open'] = '<li>';//“下一页”链接的打开标签。
+      $config['next_tag_close'] = '</li>';//“下一页”链接的关闭标签。
+      $config['prev_link'] = '上一页';//你希望在分页中显示“上一页”链接的名字。
+      $config['prev_tag_open'] = '<li>';//“上一页”链接的打开标签。
+      $config['prev_tag_close'] = '</li>';//“上一页”链接的关闭标签。
+      $config['cur_tag_open'] = '<li class="current">';//“当前页”链接的打开标签。
+      $config['cur_tag_close'] = '</li>';//“当前页”链接的关闭标签。
+      $config['num_tag_open'] = '<li>';//“数字”链接的打开标签。
+      $config['num_tag_close'] = '</li>';
+      $this->pagination->initialize($config);
+
+
       $this->showPage('catalogue_index', $this->data);
+
     }
 
     public function detail() {
