@@ -7,7 +7,7 @@ $(function() {
                 data: {
                     actionxm: 'getList',
                     page: !p ? 1 : p,
-                    size: 20,
+                    size: 5,
                     keyword: $('#title_en').val()
                 }
             };

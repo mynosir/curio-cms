@@ -18,6 +18,7 @@ class Press_media extends MY_Controller {
       $this->load->model('press_release_model');
       $this->data['submenu'] = $this->press_release_model->search();
       $this->data['searchNews'] = $this->press_media_model->search();
+      // var_dump($this->data['searchNews']);
       $this->showPage('press_media_index', $this->data);
     }
 

@@ -19,6 +19,7 @@ class Auction_past extends MY_Controller {
       $this->data['auctionCate'] = $this->category_model->searchParent();
       $this->data['auctionlist'] = $this->auction_past_model->search($aid);
       // var_dump($this->data['auctionlist']);
+      // var_dump($this->data['auctionlist']);
       $this->showPage('auction_past_index', $this->data);
     }
 

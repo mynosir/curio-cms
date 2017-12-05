@@ -19,9 +19,6 @@ class Auction extends MY_Controller {
       $this->showPage('auction_index', $this->data);
     }
 
-    public function auction() {
-    }
-
 
     public function get() {
         $actionxm = $this->get_request('actionxm');
