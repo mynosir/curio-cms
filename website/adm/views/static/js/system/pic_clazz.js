@@ -15,7 +15,7 @@ $(function() {
                 if(res.status == 0) {
                     var idx = 1,
                         list = res['data'],
-                        listTpl = '<tr><th>编号</th><th>分类名称（英文）</th><th>分类名称（繁体）</th><th>排序</th><th>操作</th></tr>';
+                        listTpl = '<tr><th>编号</th><th>分类名称（英文）</th><th>分类名称（繁体）</th><th>创建时间</th><th>更新时间</th><th>排序</th><th>操作</th></tr>';
                     for(var i in list) {
                         listTpl += '<tr>';
                         listTpl += '<td>' + (idx++) + '</td>';
@@ -26,6 +26,8 @@ $(function() {
                             listTpl += '<td>' + list[i]['name_en'] + '</td>';
                             listTpl += '<td>' + list[i]['name_tc'] + '</td>';
                         }
+                        listTpl += '<td>' + list[i]['create_time'] + '</td>';
+                        listTpl += '<td>' + list[i]['update_time'] + '</td>';
                         listTpl += '<td>' + list[i]['sort'] + '</td>';
                         listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-toggle="modal" data-target="#editModal" data-id="' + list[i]['id'] + '">编辑</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
                         listTpl += '</tr>';
@@ -93,6 +95,9 @@ $(function() {
                     $('.js_update_name_en').val(res['data'].name_en);
                     $('.js_update_name_tc').val(res['data'].name_tc);
                     $('.js_update_menuTree').val(res['data'].parent_id);
+                    $('.js_update_pdf').val(res['data'].pdf);
+                    $('.js_pdf_update_prev').attr('href', res['data'].pdf);
+                    $('.js_pdf_update_prev').html('[预览]');
                     $('.js_update_sort').val(res['data'].sort);
                 } else {
                     alert('系统异常！');
@@ -119,6 +124,7 @@ $(function() {
         var name_en = $('.js_add_name_en').val(),
             name_tc = $('.js_add_name_tc').val(),
             parent_id = $('.js_add_menuTree').val(),
+            pdf = $('.js_pdf').val(),
             sort = $('.js_add_sort').val();
         var json = {
             api: config.apiServer + 'pic_clazz/post',
@@ -129,6 +135,7 @@ $(function() {
                     name_en: name_en,
                     name_tc: name_tc,
                     parent_id: parent_id,
+                    pdf: pdf,
                     sort: sort
                 }
             }
@@ -149,6 +156,7 @@ $(function() {
             name_en = $('.js_update_name_en').val(),
             name_tc = $('.js_update_name_tc').val(),
             parent_id = $('.js_update_menuTree').val(),
+            pdf = $('.js_update_pdf').val(),
             sort = $('.js_update_sort').val();
         var json = {
             api: config.apiServer + 'pic_clazz/post',
@@ -160,6 +168,7 @@ $(function() {
                     name_en: name_en,
                     name_tc: name_tc,
                     parent_id: parent_id,
+                    pdf: pdf,
                     sort: sort
                 }
             }

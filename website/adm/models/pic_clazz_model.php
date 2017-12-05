@@ -10,7 +10,7 @@ class Pic_clazz_model extends MY_Model {
     public function __construct() {
         parent::__construct();
         $this->table = 'curio_pic_clazz';
-        $this->fields = 'id, name_en, name_tc, parent_id, sort';
+        $this->fields = 'id, name_en, name_tc, parent_id, sort, pdf, create_time, update_time';
         $this->loginInfo = $this->session->userdata('loginInfo');
     }
 
@@ -22,6 +22,20 @@ class Pic_clazz_model extends MY_Model {
     public function search() {
         $query = $this->db->select($this->fields)->order_by('parent_id asc, `sort` desc')->get($this->table);
         $list = $query->result_array();
+
+        foreach($list as &$item) {
+            if($item['create_time']) {
+                $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
+            } else {
+                $item['create_time'] = '';
+            }
+            if($item['update_time']) {
+                $item['update_time'] = date('Y-m-d H:i:s', $item['update_time']);
+            } else {
+                $item['update_time'] = '';
+            }
+        }
+
         $tree = array();
         create_tree_list($list, $tree, 0, 0, array('id_key'=>'id', 'pid_key'=> 'parent_id'));
 
@@ -51,10 +65,12 @@ class Pic_clazz_model extends MY_Model {
         }
 
         $data = array(
-            'name_en'   => $params['name_en'],
-            'name_tc'   => $params['name_tc'],
-            'parent_id' => $params['parent_id'],
-            'sort'      => $params['sort']
+            'name_en'       => $params['name_en'],
+            'name_tc'       => $params['name_tc'],
+            'parent_id'     => $params['parent_id'],
+            'sort'          => $params['sort'],
+            'pdf'           => $params['pdf'],
+            'create_time'   => time()
         );
         $this->db->insert($this->table, $data);
         return array(
@@ -72,10 +88,12 @@ class Pic_clazz_model extends MY_Model {
      */
     public function update($params, $where) {
         $data = array(
-            'name_en'   => $params['name_en'],
-            'name_tc'   => $params['name_tc'],
-            'parent_id' => $params['parent_id'],
-            'sort'      => $params['sort']
+            'name_en'       => $params['name_en'],
+            'name_tc'       => $params['name_tc'],
+            'parent_id'     => $params['parent_id'],
+            'sort'          => $params['sort'],
+            'pdf'           => $params['pdf'],
+            'update_time'   => time()
         );
         $this->db->where($where)->update($this->table, $data);
         return array(
