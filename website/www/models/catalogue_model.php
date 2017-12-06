@@ -102,5 +102,16 @@ class Catalogue_model extends MY_Model {
         return $list;
     }
 
+    /**
+     * 搜索
+     * @return [type] [description]
+     */
+    public function searchText($text) {
+        $query = $this->db->where('num', $text)->get($this->table2);
+        $list = $query->result_array();
+        var_dump($list);
+        return $list;
+    }
+
 
 }

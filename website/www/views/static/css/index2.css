@@ -159,11 +159,17 @@ body {
       text-indent: 36px;
       border-bottom: 1px solid #ddd;
       background: url(../img/menu_bg.jpg) no-repeat 0px 14px, url(../img/arrow_black.png) no-repeat 225px 19px; }
+    .mid .menu.en .nav .tit {
+      width: 360px;
+      background: url(../img/menu_bg.jpg) no-repeat 0px 14px, url(../img/arrow_black.png) no-repeat 346px 19px; }
     .mid .menu .nav .sub-nav {
       display: none; }
     .mid .menu .nav.cur .tit {
       color: #b8262b;
       background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px, url(../img/btn_arrow_red.png) no-repeat 225px 19px; }
+    .mid .menu.en .nav.cur .tit {
+      color: #b8262b;
+      background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px, url(../img/btn_arrow_red.png) no-repeat 346px 19px; }
     .mid .menu .nav.cur .sub-nav {
       display: inline-block;
       color: #686868;
@@ -178,6 +184,18 @@ body {
         border-bottom: 1px solid #ddd;
         line-height: 49px;
         text-indent: 36px; }
+      .mid .menu.auction.en .nav.cur .sub-nav .sub-tit {
+        width: 275px;
+      }
+      .mid .menu.auction.en .nav .tit {
+        width: 275px;
+        background: url(../img/menu_bg.jpg) no-repeat 0px 14px, url(../img/arrow_black.png) no-repeat 254px 19px; }
+        .mid .menu.auction.en .nav.cur .tit {
+          color: #b8262b;
+          background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px, url(../img/btn_arrow_red.png) no-repeat 254px 19px; }
+      .mid .menu.en .nav.cur .sub-nav .sub-tit {
+        width: 360px;
+      }
   .mid .menu2 {
     margin-top: 70px;
     width: 239px;
@@ -210,14 +228,22 @@ body {
           display: inline-block;
           height: 20px;
           line-height: 20px; }
-        .mid .menu2 .nav.cur .sub-navi .download {
-          display: inline-block;
-          width: 70px;
-          height: 14px;
-          background: url(../img/btn_xiazai_black.png) center center/100% 100% no-repeat;
-          float: right;
-          margin-right: 10px;
-          margin-top: 17px; }
+          .mid .menu2 .nav.cur .sub-navi .download {
+            display: inline-block;
+            width: 70px;
+            height: 14px;
+            background: url(../img/btn_xiazai_black.png) center center/100% 100% no-repeat;
+            float: right;
+            margin-right: 10px;
+            margin-top: 17px; }
+            .mid .pdf .download {
+              display: inline-block;
+              width: 70px;
+              height: 14px;
+              background: url(../img/btn_xiazai_blue.png) center center/100% 100% no-repeat;
+              float: right;
+              margin-right: 10px;
+              margin-top: 17px; }
       .mid .menu2 .nav.cur .sub-navi.cur .sub-tit {
         color: #1a9dec; }
       .mid .menu2 .nav.cur .sub-navi.cur .download {
@@ -231,6 +257,11 @@ body {
       width: 880px;
       height: 188px;
       padding-bottom: 42px; }
+  .mid .container3.en {
+    width: 800px; }
+    .mid .container3.en .item {
+      width: 820px;
+    }
       .mid .container3 .item .pic {
         width: 240px;
         height: 188px;
@@ -245,6 +276,9 @@ body {
         float: left;
         margin-left: 40px;
         border-bottom: 1px solid #ddd; }
+      .mid .container3.en .item .detail {
+        width: 540px;
+        }
         .mid .container3 .item .detail .tit {
           font-size: 18px;
           color: #191919;
@@ -293,9 +327,15 @@ body {
           float: right; }
       .mid .container2 .item .pics {
         padding-top: 30px; }
-        .mid .container2 .item .pics img {
+      .mid .container2 .item .pics a{
+          /*display: inline;*/
+          }
+        .mid .container2 .item .pics a{
           display: inline-block;
-          padding-right: 16px;
+          margin-right: 16px;
+          width: 140px;
+          height: 140px; }
+        .mid .container2 .item .pics a img{
           width: 140px;
           height: 140px; }
   .mid .container {
@@ -645,6 +685,8 @@ body {
       .footer .content .icon a {
         float: left;
         margin-right: 30px; }
-    #pagelist ul li { float:left;border:1px solid #e0691a; height:20px; font-weight:bold; line-height:20px; margin:0px 2px; list-style:none;}
+    #pagelist{position: absolute;right:0;bottom:-50px}
+    #pagelist ul li { float:left;height:20px; font-weight:bold; line-height:20px; margin:0px 2px; list-style:none;}
     #pagelist ul li a,
-    .current { background:#FFB27A; display:block; padding:0px 6px; font-weight:bold;}
+    .current {display:block; padding:0px 6px; font-weight:bold;}
+    .current{font-size: 18px;text-decoration: underline;}

@@ -29,10 +29,14 @@
             </a>
           </div>
           <div class="search">
-            <input type="text" name="" value="" placeholder="<?=$placeholder?>"><img src="<?php echo $resource_url; ?>img/btn_search.png" alt="" class="searchimg">
+            <form action="<?=$home?>catalogue/search" method="get">
+              <input type="text" name="" value="" placeholder="<?=$placeholder?>">
+              <input type="submit" value="Submit" />
+              <a href="<?=$home?>catalogue/search"><img src="<?php echo $resource_url; ?>img/btn_search.png" alt="" class="searchimg"></a>
+            </form>
           </div>
           <div class="lang">
-            <span><span class="en" href="">ENG</span> / <span href="" class="tc">繁</span></span>
+            <span><a class="enlang" href="javascript:;">ENG</a> / <a href="javascript:;" class="tclang">繁</a></span>
           </div>
       </div>
       <div class="nav">

@@ -51,7 +51,7 @@
       $(curNav).addClass('cur');
     }
   }
-  $('.'+curLang).addClass('cur');
+  $('.'+curLang+'lang').addClass('cur');
 // 导航控制鼠标经过
   $('.navi').mouseover(function(){
     $(this).parent().find('.hover').removeClass('hover');
@@ -70,7 +70,7 @@
     $('.navi').removeClass('hover');
   })
 // 控制切换语言url
-  $('.tc').click(function(event) {
+  $('.tclang').click(function(event) {
     /* Act on the event */
     var str = window.location.href;
     if(str.indexOf(/en/)>0){
@@ -78,7 +78,7 @@
     }
     window.location.href=str;
   });
-  $('.en').click(function(event) {
+  $('.enlang').click(function(event) {
     /* Act on the event */
     var str = window.location.href;
     if(str.indexOf(/en/)<0){
@@ -86,4 +86,10 @@
     }
     window.location.href=str;
   });
+  $('.searchimg').on('click', function(){
+    var searchText = $('.search input').val(),
+        str = '/';
+    console.log(str);
+
+  })
 </script>

@@ -1,4 +1,4 @@
-  <div class="mid" style="height:1472px">
+  <div class="mid">
     <div class="bottom">
       <div class="locate wrap">
         <span class="content"><?=$navi5?> > <?=$subnavi6?></span>
@@ -6,7 +6,7 @@
     </div>
 
     <div class="wrap">
-      <div class="menu">
+      <div class="menu <?=$curLang?>">
         <div class="nav">
           <div class="tit">
             <?=$subnavi5?>
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="container3">
+      <div class="container3 <?=$curLang?>">
         <?php if ($curLang === 'tc'): ?>
         <?php foreach ($searchNews as $new): ?>
           <div class="item">

@@ -36,16 +36,16 @@ class Press_release extends MY_Controller {
       $config['per_page'] = $this->data['searchNews']['size'];//每页显示几条数据
       $config['full_tag_open'] = '<p>';
       $config['full_tag_close'] = '</p>';
-      $config['first_link'] = '首页';
+      $config['first_link'] = '<img src='.$this->resource_url.'img/page/first.png>';
       $config['first_tag_open'] = '<li>';//“第一页”链接的打开标签。
       $config['first_tag_close'] = '</li>';//“第一页”链接的关闭标签。
-      $config['last_link'] = '尾页';//你希望在分页的右边显示“最后一页”链接的名字。
+      $config['last_link'] = '<img src='.$this->resource_url.'img/page/last.png>';//你希望在分页的右边显示“最后一页”链接的名字。
       $config['last_tag_open'] = '<li>';//“最后一页”链接的打开标签。
       $config['last_tag_close'] = '</li>';//“最后一页”链接的关闭标签。
-      $config['next_link'] = '下一页';//你希望在分页中显示“下一页”链接的名字。
+      $config['next_link'] = '<img src='.$this->resource_url.'img/page/next.png>';//你希望在分页中显示“下一页”链接的名字。
       $config['next_tag_open'] = '<li>';//“下一页”链接的打开标签。
       $config['next_tag_close'] = '</li>';//“下一页”链接的关闭标签。
-      $config['prev_link'] = '上一页';//你希望在分页中显示“上一页”链接的名字。
+      $config['prev_link'] = '<img src='.$this->resource_url.'img/page/pre.png>';//你希望在分页中显示“上一页”链接的名字。
       $config['prev_tag_open'] = '<li>';//“上一页”链接的打开标签。
       $config['prev_tag_close'] = '</li>';//“上一页”链接的关闭标签。
       $config['cur_tag_open'] = '<li class="current">';//“当前页”链接的打开标签。
@@ -61,6 +61,7 @@ class Press_release extends MY_Controller {
     public function detail() {
       $id = $this->get_request('id');
       $this->load->model('press_release_model');
+      $this->data['submenu'] = $this->press_release_model->search();
       $this->data['pressDetail'] = $this->press_release_model->searchDetail($id);
       $this->showPage('press_release_detail', $this->data);
     }

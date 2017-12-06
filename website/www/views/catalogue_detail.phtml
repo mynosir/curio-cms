@@ -1,5 +1,10 @@
 <div class="mid3">
   <div class="wrap">
+    <div class="bottom">
+      <div class="locate wrap">
+        <span class="content"><?=$navi5?> > <?=$subnavi6?></span>
+      </div>
+    </div>    
     <div class="item">
       <div class="pics">
         <!-- Swiper -->
@@ -25,14 +30,14 @@
       </div>
       <div class="detail">
         <?php if ($curLang === 'tc'): ?>
-        <div class="name"><?php echo $catalogueDetail->title_tc?></div>
-        <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
-        <div class="estimated">
-          估計價格：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
-        </div>
-        <div class="instruction">
-          <?php echo $catalogueDetail->descript_tc?>
-        </div>
+          <div class="name"><?php echo $catalogueDetail->title_tc?></div>
+          <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
+          <div class="estimated">
+            估計價格：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
+          </div>
+          <div class="instruction">
+            <?php echo $catalogueDetail->descript_tc?>
+          </div>
         <?php else:?>
           <div class="name"><?php echo $catalogueDetail->title_en?></div>
           <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>

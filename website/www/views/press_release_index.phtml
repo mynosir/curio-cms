@@ -6,7 +6,7 @@
     </div>
 
     <div class="wrap">
-      <div class="menu">
+      <div class="menu <?=$curLang?>">
         <div class="nav press_release">
           <div class="tit">
             <?=$subnavi5?>
@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="container3">
+      <div class="container3 <?=$curLang?>">
         <?php if ($curLang === 'tc'): ?>
           <?php foreach ($searchNews['list'] as $new): ?>
             <div class="item">
