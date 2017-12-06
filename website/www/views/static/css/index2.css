@@ -38,10 +38,19 @@ body {
       text-align: left;
       text-indent: 20px;
     }
-    .header .top .search .searchimg {
+    /*.header .top .search .searchimg {
       position: absolute;
       top: 35px;
       right: 160px
+    }*/
+    .search #submit{
+      border: 0px;
+      background: url('../img/btn_search.png') no-repeat 0px 0px;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 165px;
+      top: 34px;
     }
     .header .top .lang {
       position: absolute;
@@ -128,17 +137,17 @@ body {
 
 .mid {
   height: auto; overflow: auto;min-height: 900px}
-  .mid .bottom {
+  .mid .bottom,.mid3 .bottom {
     position: relative;
     background-color: #555;
     width: 100%;
     height: 60px; }
-    .mid .bottom .locate {
+    .mid .bottom .locate,.mid3 .bottom .locate {
       position: relative;
       top: 20px;
       height: 50px;
       background-color: #868686; }
-      .mid .bottom .locate .content {
+      .mid .bottom .locate .content,.mid3 .bottom .locate .content {
         color: #fff;
         font-size: 18px;
         line-height: 50px;
@@ -567,8 +576,10 @@ body {
     background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px; }
 
 .mid3 {
-  margin-top: 50px;
   height: auto; overflow: auto;min-height: 900px}
+  .mid3 .item{
+    margin-top: 50px;
+  }
   .mid3 .item .pics {
     float: left;
     position: relative;

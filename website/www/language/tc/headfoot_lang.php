@@ -19,6 +19,7 @@ $lang['hf_subnavi5'] = '新聞稿及相冊';
 $lang['hf_subnavi6'] = '媒體報導';
 $lang['hf_subnavi7'] = '公司簡介';
 $lang['hf_subnavi8'] = '聯絡我們';
+$lang['hf_subnavi9'] = '搜尋產品';
 $lang['hf_contact'] = '聯絡我們';
 $lang['hf_sitemap'] = '網站地圖';
 $lang['hf_terms'] = '條款及細則';

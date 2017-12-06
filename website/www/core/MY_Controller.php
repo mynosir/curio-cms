@@ -131,6 +131,7 @@ class MY_Controller extends CI_Controller {
       $this->data['subnavi6'] = lang('hf_subnavi6');
       $this->data['subnavi7'] = lang('hf_subnavi7');
       $this->data['subnavi8'] = lang('hf_subnavi8');
+      $this->data['subnavi9'] = lang('hf_subnavi9');
       $this->data['contact'] = lang('hf_contact');
       $this->data['sitemap'] = lang('hf_sitemap');
       $this->data['terms'] = lang('hf_terms');

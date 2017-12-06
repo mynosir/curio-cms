@@ -19,6 +19,7 @@ $lang['hf_subnavi5'] = 'PRESS RELEASE AND PHOTO ALBUM';
 $lang['hf_subnavi6'] = 'IN THE NEWS';
 $lang['hf_subnavi7'] = 'COMPANY PROFILE';
 $lang['hf_subnavi8'] = 'CONTACT US';
+$lang['hf_subnavi9'] = 'Search Product';
 $lang['hf_contact'] = 'CONTACT US';
 $lang['hf_sitemap'] = 'SITE MAP';
 $lang['hf_terms'] = 'TERMS & CONDITIONS';

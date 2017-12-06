@@ -107,9 +107,8 @@ class Catalogue_model extends MY_Model {
      * @return [type] [description]
      */
     public function searchText($text) {
-        $query = $this->db->where('num', $text)->get($this->table2);
+        $query = $this->db->like('num', $text)->or_like('title_en', $text)->or_like('title_tc', $text)->get($this->table2);
         $list = $query->result_array();
-        var_dump($list);
         return $list;
     }
 
