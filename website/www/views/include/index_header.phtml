@@ -29,10 +29,10 @@
             </a>
           </div>
           <div class="search">
-            <form action="<?=$home?>catalogue/search" method="get">
-              <input type="text" name="" value="" placeholder="<?=$placeholder?>">
+            <form action="<?=$home?>catalogue/search" method="post">
+              <input type="text" name="searchText" value="" placeholder="<?=$placeholder?>">
               <input type="submit" value="Submit" />
-              <a href="<?=$home?>catalogue/search"><img src="<?php echo $resource_url; ?>img/btn_search.png" alt="" class="searchimg"></a>
+              <img src="<?php echo $resource_url; ?>img/btn_search.png" alt="" class="searchimg">
             </form>
           </div>
           <div class="lang">
