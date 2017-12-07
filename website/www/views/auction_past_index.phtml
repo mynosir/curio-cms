@@ -46,7 +46,9 @@
               <div class="pics">
                 <div class="wrap2">
                   <?php foreach ($auction['img'] as $k=>$pic):?>
-                  <img src="<?php echo $pic?>" alt="">
+                    <a href="<?=$home?>catalogue?cid=<?=$auction['id']?>">
+                      <img src="<?php echo $pic?>" alt="">
+                    </a>
                   <?php if ($k==4): break;?>
                   <?php endif;?>
                   <?php endforeach; ?>

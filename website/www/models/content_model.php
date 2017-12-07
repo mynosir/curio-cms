@@ -70,6 +70,24 @@ class Content_model extends MY_Model {
         $row = $query->row();
         return $row;
     }
+    /**
+     * 查询條款及細則
+     * @return [type] [description]
+     */
+    public function tandc() {
+        $query = $this->db->where('clazz_id', 10)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+    /**
+     * 查询個人隱私
+     * @return [type] [description]
+     */
+    public function privacy() {
+        $query = $this->db->where('clazz_id', 11)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
 
 
 

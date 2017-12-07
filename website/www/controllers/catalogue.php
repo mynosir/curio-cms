@@ -69,6 +69,7 @@ class Catalogue extends MY_Controller {
       $text = $this->input->post('searchText');
       $this->load->model('catalogue_model');
       $this->data['searchResult'] = $this->catalogue_model->searchText($text);
+      $this->data['text'] = $text;
       $this->showPage('catalogue_search', $this->data);
     }
 

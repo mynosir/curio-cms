@@ -6,10 +6,10 @@
       </div>
       <div class="nav">
         <ul>
-          <li><a href="#"><?=$contact?></a></li>
-          <li><a href="#"><?=$sitemap?></a></li>
-          <li><a href="#"><?=$terms?></a></li>
-          <li><a href="#"><?=$privacy?></a></li>
+          <li><a href="<?=$home?>contact"><?=$contact?></a></li>
+          <li><a href="<?=$home?>sitemap"><?=$sitemap?></a></li>
+          <li><a href="<?=$home?>terms_and_condition"><?=$terms?></a></li>
+          <li><a href="<?=$home?>privacy"><?=$privacy?></a></li>
         </ul>
         <span style="padding-top:2px;"><?=$copyright?></span>
       </div>
@@ -60,6 +60,16 @@
     $(this).children('.sub-nav2').addClass('hover');
   })
   $('.mid').mouseover(function(){
+    $('.sub-nav').removeClass('hover');
+    $('.sub-nav2').removeClass('hover');
+    $('.navi').removeClass('hover');
+  })
+  $('.mid3').mouseover(function(){
+    $('.sub-nav').removeClass('hover');
+    $('.sub-nav2').removeClass('hover');
+    $('.navi').removeClass('hover');
+  })
+  $('.mid4').mouseover(function(){
     $('.sub-nav').removeClass('hover');
     $('.sub-nav2').removeClass('hover');
     $('.navi').removeClass('hover');

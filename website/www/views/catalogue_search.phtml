@@ -1,44 +1,107 @@
-<div class="mid">
+<div class="mid4">
   <div class="bottom">
     <div class="locate wrap">
       <span class="content"><?=$navi3?> > <?=$subnavi9?></span>
     </div>
   </div>
   <div class="wrap">
-    <div class="performance">
-        <div class="top">
-          <div class="wrap2">
-              <div class="tit">
+    <?php if ($curLang === 'tc'): ?>
 
-              </div>
-              <div class="pdf">
-                  <a href="" class="download"></a>
-              </div>
-          </div>
-        </div>
-          <div class="item">
-            <div class="info">
-              <div class="wrap2">
-                <div class="pic">
-                    <a href="">
-                      <!-- <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt=""> -->
-                    </a>
-                </div>
-                <div class="detail">
-                  <div class="name"><a href=""></a></div>
-                  <div class="lot">LOT: <span class="no"></span></div>
-                  <div class="estimated">
-                    估計價格：HK$ <span class="money"></span>
+      <div class="result">
+        <span>"<?=$text?>" 搜尋結果</span>
+      </div>
+      <div class="container">
+        <?php if (is_array($searchResult)): ?>
+          <?php foreach ($searchResult as $k => $v):?>
+            <div class="performance">
+
+              <?php if ($k >0 && $v['clazz_id']===$searchResult[$k-1]['clazz_id']): ?>
+
+              <?php else: ?>
+                <div class="top">
+                  <div class="wrap2">
+                    <div class="tit">
+                      <?=$v['clazz']->name_tc?>
+                    </div>
                   </div>
-                  <div class="instruction">
-                    <!-- <?php echo $v['descript_tc']; ?> -->
+                </div>
+              <?php endif; ?>
+              <div class="item">
+                <div class="info">
+                  <div class="wrap2">
+                    <div class="pic">
+                        <a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>">
+                          <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
+                        </a>
+                    </div>
+                    <div class="detail">
+                      <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
+                      <div class="lot">LOT: <span class="no"><?=$v['num']?></span></div>
+                      <div class="estimated">
+                        估計價格：HK$ <span class="money"><?=$v['prize_en']?></span>
+                      </div>
+                      <div class="instruction">
+                        <?php echo $v['descript_tc']; ?>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-      </div>
+          <?php endforeach;?>
 
+        <?php endif; ?>
+      </div>
+    <?php else: ?>
+
+
+            <div class="result">
+              <span>Search Result of "<?=$text?>"</span>
+            </div>
+            <div class="container">
+              <?php if (is_array($searchResult)): ?>
+                <?php foreach ($searchResult as $k => $v):?>
+                  <div class="performance">
+
+                    <?php if ($k >0 && $v['clazz_id']===$searchResult[$k-1]['clazz_id']): ?>
+
+                    <?php else: ?>
+                      <div class="top">
+                        <div class="wrap2">
+                          <div class="tit">
+                            <?=$v['clazz']->name_en?>
+                          </div>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+                    <div class="item">
+                      <div class="info">
+                        <div class="wrap2">
+                          <div class="pic">
+                              <a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>">
+                                <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
+                              </a>
+                          </div>
+                          <div class="detail">
+                            <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
+                            <div class="lot">LOT: <span class="no"><?=$v['num']?></span></div>
+                            <div class="estimated">
+                              ESTIMATE PRICE：HK$ <span class="money"><?=$v['prize_en']?></span>
+                            </div>
+                            <div class="instruction">
+                              <?php echo $v['descript_en']; ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php endforeach;?>
+
+              <?php endif; ?>
+            </div>
+
+    <?php endif; ?>
   </div>
 </div>
 <script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>

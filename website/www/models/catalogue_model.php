@@ -30,7 +30,7 @@ class Catalogue_model extends MY_Model {
         }else{
           $query = $this->db->where('parent_id', 1)->order_by('sort desc, id asc')->limit(1)->get($this->table);
           $arr = $query->row();
-          var_dump($arr);
+          // var_dump($arr);
           $query = $this->db->where('clazz_id', $arr->id)->limit($size, $limitStart)->get($this->table2);
           $num = $this->db->where('clazz_id', $arr->id)->count_all_results($this->table2);
         }
@@ -107,8 +107,17 @@ class Catalogue_model extends MY_Model {
      * @return [type] [description]
      */
     public function searchText($text) {
-        $query = $this->db->like('num', $text)->or_like('title_en', $text)->or_like('title_tc', $text)->get($this->table2);
-        $list = $query->result_array();
+        if(!empty($text)){
+          $query = $this->db->like('num', $text)->or_like('title_en', $text)->or_like('title_tc', $text)->order_by('sort desc, id asc')->get($this->table2);
+          $list = $query->result_array();
+          foreach ($list as $k => &$v) {
+            $query = $this->db->where('id', $v['clazz_id'])->get($this->table);
+            $list2 = $query->row();
+            $v['clazz'] = $list2;
+          }
+        }else{
+          $list = '';
+        }
         return $list;
     }
 
