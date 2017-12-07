@@ -1,17 +1,26 @@
 <div class="mid4 terms">
   <div class="bottom">
     <div class="locate wrap">
-      <span class="content"><?=$sitemap?></span>
+      <span class="content"><?=$terms?></span>
     </div>
   </div>
   <div class="wrap">
       <div class="container" style="border:0">
-        <div class="tit">
-          <?=$tandc->title_tc?>
-        </div>
-        <div class="contant">
-          <?=$tandc->content_tc?>
-        </div>
+        <?php if ($curLang==='tc'): ?>
+          <div class="tit">
+            <?=$tandc->title_tc?>
+          </div>
+          <div class="contant">
+            <?=$tandc->content_tc?>
+          </div>
+        <?php else: ?>
+          <div class="tit">
+            <?=$tandc->title_en?>
+          </div>
+          <div class="contant">
+            <?=$tandc->content_en?>
+          </div>
+        <?php endif; ?>
       </div>
   </div>
 </div>
