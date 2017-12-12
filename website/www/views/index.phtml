@@ -23,8 +23,8 @@
       <div class="wrap">
         <?php if ($curLang === 'tc'): ?>
         <div class="head">
-          <div class="tit"><a href="#">最新動態</a></div>
-          <div class="more"><a href="#">Read More</a></div>
+          <div class="tit"><a href="<?=$home?>auction">最新動態</a></div>
+          <div class="more"><a href="<?=$home?>auction">Read More</a></div>
         </div>
         <div class="content">
           <div class="pic">
@@ -36,13 +36,13 @@
             <span class="tit"><?php echo $newcontent->title_tc; ?></span>
             <p class="time"><?php echo date("M/d/Y", $newcontent->create_time); ?></p>
             <p class="cont"><?php echo $newcontent->descript_tc?></p>
-            <span class="detail"><a href="/auction">詳情</a></span>
+            <span class="detail"><a href="<?=$home?>auction">詳情</a></span>
           </div>
         </div>
         <?php else: ?>
           <div class="head">
-            <div class="tit"><a href="#">NEWS</a></div>
-            <div class="more"><a href="#">Read More</a></div>
+            <div class="tit"><a href="<?=$home?>auction">NEWS</a></div>
+            <div class="more"><a href="<?=$home?>auction">Read More</a></div>
           </div>
           <div class="content">
             <div class="pic">
@@ -54,7 +54,7 @@
               <span class="tit"><?php echo $newcontent->title_en; ?></span>
               <p class="time"><?php echo date("M/d/Y", $newcontent->create_time); ?></p>
               <p class="cont"><?php echo $newcontent->descript_en?></p>
-              <span class="detail"><a href="/auction">DETAILS</a></span>
+              <span class="detail"><a href="<?=$home?>auction">DETAILS</a></span>
             </div>
           </div>
         <?php endif; ?>
@@ -67,16 +67,20 @@
       <div class="product1">
         <div class="wrap">
           <div class="head">
-            <div class="tit"><a href=""><?php echo $items['name_tc'] ?></a></div>
-            <div class="more"><a href="">Read More</a></div>
+            <div class="tit"><a href="<?=$home?>catalogue?cid=<?php echo $items['id']?>"><?php echo $items['name_tc'] ?></a></div>
+            <div class="more"><a href="<?=$home?>catalogue?cid=<?php echo $items['id']?>">Read More</a></div>
           </div>
           <?php foreach ($items['pic_content'] as $item): ?>
           <div class="item cur">
             <div class="img">
               <?php if(strpos($item['pic'],',')): ?>
-                <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+                <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
+                  <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+                </a>
               <?php else: ?>
-                <img src="<?php echo $item['pic'] ?>" alt="">
+                <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
+                  <img src="<?php echo $item['pic'] ?>" alt="">
+                </a>
               <?php endif; ?>
             </div>
             <div class="detail">
@@ -103,13 +107,21 @@
       <div class="product1">
         <div class="wrap">
           <div class="head">
-            <div class="tit"><a href=""><?php echo $items['name_en'] ?></a></div>
-            <div class="more"><a href="">Read More</a></div>
+            <div class="tit"><a href="<?=$home?>catalogue?cid=<?php echo $items['id']?>"><?php echo $items['name_en'] ?></a></div>
+            <div class="more"><a href="<?=$home?>catalogue?cid=<?php echo $items['id']?>">Read More</a></div>
           </div>
           <?php foreach ($items['pic_content'] as $item): ?>
           <div class="item cur">
             <div class="img">
-              <img src="<?php echo strstr($item['pic'], ',', TRUE);  ?>" alt="">
+              <?php if(strpos($item['pic'],',')): ?>
+                <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
+                  <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+                </a>
+              <?php else: ?>
+                <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
+                  <img src="<?php echo $item['pic'] ?>" alt="">
+                </a>
+              <?php endif; ?>
             </div>
             <div class="detail">
               <div class="name">
@@ -119,7 +131,7 @@
                 LOT : <span class="no"><?php echo $item['num']; ?></span>
               </div>
               <div class="estimated">
-                估計價格：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
+                ESTIMATE PRICE：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
               </div>
               <div class="instruction">
                 <?php echo $item['descript_en']; ?>

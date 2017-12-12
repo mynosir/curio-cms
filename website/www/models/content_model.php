@@ -29,7 +29,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function latest() {
-        $query = $this->db->where('clazz_id', 4)->get($this->table);
+        $query = $this->db->where('id', 1)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -39,7 +39,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function buy() {
-        $query = $this->db->where('clazz_id', 5)->get($this->table);
+        $query = $this->db->where('id', 2)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -48,7 +48,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function sell() {
-        $query = $this->db->where('clazz_id', 6)->get($this->table);
+        $query = $this->db->where('id', 3)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -57,7 +57,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function about() {
-        $query = $this->db->where('clazz_id', 7)->get($this->table);
+        $query = $this->db->where('id', 4)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -66,7 +66,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function contact() {
-        $query = $this->db->where('clazz_id', 8)->get($this->table);
+        $query = $this->db->where('id', 5)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -75,7 +75,7 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function tandc() {
-        $query = $this->db->where('clazz_id', 10)->get($this->table);
+        $query = $this->db->where('id', 6)->get($this->table);
         $row = $query->row();
         return $row;
     }
@@ -84,7 +84,16 @@ class Content_model extends MY_Model {
      * @return [type] [description]
      */
     public function privacy() {
-        $query = $this->db->where('clazz_id', 11)->get($this->table);
+        $query = $this->db->where('id', 7)->get($this->table);
+        $row = $query->row();
+        return $row;
+    }
+    /**
+     * 查询注解
+     * @return [type] [description]
+     */
+    public function glossary() {
+        $query = $this->db->where('id', 8)->get($this->table);
         $row = $query->row();
         return $row;
     }

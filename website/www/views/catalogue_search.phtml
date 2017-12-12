@@ -30,9 +30,15 @@
                 <div class="info">
                   <div class="wrap2">
                     <div class="pic">
-                        <a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>">
+                      <?php if(strpos($v['pic'],',')): ?>
+                        <a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>">
                           <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
                         </a>
+                      <?php else: ?>
+                        <a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>">
+                          <img src="<?php echo $v['pic'] ?>" alt="">
+                        </a>
+                      <?php endif; ?>
                     </div>
                     <div class="detail">
                       <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
@@ -78,9 +84,15 @@
                       <div class="info">
                         <div class="wrap2">
                           <div class="pic">
-                              <a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>">
+                            <?php if(strpos($v['pic'],',')): ?>
+                              <a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>">
                                 <img src="<?php echo strstr($v['pic'], ',', TRUE) ?>" alt="">
                               </a>
+                            <?php else: ?>
+                              <a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>">
+                                <img src="<?php echo $v['pic'] ?>" alt="">
+                              </a>
+                            <?php endif; ?>
                           </div>
                           <div class="detail">
                             <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
