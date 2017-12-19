@@ -17,7 +17,7 @@
 if($_SERVER['HTTP_HOST']=='dev.curio.com') {
     $config['base_url'] = 'http://dev.curio.com/';
 } else {
-    $config['base_url'] = 'http://curio.kakaday.com/1';
+    $config['base_url'] = 'http://curio.kakaday.com/';
 }
 
 /*
