@@ -143,10 +143,10 @@ $(function() {
             alert('请选择分类！');
             return;
         }
-        if(pic == '') {
-            alert('请上传封面图！');
-            return;
-        }
+        // if(pic == '') {
+        //     alert('请上传封面图！');
+        //     return;
+        // }
         if(content_en == '') {
             alert('请输入正文内容（en）!');
             return;
