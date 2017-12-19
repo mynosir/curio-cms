@@ -25,7 +25,11 @@ $(function() {
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
                     }
-                    listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
+                    if(list[i]['pic'] == '') {
+                      listTpl += '<td>/（/）</td>';
+                    } else{
+                      listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
+                    }
                     listTpl += '<td>' + list[i]['create_user'] + '</td>';
                     listTpl += '<td>' + list[i]['create_time'] + '</td>';
                     listTpl += '<td><button type="button" class="btn btn-sm btn-primary js_edit" data-id="' + list[i]['id'] + '">修改</button>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-danger js_delete" data-id="' + list[i]['id'] + '">删除</button></td>';
