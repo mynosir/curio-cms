@@ -25,8 +25,8 @@ $(function() {
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
                     }
-                    if(list[i]['pic'] == '') {
-                      listTpl += '<td>/（/）</td>';
+                    if(!list[i]['pic']) {
+                      listTpl += '<td>/</td>';
                     } else{
                       listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
                     }
