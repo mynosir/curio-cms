@@ -15,11 +15,11 @@ class Category_model extends MY_Model {
 
 
     /**
-     * 查询整个菜单数据
+     * 查询往届拍卖菜单
      * @return [type] [description]
      */
     public function search() {
-        $query = $this->db->where('parent_id', '0')->order_by('sort desc, id asc')->get($this->table);
+        $query = $this->db->where('parent_id', '0')->order_by('sort desc, id desc')->get($this->table);
         $list = $query->result_array();
         foreach ($list as $k => &$v) {
             $id = $v['id'];
@@ -34,11 +34,11 @@ class Category_model extends MY_Model {
     }
 
     /**
-     * 查询父菜单数据
+     * 查询往届拍卖菜单
      * @return [type] [description]
      */
     public function searchParent() {
-        $query = $this->db->where('parent_id', '0')->order_by('sort desc, id asc')->get($this->table);
+        $query = $this->db->where('parent_id', '0')->order_by('sort desc, id desc')->get($this->table);
         $list = $query->result_array();
         return $list;
     }
