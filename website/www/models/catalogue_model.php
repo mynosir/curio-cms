@@ -51,12 +51,17 @@ class Catalogue_model extends MY_Model {
      * @return [type] [description]
      */
     public function getcid() {
-        $query = $this->db->where('parent_id', 0)->order_by('sort desc, id asc')->limit(1)->get($this->table);
-        $arr = $query->row();
-        $id = $arr->id;
-        $query = $this->db->where('parent_id', $id)->order_by('sort desc, id asc')->limit(1)->get($this->table);
-        $arr = $query->row();
-        $id = $arr->id;
+        // $query = $this->db->where('parent_id', 0)->order_by('sort desc, id desc')->limit(1)->get($this->table);
+        // $arr = $query->row();
+        // $id = $arr->id;
+        // $query = $this->db->where('parent_id', $id)->order_by('sort desc, id asc')->limit(1)->get($this->table);
+        // $arr = $query->row();
+        // $id = $arr->id;
+        // if(!isset($id)){
+          $query = $this->db->where('parent_id !=', 0)->order_by('sort desc, id asc')->limit(1)->get($this->table);
+          $arr = $query->row();
+          $id = $arr->id;
+        // }
         return $id;
     }
 
