@@ -22,13 +22,13 @@
                 <?php echo $category['name_tc']?>
               </div>
               <?php if(isset($category['sub_nav'])): ?>
-              <?php foreach ($category['sub_nav'] as $subnav): ?>
-              <div class="sub-navi">
-                <a href="<?=$home?>catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
-                  <?php echo $subnav['name_tc']?>
-                </a>
-              </div>
-              <?php endforeach; ?>
+                <?php foreach ($category['sub_nav'] as $subnav): ?>
+                  <div class="sub-navi">
+                    <a href="<?=$home?>catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
+                      <?php echo $subnav['name_tc']?>
+                    </a>
+                  </div>
+                <?php endforeach; ?>
               <?php endif; ?>
             </div>
           <?php endforeach; ?>
@@ -39,13 +39,13 @@
                 <?php echo $category['name_en']?>
               </div>
               <?php if(isset($category['sub_nav'])): ?>
-              <?php foreach ($category['sub_nav'] as $subnav): ?>
-              <div class="sub-navi">
-                <a href="<?=$home?>catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
-                  <?php echo $subnav['name_en']?>
-                </a>
-              </div>
-              <?php endforeach; ?>
+                <?php foreach ($category['sub_nav'] as $subnav): ?>
+                  <div class="sub-navi">
+                    <a href="<?=$home?>catalogue?cid=<?php echo $subnav['id']?>" class="sub-tit" data-cid="<?php echo $subnav['id']?>">
+                      <?php echo $subnav['name_en']?>
+                    </a>
+                  </div>
+                <?php endforeach; ?>
               <?php endif; ?>
             </div>
           <?php endforeach; ?>
@@ -80,9 +80,9 @@
       <div class="container container2">
           <?php if(count($notice)>0):?>
             <?php if ($curLang === 'tc'): ?>
-            <div class="notice">
-              <a href="<?php echo $notice[0]['url_tc']?>"><span><?php echo $notice[0]['content_tc']?></span></a>
-            </div>
+              <div class="notice">
+                <a href="<?php echo $notice[0]['url_tc']?>"><span><?php echo $notice[0]['content_tc']?></span></a>
+              </div>
             <?php else: ?>
               <div class="notice">
                 <a href="<?php echo $notice[0]['url_en']?>"><span><?php echo $notice[0]['content_en']?></span></a>
@@ -95,14 +95,14 @@
           <?php if(count($catalogueParent)>0):?>
             <div class="top">
               <div class="wrap2">
-                  <div class="tit">
-                    <?php if ($curLang === 'tc'): ?>
-                      <?php echo $catalogueParent->name_tc; ?>
-                    <?php else: ?>
-                      <?php echo $catalogueParent->name_en; ?>
-                    <?php endif; ?>
-                  </div>
-                  <?php if(!empty($catalogueParent->pdf)):?>
+                <div class="tit">
+                  <?php if ($curLang === 'tc'): ?>
+                    <?php echo $catalogueParent->name_tc; ?>
+                  <?php else: ?>
+                    <?php echo $catalogueParent->name_en; ?>
+                  <?php endif; ?>
+                </div>
+                <?php if(!empty($catalogueParent->pdf)):?>
                   <div class="pdf">
                       <a href="<?php echo $catalogueParent->pdf; ?>" class="download"></a>
                   </div>
@@ -130,7 +130,11 @@
                       <div class="name"><a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_tc']; ?></a></div>
                       <div class="lot">LOT: <span class="no"><?php echo $v['num']; ?></span></div>
                       <div class="estimated">
-                        估計價格：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                        <?php if($v['prize_tc']): ?>
+                          成交價（含佣金）：HK$ <span class="money"><?php echo $v['prize_tc']; ?></span>
+                        <?php else: ?>
+                          估計價格：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                        <?php endif; ?>
                       </div>
                       <div class="instruction">
                         <?php echo $v['descript_tc']; ?>
@@ -163,7 +167,11 @@
                       <div class="name"><a href="<?=$home?>catalogue/detail?id=<?php echo $v['id']?>"><?php echo $v['title_en']; ?></a></div>
                       <div class="lot">LOT: <span class="no"><?php echo $v['num']; ?></span></div>
                       <div class="estimated">
-                        ESTIMATE PRICE：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                        <?php if($v['prize_tc']): ?>
+                          PRICE (included premium):HK$ <span class="money"><?php echo $v['prize_tc']; ?></span>
+                        <?php else: ?>
+                          ESTIMATE PRICE：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                        <?php endif; ?>
                       </div>
                       <div class="instruction">
                         <?php echo $v['descript_tc']; ?>

@@ -44,7 +44,11 @@
                       <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
                       <div class="lot">LOT: <span class="no"><?=$v['num']?></span></div>
                       <div class="estimated">
-                        估計價格：HK$ <span class="money"><?=$v['prize_en']?></span>
+                        <?php if($v['prize_tc']): ?>
+                          成交價（含佣金）：HK$ <span class="money"><?php echo $v['prize_tc']; ?></span>
+                        <?php else: ?>
+                          估計價格：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                        <?php endif; ?>
                       </div>
                       <div class="instruction">
                         <?php echo $v['descript_tc']; ?>
@@ -98,7 +102,11 @@
                             <div class="name"><a href="<?=$home?>catalogue/detail?id=<?=$v['id']?>"></a></div>
                             <div class="lot">LOT: <span class="no"><?=$v['num']?></span></div>
                             <div class="estimated">
-                              ESTIMATE PRICE：HK$ <span class="money"><?=$v['prize_en']?></span>
+                              <?php if($v['prize_tc']): ?>
+                                PRICE (included premium):HK$ <span class="money"><?php echo $v['prize_tc']; ?></span>
+                              <?php else: ?>
+                                ESTIMATE PRICE：HK$ <span class="money"><?php echo $v['prize_en']; ?></span>
+                              <?php endif; ?>
                             </div>
                             <div class="instruction">
                               <?php echo $v['descript_en']; ?>

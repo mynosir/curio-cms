@@ -33,7 +33,11 @@
           <div class="name"><?php echo $catalogueDetail->title_tc?></div>
           <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
           <div class="estimated">
-            估計價格：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
+            <?php if($catalogueDetail->prize_tc): ?>
+              成交價（含佣金）：HK$ <span class="money"><?php echo $catalogueDetail->prize_tc; ?></span>
+            <?php else: ?>
+              估計價格：HK$ <span class="money"><?php echo $catalogueDetail->prize_en; ?></span>
+            <?php endif; ?>
           </div>
           <div class="instruction">
             <?php echo $catalogueDetail->descript_tc?>
@@ -42,7 +46,11 @@
           <div class="name"><?php echo $catalogueDetail->title_en?></div>
           <div class="lot">LOT: <span class="no"><?php echo $catalogueDetail->num?></span></div>
           <div class="estimated">
-            ESTIMATE PRICE：HK$ <span class="money"><?php echo $catalogueDetail->prize_en?></span>
+            <?php if($catalogueDetail->prize_tc): ?>
+              PRICE (included premium):HK$ <span class="money"><?php echo $catalogueDetail->prize_tc; ?></span>
+            <?php else: ?>
+              ESTIMATE PRICE：HK$ <span class="money"><?php echo $catalogueDetail->prize_en; ?></span>
+            <?php endif; ?>
           </div>
           <div class="instruction">
             <?php echo $catalogueDetail->descript_en?>

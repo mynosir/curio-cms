@@ -91,7 +91,11 @@
                 LOT : <span class="no"><?php echo $item['num']; ?></span>
               </div>
               <div class="estimated">
-                估計價格：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
+                <?php if($item['prize_tc']): ?>
+                  成交價（含佣金）：HK$ <span class="money"><?php echo $item['prize_tc']; ?></span>
+                <?php else: ?>
+                  估計價格：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
+                <?php endif; ?>
               </div>
               <div class="instruction">
                 <?php echo $item['descript_tc']; ?>
@@ -131,7 +135,11 @@
                 LOT : <span class="no"><?php echo $item['num']; ?></span>
               </div>
               <div class="estimated">
-                ESTIMATE PRICE：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
+                <?php if($item['prize_tc']): ?>
+                  PRICE (included premium):HK$ <span class="money"><?php echo $item['prize_tc']; ?></span>
+                <?php else: ?>
+                  ESTIMATE PRICE：HK$ <span class="money"><?php echo $item['prize_en']; ?></span>
+                <?php endif; ?>
               </div>
               <div class="instruction">
                 <?php echo $item['descript_en']; ?>
