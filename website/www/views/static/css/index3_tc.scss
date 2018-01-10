@@ -111,8 +111,8 @@ body {
         list-style: none;
         z-index: 99;
         background-color: white;
-        border-left: 1px solid #979797;
-        border-right: 1px solid #979797;
+        // border-left: 1px solid #979797;
+        // border-right: 1px solid #979797;
         &.cur, &.hover {
           display: block;
         }
@@ -166,7 +166,7 @@ body {
 
 .mid, .mid4 {
   height: auto;
-  overflow: auto;
+  overflow: hidden;
   min-height: 900px;
 }
 
@@ -744,8 +744,10 @@ body {
 .mid.mid2 .menu .nav .tit {
   background: url(../img/menu_bg.jpg) no-repeat 0px 14px;
   &.cur {
-    color: #b8262b;
     background: url(../img/menu_bg_cur.jpg) no-repeat 0px 14px;
+    a{
+      color: #b8262b;
+    }
   }
 }
 
