@@ -198,7 +198,8 @@ body {
     width: 239px;
     float: left;
     .nav .tit {
-      font-size: 16px;
+      cursor:pointer;
+      font-size: 14px;
       color: #191919;
       font-weight: bold;
       width: 239px;
@@ -266,7 +267,8 @@ body {
     float: left;
     .nav {
       .tit {
-        font-size: 16px;
+        cursor: pointer;
+        font-size: 14px;
         color: #191919;
         font-weight: bold;
         width: 321px;
@@ -554,22 +556,25 @@ body {
       width: 100%;
     }
     .gallery-thumbs {
-      height: 70px;
+      height: 81px;
       box-sizing: border-box;
-      padding: 10px 0;
+      padding: 12px 0;
+      border-top: 1px solid #BDBDBF;
+      border-bottom: 1px solid #BDBDBF;
       position: relative;
-      top: -101px;
+      top: -81px;
+      background-color: rgba(255, 255, 255, 0.5);
       .swiper-slide {
-        width: 54px;
-        height: 54px;
-        opacity: 1;
+        width: 55px;
+        height: 55px;
+        opacity: .8;
       }
       .swiper-slide-active {
         opacity: 1;
-        width: 70px;
-        height: 70px;
+        width: 55px;
+        height: 55px;
         position: relative;
-        top: -8px;
+        // top: -8px;
       }
     }
   }
