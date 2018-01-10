@@ -97,7 +97,7 @@ body {
       .header .nav .navi .sub-nav.cur, .header .nav .navi .sub-nav.hover {
         display: block; }
       .header .nav .navi .sub-nav li {
-        border-top: 1px solid #979797;
+        border-bottom: 1px solid #979797;
         padding: 18px 0px;
         text-align: center; }
       .header .nav .navi .sub-nav a {
