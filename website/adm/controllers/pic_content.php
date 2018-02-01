@@ -137,6 +137,9 @@ class Pic_content extends MY_Controller {
                 $id = $this->get_request('id');
                 $result = $this->pic_content_model->delete($id);
                 break;
+            case 'addExl':
+                $result = $this->pic_content_model->addExl();
+                break;
         }
         echo json_encode($result);
     }

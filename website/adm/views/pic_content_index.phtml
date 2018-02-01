@@ -7,6 +7,9 @@
         <button type="submit" class="btn btn-primary">搜索</button>
         |
         <button type="button" class="btn btn-success js_addContent"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新建</button>
+        |
+        <!-- <button type="button" class="btn btn-success js_addExl"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>导入EXEL</button> -->
+        <input type="file" value="" multiple="false" id="js_addExl">
     </form>
 </div>
 <div class="table-responsive">
@@ -18,3 +21,33 @@
 </nav>
 
 <script src="<?php echo $resource_url; ?>js/system/pic_content.js"></script>
+<script src="<?php echo $resource_url; ?>js/jquery.uploadifive.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#js_addExl').uploadifive({
+            fileType: 'application/vnd.ms-excel',
+            multi: false,
+            removeCompleted: false,
+            buttonText: '导入exel',
+            fileSizeLimit: '100MB',
+            method: 'post',
+            buttonClass: 'signup-upload-file',
+            fileObjName: 'uploadfile',
+            uploadScript: config.apiServer + 'pic_content/post',
+            formData: {
+                'actionxm': 'addExl'
+            },
+            onUploadComplete: function(file, data, response) {
+                var result = $.parseJSON(data);
+                if(result['status']==0) {
+                    // $('.js_pdf').val(result['name']);
+                    // $('.js_pdf_prev').attr('href', result['name']);
+                    // $('.js_pdf_prev').html(result['name']);
+                }
+            },
+            onError: function(errorType) {
+                alert('The error was: ' + errorType);
+            }
+        });
+    })
+</script>

@@ -23,16 +23,17 @@ class Pic_content_model extends MY_Model {
      * @param  integer $clazz_id [description]
      * @return [type]            [description]
      */
-    public function getList($page=1, $size=20, $clazz_id=0) {
+    public function getList($page=1, $size=20, $keyword, $clazz_id=0) {
         $limitStart = ($page - 1) * $size;
         if($clazz_id > 0) {
             $where = ' where clazz_id = ' . $clazz_id;
+        } else if($keyword) {
+            $where = ' where title_tc like \'%'. $keyword .'%\' or title_en like \'%'. $keyword .'%\' ';
         } else {
             $where = ' where 1=1 ';
         }
-        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by sort desc, id desc limit ' . $limitStart . ', ' . $size);
+        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . ' order by sort desc, id asc limit ' . $limitStart . ', ' . $size);
         $result = $query->result_array();
-
         $this->load->model('pic_clazz_model');
         $CI = &get_instance();
         foreach($result as &$item) {
@@ -100,6 +101,18 @@ class Pic_content_model extends MY_Model {
         $this->db->where('id', $id)->delete($this->table);
         $result['status'] = 0;
         $result['msg'] = '删除成功';
+        return $result;
+    }
+
+
+    /**
+     * 导入Exel数据
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function addExl($id) {
+        $result['status'] = 0;
+        $result['msg'] = '导入成功';
         return $result;
     }
 

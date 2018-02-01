@@ -8,7 +8,7 @@ $(function() {
                     actionxm: 'getList',
                     page: !p ? 1 : p,
                     size: 20,
-                    keyword: $('#title_en').val()
+                    keyword: $('#title').val()
                 }
             };
             var callback = function(res) {
@@ -88,6 +88,32 @@ $(function() {
             json.callback = callback;
             json.errorCall = errorCall;
             Utils.requestData(json);
+        },
+        addExl: function(id) {
+            var json = {
+                api: config.apiServer + 'pic_content/post',
+                type: 'post',
+                data: {
+                    actionxm: 'addExl',
+                    id: id
+                }
+            };
+            var callback = function(res) {
+                if(res.status==0) {
+                    alert('导入成功！');
+                    var p = $('.js_page li[class=active] a').data('page');
+                    page.init(p);
+                } else {
+                    alert(res.msg);
+                }
+            };
+            var errorCall = function() {
+                $('.alert-warning').text('系统繁忙，请稍后再试').show();
+                setTimeout("$('.alert').hide()", 3000);
+            };
+            json.callback = callback;
+            json.errorCall = errorCall;
+            Utils.requestData(json);
         }
     };
 
@@ -111,6 +137,9 @@ $(function() {
     });
     $('body').delegate('.js_pageItem', 'click', function(e) {
         var p = $(e.currentTarget).data('page');
+        page.init(p);
+    });
+    $('body').delegate('.js_addExl', 'click', function(e) {
         page.init(p);
     });
 });
