@@ -142,4 +142,31 @@ $(function() {
     $('body').delegate('.js_addExl', 'click', function(e) {
         page.init(p);
     });
+
+    $('#js_addExl').uploadifive({
+        fileType: 'application/vnd.ms-excel',
+        multi: false,
+        removeCompleted: true,
+        buttonText: '导入exel',
+        fileSizeLimit: '100MB',
+        method: 'post',
+        buttonClass: 'signup-upload-file',
+        fileObjName: 'uploadExl',
+        uploadScript: config.apiServer + 'pic_content/post',
+        formData: {
+            'actionxm': 'addExl'
+        },
+        onUploadComplete: function(file, data, response) {
+            var result = $.parseJSON(data);
+            if(result['status']==0) {
+                alert('导入成功！');
+                var p = $('.js_page li[class=active] a').data('page');
+                page.init(p);
+            }
+        },
+        onError: function(errorType) {
+            alert('The error was: ' + errorType);
+        }
+    });
+
 });

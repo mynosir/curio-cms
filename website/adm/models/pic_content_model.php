@@ -110,7 +110,8 @@ class Pic_content_model extends MY_Model {
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function addExl($id) {
+    public function addExl($data) {
+        $this->db->insert_batch($this->table, $data);
         $result['status'] = 0;
         $result['msg'] = '导入成功';
         return $result;
