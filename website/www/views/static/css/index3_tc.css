@@ -297,6 +297,12 @@ body {
     margin-top: 22px; }
   .mid .container3 .item .detail .date {
     margin-top: 15px; }
+  .mid .container3 #cataRequest {
+    margin-top: 100px; }
+    .mid .container3 #cataRequest #name, .mid .container3 #cataRequest #email, .mid .container3 #cataRequest #tel {
+      margin-top: 15px; }
+    .mid .container3 #cataRequest #submit {
+      margin-top: 15px; }
 .mid .container2 {
   margin-top: 70px;
   position: relative;

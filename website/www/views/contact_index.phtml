@@ -24,7 +24,93 @@
             <?php echo $contact1->content_tc; ?>
           <?php else: ?>
             <?php echo $contact1->content_en; ?>
-          <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($curLang === 'tc'): ?>
+          <div id="cataRequest">
+              <h4>如欲索取拍品圖錄，請填寫以下表格。我們會盡快與閣下聯絡並作進一步安排。</h4>
+              <form class="form-horizontal">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="name">姓名</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="email">电子邮箱</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="tel">联系电话</label>
+                    <input type="text" class="form-control" id="tel" placeholder="Phone">
+                  </div>
+                </div>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1"> 古董級普洱茶及佳茗專場
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox2" value="option2"> 茶道·香道·花器專場
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox3" value="option3"> 珍稀相機專場
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox3" value="option3"> 補品及佳釀專場
+                </label>
+                <div class="row">
+                  <div class="col-md-4">
+                    <button type="submit" id="submit" class="btn btn-primary">傳送</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+
+        <?php else: ?>
+          <div id="cataRequest">
+              <h4>Thank you for your interest in our Auction. If you would like to get our Auction Catalogue, please fill out the form below. We will contact you soon.</h4>
+              <form class="form-horizontal">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="name">name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="email">email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only" for="tel">phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone">
+                  </div>
+                </div>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1"> Vintage Pu-er Tea Auction
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox2" value="option2"> Tea Wares & Agarwood Auction
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox3" value="option3"> Photographical Auction
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" id="inlineCheckbox3" value="option3"> Delicacies & Wine Auction
+                </label>
+                <div class="row">
+                  <div class="col-md-4">
+                    <button type="submit" id="submit" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+
+        <?php endif; ?>
+
       </div>
     </div>
 
@@ -46,3 +132,4 @@
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCalpFBYzyuaPac83svQNjQg-NqpoaOJfs&callback=initMap">
   </script>
+  <script src="<?php echo $resource_url; ?>js/contact.js"></script>

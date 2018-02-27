@@ -384,6 +384,18 @@ body {
         margin-top: 15px;
       }
     }
+    #cataRequest {
+      margin-top: 100px;
+      #name, #email, #tel {
+        // width: 100px
+        // background-color: grey
+        margin-top: 15px;
+      }
+      #submit {
+        margin-top: 15px;
+      }
+    }
+
   }
   .container2 {
     margin-top: 70px;
