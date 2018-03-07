@@ -120,3 +120,18 @@ alter table `curio_content` add `pdf` varchar(255) comment 'pdf';
 alter table `curio_pic_clazz` add `pdf` varchar(255) comment 'pdf';
 alter table `curio_pic_clazz` add `create_time` int comment '创建时间';
 alter table `curio_pic_clazz` add `update_time` int comment '更新时间';
+
+-- qoohj 20180307
+-- 添加菜单栏批量上传
+INSERT INTO `sys_menu` VALUES (7,0,'批量上传图片','/adm/addpics',5,'addpics',1511833914,1512183403,1,1);
+
+-- qoohj 20180307
+-- 添加索取图录表
+create table `curio_cata_request` (
+    `id` int not null auto_increment comment '自增id',
+    `name` varchar(255) comment '名称',
+    `email` varchar(255) comment '邮箱',
+    `phone` varchar(255) comment '联系方式',
+    `category` int(255) comment '类别',
+    primary key(`id`)
+) engine = myisam character set utf8 collate utf8_general_ci comment = '索取图录表';

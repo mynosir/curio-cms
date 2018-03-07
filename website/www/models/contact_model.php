@@ -7,11 +7,11 @@
  */
 class Contact_model extends MY_Model {
 
-    private $table = 'curio_cata_request';
-    private $fields = 'id, name, email, phone';
 
     public function __construct() {
         parent::__construct();
+        $this->table = 'curio_cata_request';
+        $this->fields = 'id, name, email, phone, category';
         // $this->loginInfo = $this->session->userdata('loginInfo');
     }
 
@@ -21,35 +21,12 @@ class Contact_model extends MY_Model {
      * @return [type]       [description]
      */
     public function cataRequest($data) {
-      // $data = array(
-      //     'name'      => trim($params['name']),
-      //     'email'         => trim($params['email']),
-      //     'phone'     => trim($params['phone']),
-      // );
 
-      // // 校验数据
-      // if(!$data['name']) {
-      //     $result['status'] = -1;
-      //     $result['msg'] = '姓名不可為空！';
-      //     return $result;
-      // }
-      // if($data['email']!='' && !preg_match('/^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$/', $data['email'])) {
-      //     $result['status'] = -1;
-      //     $result['msg'] = '邮箱格式不正确！';
-      //     return $result;
-      // }
-      // if($data['phone']!='' && !preg_match('/^1[34578]{1}\d{9}$/', $data['telephone'])) {
-      //     $result['status'] = -1;
-      //     $result['msg'] = '手机号码格式不正确！';
-      //     return $result;
-      // }
-      //
-      $this->db->insert($this->table, $data);
-      return array(
-          'status'    => 0,
-          'msg'       => '操作成功！'
-      );
-
+          $this->db->insert($this->table, $data);
+          return array(
+              'status'    => 0,
+              'msg'       => '操作成功！'
+          );
     }
 
     /**

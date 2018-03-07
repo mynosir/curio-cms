@@ -144,7 +144,7 @@ class MY_Controller extends CI_Controller {
       $my_lang = $this->uri->segment(1);
       $this->load->helper('url');
       if($my_lang != 'en' && $my_lang != 'tc'){
-        redirect($this->data['base_url'].'tc/'.$this->uri->segment(1));
+        // redirect($this->data['base_url'].'tc/'.$this->uri->segment(1));
       }
 
     }

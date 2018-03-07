@@ -386,10 +386,13 @@ body {
     }
     #cataRequest {
       margin-top: 100px;
-      #name, #email, #tel {
+      #name, #email, #phone {
         // width: 100px
         // background-color: grey
         margin-top: 15px;
+      }
+      #phone{
+        margin-bottom: 15px;          
       }
       #submit {
         margin-top: 15px;
