@@ -11,7 +11,7 @@ class Contact extends MY_Controller {
         parent::__construct();
         $this->init_head_foot();
         $this->load->library('mailer');
-        $this->mailer->setMailTemplate('email', 'haha');
+        $this->mailer->MakeMailInfo('email', 'haha', 'test');
         $res = $this->mailer->send();
         var_dump($res);
     }
