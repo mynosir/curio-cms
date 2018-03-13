@@ -132,6 +132,6 @@ create table `curio_cata_request` (
     `name` varchar(255) comment '名称',
     `email` varchar(255) comment '邮箱',
     `phone` varchar(255) comment '联系方式',
-    `category` int(255) comment '类别',
+    `category` varchar(255) comment '类别',
     primary key(`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '索取图录表';
