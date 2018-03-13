@@ -49,7 +49,7 @@ $(function() {
             }
         };
         var callback = function(res) {
-
+            alert('傳送成功！');
         };
         var errorCall = function() {
             // $('.alert-warning').text('系统繁忙，请稍后再试').show();
