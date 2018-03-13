@@ -50,9 +50,9 @@ class Contact extends MY_Controller {
             $params = $this->get_request('params');
             $result = $this->contact_model->cataRequest($params);
             if ($result['status']==0) {
-                $this->mailer->MakeMailInfo('email', 'haha', 'test');
-        	    $this->mailer->addAddress('113182191@qq.com', 'hj');
-                $res = $this->mailer->send();                
+                // $this->mailer->MakeMailInfo('email', 'haha', 'test');
+        	    // $this->mailer->addAddress('113182191@qq.com', 'hj');
+                // $res = $this->mailer->send();
             }
             break;
         }
