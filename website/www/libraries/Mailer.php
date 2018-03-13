@@ -35,7 +35,6 @@ class Mailer {
         $port                       = $CIConfig->item('mailport');
         $this->mailtemp             = $CIConfig->item('mailtemp');
         $this->Encoding             = $CIConfig->item('encoding');
-
         if($CIConfig->item('issmtp') == true) {
             $this->PHPMailer->isSMTP();
         }

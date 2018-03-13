@@ -12,8 +12,8 @@ class Contact extends MY_Controller {
         $this->init_head_foot();
         $this->load->library('mailer');
         $this->mailer->MakeMailInfo('email', 'haha', 'test');
+	$this->mailer->addAddress('113182191@qq.com', 'hj');
         $res = $this->mailer->send();
-        var_dump($res);
     }
 
 
