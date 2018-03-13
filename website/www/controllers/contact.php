@@ -11,9 +11,6 @@ class Contact extends MY_Controller {
         parent::__construct();
         $this->init_head_foot();
         $this->load->library('mailer');
-        $this->mailer->MakeMailInfo('email', 'haha', 'test');
-	$this->mailer->addAddress('113182191@qq.com', 'hj');
-        $res = $this->mailer->send();
     }
 
 
@@ -52,6 +49,11 @@ class Contact extends MY_Controller {
         //   $this->email->send();
             $params = $this->get_request('params');
             $result = $this->contact_model->cataRequest($params);
+            if ($result['status']==0) {
+                $this->mailer->MakeMailInfo('email', 'haha', 'test');
+        	    $this->mailer->addAddress('113182191@qq.com', 'hj');
+                $res = $this->mailer->send();                
+            }
             break;
         }
         echo json_encode($result);
