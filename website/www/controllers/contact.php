@@ -9,12 +9,12 @@ class Contact extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->init_head_foot();
         $this->load->library('mailer');
     }
 
 
     public function index() {
+      $this->init_head_foot();
       $this->load->model('content_model');
       $this->data['contact1'] = $this->content_model->contact();
       $this->showPage('contact_index', $this->data);
