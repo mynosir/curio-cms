@@ -468,7 +468,7 @@ body {
   color: #191919;
   letter-spacing: -0.44px;
   line-height: 40px;
-  padding-bottom: 37px; }
+  margin-bottom: 85px; }
 .mid .news .head .tit, .mid .product1 .head .tit, .mid .product2 .head .tit, .mid .product3 .head .tit {
   font-size: 28px;
   display: inline-block;
@@ -524,20 +524,22 @@ body {
   background: rgba(0, 0, 0, 0.2); }
 .mid .product1 .item, .mid .product2 .item, .mid .product3 .item {
   width: 580px;
-  height: 290px;
-  background-color: white;
+  height: auto;
   display: inline-block;
   float: left;
   margin-bottom: 20px; }
 .mid .product1 .item .img, .mid .product2 .item .img, .mid .product3 .item .img {
-  float: left;
+  display: table-cell;
+  line-height: 290px;
+  vertical-align: middle;
   width: 290px;
   height: 290px; }
 .mid .product1 .item .img img {
-  width: 290px;
-  height: 290px; }
+  width: 290px; }
+.mid .product1 .item .img.imgl img {
+  width: 290px; }
 .mid .product1 .item .detail {
-  float: left;
+  display: table-cell;
   width: 268px;
   padding-left: 22px; }
 .mid .product2 .item .detail, .mid .product3 .item .detail {
@@ -545,12 +547,12 @@ body {
   width: 268px;
   padding-left: 22px; }
 .mid .product1 .item .detail .name, .mid .product2 .item .detail .name, .mid .product3 .item .detail .name {
-  margin-top: 50px;
+  margin-top: 20px;
   font-size: 20px;
   color: #191919;
   font-weight: bold; }
 .mid .product1 .item .detail .lot, .mid .product2 .item .detail .lot, .mid .product3 .item .detail .lot {
-  margin-top: 20px; }
+  margin-top: 25px; }
 .mid .product1 .item .detail .lot, .mid .product1 .item .detail .estimated, .mid .product1 .item .detail .instruction {
   font-size: 14px;
   color: #686868; }
@@ -563,7 +565,7 @@ body {
 .mid .product1 .item .detail .instruction {
   width: 238px;
   height: 155px;
-  padding-top: 15px; }
+  padding-top: 20px; }
   .mid .product1 .item .detail .instruction p {
     position: relative;
     line-height: 20px;
@@ -581,7 +583,7 @@ body {
       /*background: linear-gradient(to right, transparent, #fff 55%);*/ }
 
 .products .product1:nth-child(1) {
-  background: url(../img/bg1.jpg) no-repeat center center #f6f6f6; }
+  background: url(../img/bg1.jpg) no-repeat center bottom #f6f6f6; }
 .products .product1:nth-child(2) {
   background-color: white; }
 .products .product1:nth-child(3) {

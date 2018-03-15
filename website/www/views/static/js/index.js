@@ -12,6 +12,10 @@ var galleryThumbs = new Swiper('.gallery-thumbs', {
 });
 // galleryTop.params.control = galleryThumbs;
 galleryThumbs.params.control = galleryTop;
+
+
+
+
 // $(function() {
 //     var page = {
 //
@@ -52,3 +56,28 @@ galleryThumbs.params.control = galleryTop;
 //
 //
 // });
+
+
+
+// console.log($('.product1 .item .img img'));
+var addH = 0,
+    addh = 0,
+    bgh;
+var img = new Image();
+var imgArr = $('.product1 .item .img img');
+for (var i = 0; i < imgArr.length; i++) {
+    // console.log(imgArr[i].height);
+    // console.log(i%2);
+    if (i%2==1) {
+        addh = imgArr[i].height>imgArr[i-1].height?imgArr[i].height:imgArr[i-1].height;
+        addh -= 290;
+        addh > 0?addh: addh = 0;
+        // console.log(addh);
+        addH += addh;
+    }
+    if(i==3) {
+        // console.log($('.products .product1:nth-child(1)').height());
+        bgh = $('.products .product1:nth-child(1)').height()+addH;
+        $('.products .product1:nth-child(1)').css('height', bgh);
+    }
+}

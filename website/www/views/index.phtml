@@ -71,15 +71,15 @@
             <div class="more"><a href="<?=$home?>catalogue?cid=<?php echo $items['id']?>">Read More</a></div>
           </div>
           <?php foreach ($items['pic_content'] as $item): ?>
-          <div class="item cur">
+          <div class="item">
             <div class="img">
               <?php if(strpos($item['pic'],',')): ?>
                 <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
-                  <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+                  <img style="width:290px;" src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
                 </a>
               <?php else: ?>
                 <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
-                  <img src="<?php echo $item['pic'] ?>" alt="">
+                  <img style="width:290px" src="<?php echo $item['pic'] ?>" alt="">
                 </a>
               <?php endif; ?>
             </div>
@@ -119,11 +119,11 @@
             <div class="img">
               <?php if(strpos($item['pic'],',')): ?>
                 <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
-                  <img src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
+                  <img style="width:290px" src="<?php echo strstr($item['pic'], ',', TRUE) ?>" alt="">
                 </a>
               <?php else: ?>
                 <a href="<?=$home?>catalogue/detail?id=<?php echo $item['id']?>">
-                  <img src="<?php echo $item['pic'] ?>" alt="">
+                  <img style="width:290px" src="<?php echo $item['pic'] ?>" alt="">
                 </a>
               <?php endif; ?>
             </div>

@@ -199,7 +199,7 @@ body {
     float: left;
     .nav .tit {
       cursor:pointer;
-      font-size: 14px;
+      font-size: 16px;
       color: #191919;
       font-weight: bold;
       width: 239px;
@@ -267,8 +267,7 @@ body {
     float: left;
     .nav {
       .tit {
-        cursor: pointer;
-        font-size: 14px;
+        font-size: 16px;
         color: #191919;
         font-weight: bold;
         width: 321px;
@@ -384,21 +383,6 @@ body {
         margin-top: 15px;
       }
     }
-    #cataRequest {
-      margin-top: 100px;
-      #name, #email, #phone {
-        // width: 100px
-        // background-color: grey
-        margin-top: 15px;
-      }
-      #phone{
-        margin-bottom: 15px;
-      }
-      #submit {
-        margin-top: 15px;
-      }
-    }
-
   }
   .container2 {
     margin-top: 70px;
@@ -571,25 +555,23 @@ body {
       width: 100%;
     }
     .gallery-thumbs {
-      height: 81px;
+      height: 70px;
       box-sizing: border-box;
-      padding: 12px 0;
-      border-top: 1px solid #BDBDBF;
-      border-bottom: 1px solid #BDBDBF;
+      padding: 10px 0;
       position: relative;
-      top: -81px;
-      background-color: rgba(255, 255, 255, 0.5);
+      top: -101px;
+      background-color: rgba(255, 255, 255, 0.5);      
       .swiper-slide {
-        width: 55px;
-        height: 55px;
-        opacity: .8;
+        width: 54px;
+        height: 54px;
+        opacity: 1;
       }
       .swiper-slide-active {
         opacity: 1;
-        width: 55px;
-        height: 55px;
+        width: 70px;
+        height: 70px;
         position: relative;
-        // top: -8px;
+        top: -8px;
       }
     }
   }
@@ -600,7 +582,7 @@ body {
     color: #191919;
     letter-spacing: -0.44px;
     line-height: 40px;
-    margin-bottom: 85px;
+    padding-bottom: 37px;
   }
   .news .head .tit, .product1 .head .tit, .product2 .head .tit, .product3 .head .tit {
     font-size: 28px;
@@ -671,30 +653,24 @@ body {
   }
   .product1 .item, .product2 .item, .product3 .item {
     width: 580px;
-    height: auto;
-    // background-color: white;
+    height: 290px;
+    background-color: white;
     display: inline-block;
     float: left;
     margin-bottom: 20px;
   }
   .product1 .item .img, .product2 .item .img, .product3 .item .img {
-    display: table-cell;
-    line-height: 290px;
-    vertical-align: middle;
+    float: left;
     width: 290px;
     height: 290px;
   }
   .product1 .item {
     .img img {
       width: 290px;
-    //   height: 290px;
-    }
-    .img.imgl img {
-      width: 290px;
-    //   height: 350px;
+      height: 290px;
     }
     .detail {
-      display: table-cell;
+      float: left;
       width: 268px;
       padding-left: 22px;
     }
@@ -705,13 +681,13 @@ body {
     padding-left: 22px;
   }
   .product1 .item .detail .name, .product2 .item .detail .name, .product3 .item .detail .name {
-    margin-top: 20px;
+    margin-top: 50px;
     font-size: 20px;
     color: #191919;
     font-weight: bold;
   }
   .product1 .item .detail .lot, .product2 .item .detail .lot, .product3 .item .detail .lot {
-    margin-top: 25px;
+    margin-top: 20px;
   }
   .product1 .item .detail {
     .lot, .estimated, .instruction {
@@ -734,7 +710,7 @@ body {
   .product1 .item .detail .instruction {
     width: 238px;
     height: 155px;
-    padding-top: 20px;
+    padding-top: 15px;
     p {
       position: relative;
       line-height: 20px;
@@ -757,7 +733,7 @@ body {
 
 .products .product1 {
   &:nth-child(1) {
-    background: url(../img/bg1.jpg) no-repeat center bottom #f6f6f6;
+    background: url(../img/bg1.jpg) no-repeat center center #f6f6f6;
   }
   &:nth-child(2) {
     background-color: white;
