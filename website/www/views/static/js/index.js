@@ -59,25 +59,27 @@ galleryThumbs.params.control = galleryTop;
 
 
 
-// console.log($('.product1 .item .img img'));
 var addH = 0,
     addh = 0,
     bgh;
-var img = new Image();
-var imgArr = $('.product1 .item .img img');
-for (var i = 0; i < imgArr.length; i++) {
-    // console.log(imgArr[i].height);
-    // console.log(i%2);
-    if (i%2==1) {
-        addh = imgArr[i].height>imgArr[i-1].height?imgArr[i].height:imgArr[i-1].height;
-        addh -= 290;
-        addh > 0?addh: addh = 0;
-        // console.log(addh);
-        addH += addh;
+var proArr = $('.product1');
+for (var i = 0; i < proArr.length; i++) {
+    var imgArr = $($('.product1')[i]).find('.item .img img');
+    for (var j = 0; j < imgArr.length; j++) {
+        if (j%2==0) {
+            var a1 = imgArr[j].height;
+            var a2 = imgArr[j+1]&&imgArr[j+1].height;
+            addh = a1>a2?a1:a2;
+            addh?addh -= 290:addh = 0;
+            addh > 0?addh: addh = 0;
+            addH += addh;
+            console.log(addH);
+        }
+        if(j==3) {
+            var n = i+1;
+            bgh = $('.products .product1:nth-child('+n+')').height()+addH;
+            $('.products .product1:nth-child('+n+')').css('height', bgh);
+        }
     }
-    if(i==3) {
-        // console.log($('.products .product1:nth-child(1)').height());
-        bgh = $('.products .product1:nth-child(1)').height()+addH;
-        $('.products .product1:nth-child(1)').css('height', bgh);
-    }
+    addH = 0;
 }

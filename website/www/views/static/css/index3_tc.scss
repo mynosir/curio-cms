@@ -676,6 +676,9 @@ body {
     display: inline-block;
     float: left;
     margin-bottom: 20px;
+    // animation:fadeInDown 1s;
+    // -webkit-animation:fadeInDown 1s; /* Safari 和 Chrome */
+    
   }
   .product1 .item .img, .product2 .item .img, .product3 .item .img {
     display: table-cell;
