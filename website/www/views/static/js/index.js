@@ -83,3 +83,24 @@ for (var i = 0; i < proArr.length; i++) {
     }
     addH = 0;
 }
+
+$(document).ready(function(){
+var a,b,c;
+a=$(window).height();
+$(window).scroll(function(){
+var b=$(this).scrollTop();
+$(".product1 .item").each(function(){
+c=$(this).offset().top;
+// console.log(a);
+// console.log(b);
+console.log(c);
+if(a+b>c){
+$(this).addClass("move");
+}
+else{
+// $(this).removeClass("move");
+}
+});
+});
+
+});

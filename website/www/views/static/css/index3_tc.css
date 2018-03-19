@@ -519,15 +519,25 @@ body {
   height: 810px;
   background-color: #f6f6f6; }
 .mid .product1 .item:nth-child(even), .mid .product2 .item:nth-child(even), .mid .product3 .item:nth-child(even) {
-  margin-right: 20px; }
+  margin-right: 15px; }
 .mid .product1 .item.cur, .mid .product2 .item.cur, .mid .product3 .item.cur {
   background: rgba(0, 0, 0, 0.2); }
 .mid .product1 .item, .mid .product2 .item, .mid .product3 .item {
   width: 580px;
   height: auto;
+  position: relative;
   display: inline-block;
-  float: left;
   margin-bottom: 20px; }
+.mid .product1 .item.move {
+  opacity: 0;
+  animation: move 1s forwards; }
+@keyframes move {
+  from {
+    opacity: 0;
+    top: -100px; }
+  to {
+    opacity: 1;
+    top: 0; } }
 .mid .product1 .item .img, .mid .product2 .item .img, .mid .product3 .item .img {
   display: table-cell;
   line-height: 290px;
