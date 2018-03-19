@@ -170,7 +170,6 @@ $application_folder = 'www';
 
     // Path to the front controller (this file)
     define('FCPATH', str_replace(SELF, '', __FILE__));
-
     // Name of the "system folder"
     define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 

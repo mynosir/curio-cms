@@ -353,7 +353,8 @@ body {
 .mid .container {
   position: relative;
   float: right;
-  width: 800px; }
+  width: 800px;
+  padding-left: 0; }
   .mid .container .notice {
     position: absolute;
     top: -43px;
@@ -389,12 +390,14 @@ body {
       border-top: 0; }
       .mid .container .performance .item .info {
         padding-top: 30px; }
+        .mid .container .performance .item .info .pic {
+          width: 140px;
+          height: 140px; }
         .mid .container .performance .item .info .pic, .mid .container .performance .item .info .detail, .mid .container .performance .item .info .more {
           display: table-cell;
           vertical-align: middle; }
         .mid .container .performance .item .info .pic img {
-          width: 140px;
-          height: 140px; }
+          width: 140px; }
         .mid .container .performance .item .info .detail {
           width: 410px;
           padding-left: 40px; }
@@ -527,6 +530,7 @@ body {
   height: auto;
   position: relative;
   display: inline-block;
+  vertical-align: top;
   margin-bottom: 20px; }
 .mid .product1 .item.move {
   opacity: 0;
@@ -579,18 +583,7 @@ body {
   .mid .product1 .item .detail .instruction p {
     position: relative;
     line-height: 20px;
-    max-height: 77px;
-    overflow: hidden; }
-    .mid .product1 .item .detail .instruction p::after {
-      content: "...";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      padding-left: 40px;
-      /*background: -webkit-linear-gradient(left, transparent, #fff 55%);*/
-      /*background: -o-linear-gradient(right, transparent, #fff 55%);*/
-      /*background: -moz-linear-gradient(right, transparent, #fff 55%);*/
-      /*background: linear-gradient(to right, transparent, #fff 55%);*/ }
+    max-height: 120px; }
 
 .products .product1:nth-child(1) {
   background: url(../img/bg1.jpg) no-repeat center bottom #f6f6f6; }

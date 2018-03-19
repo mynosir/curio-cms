@@ -460,6 +460,7 @@ body {
     position: relative;
     float: right;
     width: 800px;
+    padding-left: 0;
     .notice {
       position: absolute;
       top: -43px;
@@ -500,13 +501,17 @@ body {
         border-top: 0;
         .info {
           padding-top: 30px;
+          .pic{
+              width: 140px;
+              height: 140px;
+          }
           .pic, .detail, .more {
             display: table-cell;
             vertical-align: middle;
           }
           .pic img {
             width: 140px;
-            height: 140px;
+            // height: 140px;
           }
           .detail {
             width: 410px;
@@ -675,6 +680,7 @@ body {
     position: relative;
     // background-color: white;
     display: inline-block;
+    vertical-align: top;
     margin-bottom: 20px;
     // animation-play-state:paused;
     // animation:fadeInDown 1s;
@@ -751,19 +757,19 @@ body {
     p {
       position: relative;
       line-height: 20px;
-      max-height: 77px;
-      overflow: hidden;
-      &::after {
-        content: "...";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        padding-left: 40px;
-        /*background: -webkit-linear-gradient(left, transparent, #fff 55%);*/
-        /*background: -o-linear-gradient(right, transparent, #fff 55%);*/
-        /*background: -moz-linear-gradient(right, transparent, #fff 55%);*/
-        /*background: linear-gradient(to right, transparent, #fff 55%);*/
-      }
+      max-height: 120px;
+    //   overflow: hidden;
+    //   &::after {
+    //     content: "...";
+    //     position: absolute;
+    //     bottom: 0;
+    //     right: 0px;
+    //     padding-left: 30px;
+    //     // background: -webkit-linear-gradient(left, transparent, #f6f6f6 55%);
+    //     // background: -o-linear-gradient(right, transparent, #f6f6f6 55%);
+    //     // background: -moz-linear-gradient(right, transparent, #f6f6f6 55%);
+    //     // background: linear-gradient(to right, transparent, #f6f6f6 55%);
+    //   }
     }
   }
 }

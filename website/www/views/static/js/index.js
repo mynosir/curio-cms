@@ -73,34 +73,50 @@ for (var i = 0; i < proArr.length; i++) {
             addh?addh -= 290:addh = 0;
             addh > 0?addh: addh = 0;
             addH += addh;
-            console.log(addH);
+            // console.log(addH);
         }
         if(j==3) {
             var n = i+1;
             bgh = $('.products .product1:nth-child('+n+')').height()+addH;
             $('.products .product1:nth-child('+n+')').css('height', bgh);
+            console.log(bgh);
         }
     }
     addH = 0;
 }
 
 $(document).ready(function(){
-var a,b,c;
-a=$(window).height();
-$(window).scroll(function(){
-var b=$(this).scrollTop();
-$(".product1 .item").each(function(){
-c=$(this).offset().top;
-// console.log(a);
-// console.log(b);
-console.log(c);
-if(a+b>c){
-$(this).addClass("move");
-}
-else{
-// $(this).removeClass("move");
-}
-});
-});
+// 动画效果脚本
+    var a,b,c;
+    a=$(window).height();
+    b=$(window).scrollTop();
+    if(b>0){
+        $(".product1 .item").each(function(){
+            c=$(this).offset().top;
+            if(a+b>c){
+                $(this).addClass("move");
+            }
+        })
+    }
+    $(window).scroll(function(){
+        var a=$(window).height();
+        var b=$(this).scrollTop();
+        $(".product1 .item").each(function(){
+            c=$(this).offset().top;
+            if(a+b>c){
+                $(this).addClass("move");
+            }
+            else{
 
+            }
+        });
+    });
+// 省略文本脚本
+    $('.product1 .instruction p').each(function(){
+        var maxwidth=110;
+        if($(this).text().length > maxwidth){
+          $(this).text($(this).text().substring(0,maxwidth));
+          $(this).html($(this).html()+'...');
+        }
+    })
 });
