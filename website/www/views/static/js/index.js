@@ -79,7 +79,7 @@ for (var i = 0; i < proArr.length; i++) {
             var n = i+1;
             bgh = $('.products .product1:nth-child('+n+')').height()+addH;
             $('.products .product1:nth-child('+n+')').css('height', bgh);
-            console.log(bgh);
+            // console.log(bgh);
         }
     }
     addH = 0;

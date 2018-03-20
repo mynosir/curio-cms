@@ -315,12 +315,14 @@ body {
     width: 800px;
     margin: 0 auto; }
   .mid .container2 .item {
-    height: 244px; }
+    height: auto; }
     .mid .container2 .item .top {
-      width: 880px;
+      width: 879px;
       height: 42px;
       background-color: #f6f6f6;
+      border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
       line-height: 42px;
       font-size: 14px;
       color: #191919; }
@@ -340,16 +342,19 @@ body {
         display: inline-block;
         float: right; }
     .mid .container2 .item .pics {
-      padding-top: 30px; }
-      .mid .container2 .item .pics a {
-        /*display: inline;*/
-        display: inline-block;
-        margin-right: 16px;
+      padding: 30px; }
+      .mid .container2 .item .pics .img {
+        display: table-cell;
         width: 140px;
-        height: 140px; }
+        vertical-align: middle;
+        padding-right: 16px; }
+      .mid .container2 .item .pics a {
+        /*display: inline;*/ }
         .mid .container2 .item .pics a img {
-          width: 140px;
-          height: 140px; }
+          display: inline-block;
+          width: 140px; }
+  .mid .container2 .item:first-child .top {
+    border-top: 0px; }
 .mid .container {
   position: relative;
   float: right;
@@ -389,7 +394,7 @@ body {
       border-bottom: 1px solid #ddd;
       border-top: 0; }
       .mid .container .performance .item .info {
-        padding-top: 30px; }
+        padding: 30px; }
         .mid .container .performance .item .info .pic {
           width: 140px;
           height: 140px; }

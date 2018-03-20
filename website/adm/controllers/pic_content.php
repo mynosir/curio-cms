@@ -11,6 +11,7 @@ class Pic_content extends MY_Controller {
         parent::__construct();
         $this->checkLogin();
         $this->load->model('pic_content_model');
+        $this->load->model('pic_clazz_model');
         $data['resource_url'] = $this->resource_url;
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
@@ -23,6 +24,9 @@ class Pic_content extends MY_Controller {
 
 
     public function index() {
+        $this->data['pic_clazz'] = $this->pic_clazz_model->search();
+        $this->data['pic_clazz'] = $this->data['pic_clazz']['data'];
+        // var_dump($data['pic_clazz']);
         $this->showPage('pic_content_index', $this->data);
     }
 

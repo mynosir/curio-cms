@@ -38,7 +38,6 @@ class Pic_clazz_model extends MY_Model {
 
         $tree = array();
         create_tree_list($list, $tree, 0, 0, array('id_key'=>'id', 'pid_key'=> 'parent_id'));
-
         return array(
             'status'    => 0,
             'msg'       => '操作成功！',

@@ -156,9 +156,16 @@ $(function() {
         formData: {
             'actionxm': 'addExl'
         },
+        'onUpload'     : function(filesToUpload) {
+            if($(".js_add_menuTree").val()==='0'){
+                alert('請先選擇分類');
+                $(this).uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+            }
+        },
         onUploadComplete: function(file, data, response) {
+            console.log(1);
             var result = $.parseJSON(data);
-            if(result['status']==0) {
+            if(result['status']=='0') {
                 alert('导入成功！');
                 var p = $('.js_page li[class=active] a').data('page');
                 page.init(p);
