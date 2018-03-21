@@ -1,6 +1,7 @@
 $(function() {
     var page = {
         init: function(p) {
+            console.log(p);
             var json = {
                 api: config.apiServer + 'pic_content/get',
                 type: 'get',
@@ -8,7 +9,8 @@ $(function() {
                     actionxm: 'getList',
                     page: !p ? 1 : p,
                     size: 20,
-                    keyword: $('#title').val()
+                    keyword: $('#title').val(),
+                    clazz_id: $('.js_add_menuTree').val()
                 }
             };
             var callback = function(res) {
@@ -126,6 +128,12 @@ $(function() {
         e.preventDefault();
         var p = $('.js_page li[class=active] a').data('page');
         page.init(p);
+        $('#title').val('');
+    });
+    $('body').delegate('.js_add_menuTree', 'change', function(e) {
+        // console.log();
+        var p = $('.js_page li[class=active] a').data('page');
+        page.init(p, $('.js_add_menuTree').val());
     });
     $('body').delegate('.js_delete', 'click', function(e) {
         var id = $(e.currentTarget).data('id');
@@ -154,16 +162,23 @@ $(function() {
         fileObjName: 'uploadExl',
         uploadScript: config.apiServer + 'pic_content/post',
         formData: {
-            'actionxm': 'addExl'
+            'actionxm': 'addExl',
+            'clazz_id': ''
         },
-        'onUpload'     : function(filesToUpload) {
+        onUpload: function(filesToUpload) {
             if($(".js_add_menuTree").val()==='0'){
                 alert('請先選擇分類');
                 $(this).uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+            }else{
+                var element = {
+                    'actionxm': 'addExl',
+                    'clazz_id': $('.js_add_menuTree').val()
+                };
+                $(this).data('uploadifive').settings.formData = element;
+
             }
         },
         onUploadComplete: function(file, data, response) {
-            console.log(1);
             var result = $.parseJSON(data);
             if(result['status']=='0') {
                 alert('导入成功！');

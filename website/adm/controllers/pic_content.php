@@ -52,7 +52,8 @@ class Pic_content extends MY_Controller {
                 $page = $this->get_request('page');
                 $size = $this->get_request('size');
                 $keyword = $this->get_request('keyword');
-                $result = $this->pic_content_model->getList($page, $size, $keyword);
+                $clazz_id = $this->get_request('clazz_id');
+                $result = $this->pic_content_model->getList($page, $size, $keyword, $clazz_id);
                 break;
         }
         echo json_encode($result);
@@ -192,7 +193,7 @@ class Pic_content extends MY_Controller {
                     }
                     foreach ($data as &$v) {
                         $v = array_combine($dataKey, $v);
-
+                        $v['clazz_id'] = $this->get_request('clazz_id');
                     }
                     $result = $this->pic_content_model->addExl($data);
                 }

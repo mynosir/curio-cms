@@ -25,10 +25,10 @@ class Pic_content_model extends MY_Model {
      */
     public function getList($page=1, $size=20, $keyword, $clazz_id=0) {
         $limitStart = ($page - 1) * $size;
-        if($clazz_id > 0) {
-            $where = ' where clazz_id = ' . $clazz_id;
-        } else if($keyword) {
+        if($keyword) {
             $where = ' where title_tc like \'%'. $keyword .'%\' or title_en like \'%'. $keyword .'%\' ';
+        } else if($clazz_id > 0) {
+            $where = ' where clazz_id = ' . $clazz_id;
         } else {
             $where = ' where 1=1 ';
         }
@@ -56,8 +56,9 @@ class Pic_content_model extends MY_Model {
             }
         }
 
-        $pageQuery = $this->db->query('select count(1) as num from ' . $this->table);
+        $pageQuery = $this->db->query('select count(1) as num from ' . $this->table.$where);
         $pageResult = $pageQuery->result_array();
+        // var_dump($pageResult);
         $num = $pageResult[0]['num'];
         $rtn = array(
             'total' => $num,

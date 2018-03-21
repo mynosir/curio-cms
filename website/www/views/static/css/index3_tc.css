@@ -134,7 +134,8 @@ body {
 .mid, .mid4 {
   height: auto;
   overflow: hidden;
-  min-height: 900px; }
+  min-height: 900px;
+  padding-bottom: 100px; }
 
 .mid .bottom, .mid3 .bottom, .mid4 .bottom {
   position: relative;
