@@ -15,7 +15,7 @@ class Pic_clazz extends MY_Controller {
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'pic_clazz';
-        $data['current_menu_text'] = '图录分类';
+        $data['current_menu_text'] = '產品分类';
         $data['sub_menu'] = array();
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;

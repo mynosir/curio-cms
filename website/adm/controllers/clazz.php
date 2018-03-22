@@ -15,7 +15,7 @@ class Clazz extends MY_Controller {
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'class';
-        $data['current_menu_text'] = '内容分类';
+        $data['current_menu_text'] = '新聞分類';
         $data['sub_menu'] = array();
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;

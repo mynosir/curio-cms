@@ -90,7 +90,8 @@ create table `curio_notice` (
 
 -- linzequan 20171202
 -- 添加默认菜单栏
-INSERT INTO `sys_menu` VALUES (1,0,'内容分类','/adm/clazz',5,'class',1511833914,1512183403,1,1),(2,0,'内容管理','/adm/content',5,'news',1511833938,1512183433,1,1),(3,0,'轮播图管理','/adm/banner',5,'banner',1511833978,1512146899,1,1),(4,0,'图录分类','/adm/pic_clazz',5,'pic_clazz',1511834061,1512148977,1,1),(5,0,'图录管理','/adm/pic_content',5,'pic_content',1511834167,1512149375,1,1),(6,0,'站内通知','/adm/notice',5,'notice',1511834186,NULL,1,NULL);
+INSERT INTO `sys_menu` VALUES (1,0,'輪播圖管理','/adm/banner',5,'banner',1511833978,1512146899,1,1),(2,0,'静态页面管理','/adm/staticpage',5,'static',1511833938,1512183433,1,1),(3,0,'產品分类','/adm/pic_clazz',5,'pic_clazz',1511834061,1512148977,1,1),(4,0,'產品管理','/adm/pic_content',5,'pic_content',1511834167,1512149375,1,1),
+(5,0,'新聞分类','/adm/clazz',5,'class',1511833914,1512183403,1,1),(6,0,'新聞管理','/adm/content',5,'news',1511833938,1512183433,1,1),(7,0,'站內通知','/adm/notice',5,'notice',1511834186,NULL,1,NULL);
 
 
 -- linzequan 20171202
@@ -123,7 +124,7 @@ alter table `curio_pic_clazz` add `update_time` int comment '更新时间';
 
 -- qoohj 20180307
 -- 添加菜单栏批量上传
-INSERT INTO `sys_menu` VALUES (7,0,'批量上传图片','/adm/addpics',5,'addpics',1511833914,1512183403,1,1);
+INSERT INTO `sys_menu` VALUES (8,0,'批量上傳圖片','/adm/addpics',5,'addpics',1511833914,1512183403,1,1);
 
 -- qoohj 20180307
 -- 添加索取图录表
@@ -135,3 +136,17 @@ create table `curio_cata_request` (
     `category` varchar(255) comment '类别',
     primary key(`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '索取图录表';
+
+-- qoohj 20180322
+-- 添加静态页面表
+create table `curio_static` (
+    `id` int not null auto_increment comment '自增id',
+    `name` varchar(255) comment '名称',
+    `pic` varchar(255) comment '封面图',
+    `content_en` longtext comment '内容英文',
+    `content_tc` longtext comment '内容繁体',
+    `descript_en` longtext comment '描述英文',
+    `descript_tc` longtext comment '描述繁体',
+    primary key(`id`)
+) engine = myisam character set utf8 collate utf8_general_ci comment = '静态页面表';
+INSERT INTO `sys_menu` VALUES (1,'今屆拍賣','','','','',''),(2,'參與拍賣','','','','',''),(3,'委託拍賣','','','','',''),(4,'公司簡介','','','','',''),(5,'聯絡我們','','','','','');

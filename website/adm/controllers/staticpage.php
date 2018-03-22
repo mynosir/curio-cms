@@ -1,22 +1,22 @@
 <?php
 /**
- * Banner图片管理
+ * Static静态页面管理
  *
- * @author linzequan <lowkey361@gmail.com>
+ * @author huangjiang <qoohj@qq.com>
  *
  */
-class Banner extends MY_Controller {
+class Staticpage extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
         $this->checkLogin();
-        $this->load->model('banner_model');
+        $this->load->model('static_model');
         $data['resource_url'] = $this->resource_url;
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
-        $data['current_menu'] = 'banner';
+        $data['current_menu'] = 'static';
         $data['sub_menu'] = array();
-        $data['current_menu_text'] = '輪播圖管理';
+        $data['current_menu_text'] = '靜態頁面管理';
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;
     }
@@ -24,23 +24,29 @@ class Banner extends MY_Controller {
 
     public function index() {
         $this->load->view('include/_header', $this->data);
-        $this->load->view('banner_index', $this->data);
+        $this->load->view('static_index', $this->data);
         $this->load->view('include/_footer', $this->data);
     }
+
+    public function add($nid=0) {
+        $this->data['nid'] = $nid;
+        $this->data['info'] = $this->static_model->getDetail($nid);
+        $this->load->view('include/_header', $this->data);
+        $this->load->view('static_update', $this->data);
+        $this->load->view('include/_footer', $this->data);
+    }
+
 
     public function get() {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
-            case 'getAds':
-                $page = $this->get_request('page');
-                $size = $this->get_request('size');
-                $classify = $this->get_request('classify');
-                $result = $this->banner_model->getAds($page, $size, $classify);
+            case 'getStatic':
+                $result = $this->static_model->getStatic();
                 break;
             case 'getDetail':
                 $id = $this->get_request('id');
-                $result = $this->banner_model->getDetail($id);
+                // $result = $this->banner_model->getDetail($id);
                 break;
         }
         echo json_encode($result);

@@ -15,7 +15,7 @@ class Admin extends MY_Controller {
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'admin';
-        $data['current_menu_text'] = '用户管理';
+        $data['current_menu_text'] = '用戶管理';
         $data['sub_menu'] = array();
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;

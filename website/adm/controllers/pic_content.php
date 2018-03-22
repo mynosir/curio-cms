@@ -16,7 +16,7 @@ class Pic_content extends MY_Controller {
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'pic_content';
-        $data['current_menu_text'] = '图录管理';
+        $data['current_menu_text'] = '產品管理';
         $data['sub_menu'] = array();
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;

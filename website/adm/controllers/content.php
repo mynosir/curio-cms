@@ -15,7 +15,7 @@ class Content extends MY_Controller {
         $data['admin_info'] = $this->session->userdata('loginInfo');
         $data['base_url'] = $this->config->item('base_url');
         $data['current_menu'] = 'news';
-        $data['current_menu_text'] = '内容管理';
+        $data['current_menu_text'] = '新聞管理';
         $data['sub_menu'] = array();
         $data['menu_list'] = $this->getMenuList();
         $this->data = $data;
