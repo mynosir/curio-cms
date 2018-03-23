@@ -14,8 +14,8 @@ class Terms_and_condition extends MY_Controller {
 
 
     public function index() {
-      $this->load->model('content_model');
-      $this->data['tandc'] = $this->content_model->tandc();
+      $this->load->model('static_model');
+      $this->data['tandc'] = $this->static_model->tandc();
       $this->showPage('terms_and_condition_index', $this->data);
     }
 

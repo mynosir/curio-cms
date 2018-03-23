@@ -28,7 +28,7 @@ class Staticpage extends MY_Controller {
         $this->load->view('include/_footer', $this->data);
     }
 
-    public function add($nid=0) {
+    public function update($nid=0) {
         $this->data['nid'] = $nid;
         $this->data['info'] = $this->static_model->getDetail($nid);
         $this->load->view('include/_header', $this->data);
@@ -46,7 +46,7 @@ class Staticpage extends MY_Controller {
                 break;
             case 'getDetail':
                 $id = $this->get_request('id');
-                // $result = $this->banner_model->getDetail($id);
+                $result = $this->static_model->getDetail($id);
                 break;
         }
         echo json_encode($result);
@@ -56,24 +56,11 @@ class Staticpage extends MY_Controller {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
-            case 'addAds':
-                $data = $this->get_request('params');
-                $result = $this->banner_model->addAds($data);
-                break;
-            case 'updateAds':
-                $id = $this->get_request('id');
-                $data = $this->get_request('params');
-                $result = $this->banner_model->updateAds($id, $data);
-                break;
-            case 'delete':
-                $id = $this->get_request('id');
-                $result = $this->banner_model->deleteItem($id);
-                break;
             case 'upload_photo':
                 if(!empty($_FILES)) {
                     $fileParts = pathinfo($_FILES['uploadfile']['name']);
                     $tempFile = $_FILES['uploadfile']['tmp_name'];
-                    $targetFolder = '/public/banner/index/';
+                    $targetFolder = '/public/static_page/img/';
                     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
                     if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
                     $now = time();
@@ -85,13 +72,42 @@ class Staticpage extends MY_Controller {
                     if(in_array(strtolower($fileParts['extension']), $fileTypes)) {
                         move_uploaded_file($tempFile, $targetFile);
                         // 开始压缩图片
-                        $this->compressImage($targetFile, $compressTargetFile, 1920);
+                        $this->compressImage($targetFile, $compressTargetFile);
                         $result = array('status'=> 0, 'name'=> 'http://' . $_SERVER['HTTP_HOST'] . $targetFolder . $compressFileName);
                     } else {
                         $result = array('status'=> -1, 'msg'=> '文件格式不正确');
                     }
                 }
                 break;
+            case 'upload_contentImg':
+                if(!empty($_FILES)) {
+                    $fileParts = pathinfo($_FILES['file']['name']);
+                    $tempFile = $_FILES['file']['tmp_name'];
+                    $targetFolder = '/public/static_page/img_contents/';
+                    $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+                    if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
+                    $now = time();
+                    $fileName = $now . '_org.' . $fileParts['extension'];
+                    $compressFileName = $now . '.' . $fileParts['extension'];
+                    $targetFile = rtrim($targetPath, '/') . '/' . $fileName;
+                    $compressTargetFile = rtrim($targetPath, '/') . '/' . $compressFileName;
+                    $fileTypes = array('jpg', 'jpeg', 'gif', 'png');
+                    if(in_array(strtolower($fileParts['extension']), $fileTypes)) {
+                        move_uploaded_file($tempFile, $targetFile);
+                        // 开始压缩图片
+                        $this->compressImage($targetFile, $compressTargetFile);
+                        $result = array('status'=> 0, 'name'=> 'http://' . $_SERVER['HTTP_HOST'] . $targetFolder . $compressFileName);
+                    } else {
+                        $result = array('status'=> -1, 'msg'=> '文件格式不正确');
+                    }
+                }
+                break;
+            case 'update':
+                $params = $this->get_request('params');
+                $nid = $this->get_request('nid');
+                $result = $this->static_model->update($nid, $params);
+                break;
+
         }
         echo json_encode($result);
     }

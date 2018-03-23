@@ -14,11 +14,11 @@ class About extends MY_Controller {
 
 
     public function index() {
-      $this->load->model('content_model');
-      $this->data['about'] = $this->content_model->about();
+      $this->load->model('static_model');
+      $this->data['about'] = $this->static_model->about();
       $this->showPage('about_index', $this->data);
     }
-    
+
 
     public function get() {
         $actionxm = $this->get_request('actionxm');

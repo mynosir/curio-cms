@@ -8,7 +8,7 @@
 class Static_model extends MY_Model {
 
     private $table = 'curio_static';
-    private $fields = 'id, pic, name, content_en, content_tc, descript_en, descript_tc';
+    private $fields = 'id, pic, name_en, name_tc, content_en, content_tc, descript_en, descript_tc';
 
     public function __construct() {
         parent::__construct();
@@ -27,6 +27,20 @@ class Static_model extends MY_Model {
             'list'  => $result
         );
         return $rtn;
+    }
+
+    /**
+     * 新增/更新文章
+     * @param [type] $nid    [description]
+     * @param [type] $params [description]
+     */
+    public function update($nid, $params) {
+        // $params['update_time'] = time();
+        // $params['update_userid'] = $this->loginInfo['id'];
+        $this->db->where('id', $nid)->update($this->table, $params);
+        $result['status'] = 0;
+        $result['msg'] = '更新成功！';
+        return $result;
     }
 
 

@@ -14,8 +14,8 @@ class Privacy extends MY_Controller {
 
 
     public function index() {
-      $this->load->model('content_model');
-      $this->data['privacy1'] = $this->content_model->privacy();
+      $this->load->model('static_model');
+      $this->data['privacy1'] = $this->static_model->privacy();
       $this->showPage('privacy_index', $this->data);
     }
 

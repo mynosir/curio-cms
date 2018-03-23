@@ -1,4 +1,6 @@
-  <div class="mid" style="margin-top:70px">
+<link rel="stylesheet" href="<?php echo $resource_url; ?>css/supersized.css">
+  <div class="mid" style="">
+
     <div class="banner">
       <!-- Swiper -->
       <div class="swiper-container gallery-top">
@@ -33,8 +35,7 @@
             </a>
           </div>
           <div class="article">
-            <span class="tit"><?php echo $newcontent->title_tc; ?></span>
-            <p class="time"><?php echo date("M/d/Y", $newcontent->create_time); ?></p>
+            <span class="tit"><?php echo $newcontent->name_tc; ?></span>
             <p class="cont"><?php echo $newcontent->descript_tc?></p>
             <span class="detail"><a href="<?=$home?>auction">詳情</a></span>
           </div>
@@ -51,8 +52,7 @@
               </a>
             </div>
             <div class="article">
-              <span class="tit"><?php echo $newcontent->title_en; ?></span>
-              <p class="time"><?php echo date("M/d/Y", $newcontent->create_time); ?></p>
+              <span class="tit"><?php echo $newcontent->name_en; ?></span>
               <p class="cont"><?php echo $newcontent->descript_en?></p>
               <span class="detail"><a href="<?=$home?>auction">DETAILS</a></span>
             </div>
@@ -156,3 +156,49 @@
     <!-- <div class="tit"><a href="">鑾器天香<div class="all-tit">·茶道.香道.花器專場【完整圖錄】</div></a></div> -->
 <script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>
 <script src="<?php echo $resource_url; ?>js/index.js" charset="utf-8"></script>
+<script src="<?php echo $resource_url; ?>js/supersized.3.2.7.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+   $.fn.supersized.options = {
+        vertical_center: 1,
+        slideshow: 1,
+        navigation: 1,
+        thumbnail_navigation: 1,
+        transition: 1, //0-None, 1-Fade, 2-slide top, 3-slide right, 4-slide bottom, 5-slide left
+        pause_hover: 0,
+        slide_counter: 1,
+        slide_captions: 1,
+        slide_interval: 3000,
+        slides : [
+            {image : 'slides/tower.jpg', title : 'City Clock Tower',
+url : 'http://www.helloweba.com'},
+            {image : 'slides/fence.jpg', title : 'Canal Park Fence',
+url : 'http://www.helloweba.com/blog.html'},
+            {image : 'slides/tracks.jpg', title : 'Old Train Tracks',
+url : 'http://www.helloweba.com/case.html'}
+        ]
+    };
+   $("#supersized").supersized();
+}); </script>
+<div id="loading"> </div>
+<div id="supersized"></div>
+
+<div id="prevthumb"></div>
+<div id="nextthumb"></div>
+
+<div id="controls-wrapper">
+    <div id="controls">
+
+        <div id="slidecounter">
+            <span class="slidenumber"></span>/<span class="totalslides"></span>
+        </div>
+
+        <div id="slidecaption"></div>
+
+        <div id="navigation">
+            <img id="prevslide" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
+<img id="pauseplay" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
+<img id="nextslide" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
+        </div>
+    </div>
+</div>
