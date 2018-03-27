@@ -150,8 +150,8 @@ create table `curio_static` (
     `descript_tc` longtext comment '描述繁体',
     primary key(`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '静态页面表';
-INSERT INTO `curio_static` VALUES (1,'今屆拍賣','upcoming auction','','','',''),(2,'參與拍賣','buying','','','',''),(3,'委託拍賣','selling','','','',''),(4,'公司簡介','company profile','','','',''),(5,'聯絡我們','contact us','','','',''),(6,'條款及細則','Terms and Condition of Sale','','','','')
-,(7,'個人隱私','privacy','','','','');
+INSERT INTO `curio_static` VALUES (1,'今屆拍賣','upcoming auction','','','','',''),(2,'參與拍賣','buying','','','','',''),(3,'委託拍賣','selling','','','','',''),(4,'公司簡介','company profile','','','','',''),(5,'聯絡我們','contact us','','','','',''),(6,'條款及細則','Terms and Condition of Sale','','','','','')
+,(7,'個人隱私','privacy','','','','','');
 
 -- qoohj 20180327
 -- 添加首页背景图片表
