@@ -160,4 +160,4 @@ create table `curio_indexbg` (
     `pic` varchar(512) comment '背景图',
     primary key(`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '首页背景图表';
-INSERT INTO `curio_static` VALUES (1,''),(2,'');
+INSERT INTO `curio_indexbg` VALUES (1,''),(2,'');
