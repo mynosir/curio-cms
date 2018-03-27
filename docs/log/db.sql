@@ -141,7 +141,8 @@ create table `curio_cata_request` (
 -- 添加静态页面表
 create table `curio_static` (
     `id` int not null auto_increment comment '自增id',
-    `name` varchar(255) comment '名称',
+    `name_tc` varchar(255) comment '中文名称',
+    `name_en` varchar(255) comment '英文名称',
     `pic` varchar(512) comment '封面图',
     `content_en` longtext comment '内容英文',
     `content_tc` longtext comment '内容繁体',
@@ -151,3 +152,12 @@ create table `curio_static` (
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '静态页面表';
 INSERT INTO `curio_static` VALUES (1,'今屆拍賣','upcoming auction','','','',''),(2,'參與拍賣','buying','','','',''),(3,'委託拍賣','selling','','','',''),(4,'公司簡介','company profile','','','',''),(5,'聯絡我們','contact us','','','',''),(6,'條款及細則','Terms and Condition of Sale','','','','')
 ,(7,'個人隱私','privacy','','','','');
+
+-- qoohj 20180327
+-- 添加首页背景图片表
+create table `curio_indexbg` (
+    `id` int not null auto_increment comment '自增id',
+    `pic` varchar(512) comment '背景图',
+    primary key(`id`)
+) engine = myisam character set utf8 collate utf8_general_ci comment = '首页背景图表';
+INSERT INTO `curio_static` VALUES (1,''),(2,'');
