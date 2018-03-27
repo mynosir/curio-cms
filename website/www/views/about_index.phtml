@@ -24,6 +24,15 @@
           <?php else: ?>
             <?php echo $about->content_en; ?>
           <?php endif; ?>
+          <div class="about_pics">
+              <?php foreach ($about->pic as $v): ?>
+
+                <!-- <a class="fancybox" href="<?php echo $v?>"><div class="swiper-slide" style="background-image:url(<?php echo $v?>)"></div></a> -->
+                <!-- <a class="fancybox swiper-slide" style="background-image:url(<?php echo $v?>)" rel="group" href="<?php echo $v?>"></a> -->
+                <img style="width:190px;height:190px" src="<?=$v?>">
+              <?php endforeach; ?>
+
+          </div>
       </div>
     </div>
 

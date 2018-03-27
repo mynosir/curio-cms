@@ -7,28 +7,24 @@ $(function() {
                 data: {
                     actionxm: 'getList',
                     page: !p ? 1 : p,
-                    size: 5,
+                    size: 20,
                     keyword: $('#title_en').val()
                 }
             };
             var callback = function(res) {
                 // 处理表格数据
-                var list = res['list'],
-                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>封面图</th><th>发布者</th><th>发布时间</th><th>操作</th></tr>';
+                var idx = 1,
+                    list = res['list'],
+                    listTpl = '<tr><th>编号</th><th>标题（en）</th><th>标题（tc）</th><th>分类</th><th>发布者</th><th>发布时间</th><th>操作</th></tr>';
                 for(var i in list) {
                     listTpl += '<tr>';
-                    listTpl += '<td>' + list[i]['id'] + '</td>';
+                    listTpl += '<td>' + (idx++) + '</td>';
                     listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_en'] + '</a></td>';
                     listTpl += '<td><a href="' + window.base_url + 'content/detail/' + list[i]['id'] + '" target="_blank">' + list[i]['title_tc'] + '</a></td>';
                     if(list[i]['clazz_name_en'] == '') {
                         listTpl += '<td>/（/）</td>';
                     } else {
                         listTpl += '<td>' + list[i]['clazz_name_en'] + '（' + list[i]['clazz_name_tc'] + '）</td>';
-                    }
-                    if(!list[i]['pic']) {
-                      listTpl += '<td>/</td>';
-                    } else{
-                      listTpl += '<td><img src="' + list[i]['pic'] + '" width=100 height=75></td>';
                     }
                     listTpl += '<td>' + list[i]['create_user'] + '</td>';
                     listTpl += '<td>' + list[i]['create_time'] + '</td>';

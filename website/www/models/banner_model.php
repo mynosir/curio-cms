@@ -21,7 +21,11 @@ class Banner_model extends MY_Model {
     public function search() {
         $query = $this->db->order_by('id asc')->get($this->table);
         $list = $query->result_array();
-        return $list;
+        return array(
+            'status'    => 0,
+            'list'       => $list
+        );
+        // return $list;
     }
 
 

@@ -4,6 +4,7 @@ $(function() {
 
             // 渲染编辑菜单的选项
             this.renderMenuTree();
+            this.renderPicPrev();
 
             $('#content_en').summernote({
                 minHeight: 200,
@@ -75,6 +76,17 @@ $(function() {
                 }
             });
         },
+        // 渲染预览图片
+        renderPicPrev: function() {
+            if(!!$('.js_update_pic').val()) {
+              var picJson = $('.js_update_pic').val().split(','),
+                  picHtml = '';
+              for(var i=0; i<picJson.length; i++) {
+                  picHtml += '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + picJson[i] + '">x</em><img src="' + picJson[i] + '" class="prev-pic"></div></div>';
+              }
+              $('.js_picPrevArea').append(picHtml);
+            }
+        },
 
         /**
          * 渲染分类树
@@ -119,12 +131,22 @@ $(function() {
     };
 
     page.init();
+    $('body').delegate('.js_delete_pic', 'click', function(e) {
+        $(e.currentTarget).parent().parent().remove();
+    });
+
+    $('body').delegate('.js_delete_pdf', 'click', function(e) {
+        $(e.currentTarget).remove();
+        $('.js_pdf').val('');
+        $('.js_pdf_prev').html('');
+    });
 
     $('body').delegate('.js_submit', 'click', function() {
         var title_en = $('#title_en').val(),
             title_tc = $('#title_tc').val(),
             clazz_id = $('#clazz_id').val(),
-            pic = $('#prevArea').attr('src'),
+            // pic = $('#prevArea').attr('src'),
+            pic = '',
             descript_en = $('#descript_en').val(),
             descript_tc = $('#descript_tc').val(),
             content_en = $('#content_en').summernote('code'),
@@ -139,26 +161,36 @@ $(function() {
             alert('请输入标题（tc）！');
             return;
         }
-        if(clazz_id == '') {
+        if(clazz_id == '0') {
             alert('请选择分类！');
             return;
+        }
+        if(clazz_id === '2'){
+            pic = $('#prevArea').attr('src');
+        } else {
+            var prevPicDom = $('.prev-pic'),
+                picArr = new Array();
+            for(var i=0; i<prevPicDom.length; i++) {
+                picArr.push($(prevPicDom[i]).attr('src'));
+            }
+            pic =  picArr.toString();
         }
         // if(pic == '') {
         //     alert('请上传封面图！');
         //     return;
         // }
-        if(content_en == '') {
-            alert('请输入正文内容（en）!');
-            return;
-        }
-        if(content_tc == '') {
-            alert('请输入正文内容（tc）!');
-            return;
-        }
-        if(author == '') {
-            alert('请输入作者!');
-            return;
-        }
+        // if(content_en == '') {
+        //     alert('请输入正文内容（en）!');
+        //     return;
+        // }
+        // if(content_tc == '') {
+        //     alert('请输入正文内容（tc）!');
+        //     return;
+        // }
+        // if(author == '') {
+        //     alert('请输入作者!');
+        //     return;
+        // }
         var nid = $('.js_nid').val();
         var json = {
             api: config.apiServer + 'content/post',
@@ -192,26 +224,50 @@ $(function() {
         Utils.requestData(json);
     });
 
-    $('#pic').uploadifive({
-        fileTypeDesc: '上传文件',
-        fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png',
-        multi: false,
-        buttonText: '上传图片',
-        height: '25',
-        width: '100',
-        method: 'post',
-        fileObjName: 'uploadfile',
-        uploadScript: config.apiServer + 'content/post',
-        formData: {
-            'actionxm': 'upload_photo'
-        },
-        onUploadComplete: function(file, data, response) {
-            result = $.parseJSON(data);
-            if(result['status']==0) {
-                $('#prevArea').attr('src', result['name']);
-            } else {
-                alert(result['msg']);
+        $('#pic').uploadifive({
+            fileTypeDesc: '上传文件',
+            fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png',
+            multi: false,
+            buttonText: '上传图片',
+            height: '25',
+            width: '100',
+            method: 'post',
+            fileObjName: 'uploadfile',
+            uploadScript: config.apiServer + 'content/post',
+            formData: {
+                'actionxm': 'upload_photo'
+            },
+            onUploadComplete: function(file, data, response) {
+                result = $.parseJSON(data);
+                if(result['status']==0) {
+                    $('#prevArea').attr('src', result['name']);
+                } else {
+                    alert(result['msg']);
+                }
             }
-        }
-    });
+        });
+        $('#pic2').uploadifive({
+            fileTypeDesc: '上传文件',
+            fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png',
+            multi: true,
+            buttonText: '上传图片',
+            height: '25',
+            width: '100',
+            method: 'post',
+            fileObjName: 'uploadfile',
+            uploadScript: config.apiServer + 'content/post',
+            formData: {
+                'actionxm': 'upload_album'
+            },
+            onUploadComplete: function(file, data, response) {
+                result = $.parseJSON(data);
+                if(result['status']==0) {
+                    var html = '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + result['name'] + '">x</em><img src="' + result['name'] + '" class="prev-pic"></div></div>';
+                    $('.js_picPrevArea').append(html);
+                } else {
+                    alert(result['msg']);
+                }
+            }
+        });
+
 });

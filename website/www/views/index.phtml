@@ -1,26 +1,23 @@
-<link rel="stylesheet" href="<?php echo $resource_url; ?>css/supersized.css">
-  <div class="mid" style="">
+<style media="screen">
+.header{
+    position: absolute;
+    top: 0;
+    z-index: 99;
+}
 
-    <div class="banner">
-      <!-- Swiper -->
-      <div class="swiper-container gallery-top">
-          <div class="swiper-wrapper">
-            <?php foreach ($bannerlist as $banner): ?>
-              <div class="swiper-slide" style="background-image:url(<?php echo $banner['pic']?>)"></div>
-            <?php endforeach; ?>
-          </div>
-          <!-- Add Arrows -->
-          <div class="swiper-button-next swiper-button-white"></div>
-          <div class="swiper-button-prev swiper-button-white"></div>
-      </div>
-      <div class="swiper-container gallery-thumbs">
-          <div class="swiper-wrapper">
-            <?php foreach ($bannerlist as $banner): ?>
-              <div class="swiper-slide" style="background-image:url(<?php echo $banner['pic']?>)"></div>
-            <?php endforeach; ?>
-          </div>
-      </div>
-    </div>
+</style>
+<link rel="stylesheet" href="<?php echo $resource_url; ?>libs/supersized/css/supersized.css">
+<link rel="stylesheet" href="<?php echo $resource_url; ?>libs/supersized/theme/supersized.shutter.css">
+<link rel="stylesheet" href="<?php echo $resource_url; ?>css/supersizedcustom.css">
+<div id="home-slider">
+    <a id="prevslide" class="load-item"></a>
+    <a id="nextslide" class="load-item"></a>
+    <div id="thumb-tray" class="load-item"></div>
+</div>
+  <div class="mid" style="padding-bottom: 0px">
+
+
+<!-- /#home-slider -->
     <div class="news">
       <div class="wrap">
         <?php if ($curLang === 'tc'): ?>
@@ -30,9 +27,15 @@
         </div>
         <div class="content">
           <div class="pic">
-            <a href="#">
-              <a href=""><img src=<?php echo $newcontent->pic; ?> alt=""></a>
-            </a>
+            <?php if(strpos($newcontent->pic,',')): ?>
+              <a href="<?=$home?>auction">
+                <img src="<?php echo strstr($newcontent->pic, ',', TRUE) ?>" alt="">
+              </a>
+            <?php else: ?>
+              <a href="<?=$home?>auction">
+                <img src="<?php echo $newcontent->pic ?>" alt="">
+              </a>
+            <?php endif; ?>
           </div>
           <div class="article">
             <span class="tit"><?php echo $newcontent->name_tc; ?></span>
@@ -154,51 +157,89 @@
     </div>
 </div>
     <!-- <div class="tit"><a href="">鑾器天香<div class="all-tit">·茶道.香道.花器專場【完整圖錄】</div></a></div> -->
-<script src="<?php echo $resource_url; ?>js/swiper.min.js"></script>
-<script src="<?php echo $resource_url; ?>js/index.js" charset="utf-8"></script>
-<script src="<?php echo $resource_url; ?>js/supersized.3.2.7.min.js" charset="utf-8"></script>
+<!-- <script src="<?php echo $resource_url; ?>js/swiper.min.js"></script> -->
+<script src="<?php echo $resource_url; ?>libs/supersized/js/supersized.3.2.7.min.js" charset="utf-8"></script>
+<script src="<?php echo $resource_url; ?>libs/supersized/theme/supersized.shutter.min.js" charset="utf-8"></script>
 <script type="text/javascript">
-$(function(){
-   $.fn.supersized.options = {
-        vertical_center: 1,
-        slideshow: 1,
-        navigation: 1,
-        thumbnail_navigation: 1,
-        transition: 1, //0-None, 1-Fade, 2-slide top, 3-slide right, 4-slide bottom, 5-slide left
-        pause_hover: 0,
-        slide_counter: 1,
-        slide_captions: 1,
-        slide_interval: 3000,
-        slides : [
-            {image : 'slides/tower.jpg', title : 'City Clock Tower',
-url : 'http://www.helloweba.com'},
-            {image : 'slides/fence.jpg', title : 'Canal Park Fence',
-url : 'http://www.helloweba.com/blog.html'},
-            {image : 'slides/tracks.jpg', title : 'Old Train Tracks',
-url : 'http://www.helloweba.com/case.html'}
-        ]
-    };
-   $("#supersized").supersized();
-}); </script>
-<div id="loading"> </div>
-<div id="supersized"></div>
+$(document).ready(function(){
+// 背景图片
+    var bg1 = '<?php echo $indexbg['list'][0]['pic'];?>';
+    if(bg1){
 
-<div id="prevthumb"></div>
-<div id="nextthumb"></div>
+        $('.products .product1:nth-child(1)').css('background-image', 'url('+bg1+')');
+    }
+    var bg2 = '<?php echo $indexbg['list'][1]['pic'];?>';
+    if(bg2){
+        $('.products .product1:nth-child(2)').css('background-image', 'url('+bg2+')');
+    }
+    var bg3 = '<?php echo $indexbg['list'][2]['pic'];?>';
+    if(bg3){
+        // var h3 = $('.products .product1:nth-child(3)').css('height');
+        // console.log(h3);
+        // $('.products .product1:nth-child(3)').css('height', );
+        $('.products .product1:nth-child(3)').css('background-image', 'url('+bg3+')');
+    }
 
-<div id="controls-wrapper">
-    <div id="controls">
 
-        <div id="slidecounter">
-            <span class="slidenumber"></span>/<span class="totalslides"></span>
-        </div>
+// 动画效果脚本
+    var a,b,c;
+    a=$(window).height();
+    b=$(window).scrollTop();
+    if(b>0){
+        $(".product1 .item").each(function(){
+            c=$(this).offset().top;
+            if(a+b>c){
+                $(this).addClass("move");
+            }
+        })
+    }
+    $(window).scroll(function(){
+        var a=$(window).height();
+        var b=$(this).scrollTop();
+        $(".product1 .item").each(function(){
+            c=$(this).offset().top;
+            if(a+b>c){
+                $(this).addClass("move");
+            }
+            else{
 
-        <div id="slidecaption"></div>
+            }
+        });
+    });
+// 省略文本脚本
+    $('.product1 .instruction p').each(function(){
+        var maxwidth=110;
+        if($(this).text().length > maxwidth){
+          $(this).text($(this).text().substring(0,maxwidth));
+          $(this).html($(this).html()+'...');
+        }
+    })
+});
 
-        <div id="navigation">
-            <img id="prevslide" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
-<img id="pauseplay" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
-<img id="nextslide" src="http://dev.curio.com/public/pic_content/img/1521702234ljzgpxeo.jpeg"/>
-        </div>
-    </div>
-</div>
+var addH = 0,
+    addh = 0,
+    bgh;
+var proArr = $('.product1');
+for (var i = 0; i < proArr.length; i++) {
+    var imgArr = $($('.product1')[i]).find('.item .img img');
+    for (var j = 0; j < imgArr.length; j++) {
+        if (j%2==0) {
+            var a1 = imgArr[j].height;
+            var a2 = imgArr[j+1]&&imgArr[j+1].height;
+            addh = a1>a2?a1:a2;
+            addh?addh -= 290:addh = 0;
+            addh > 0?addh: addh = 0;
+            addH += addh;
+            // console.log(addH);
+        }
+        if(j==3) {
+            var n = i+1;
+            bgh = $('.products .product1:nth-child('+n+')').height()+addH;
+            $('.products .product1:nth-child('+n+')').css('height', bgh);
+            // console.log(bgh);
+        }
+    }
+    addH = 0;
+}
+</script>
+<script src="<?php echo $resource_url; ?>js/index.js" charset="utf-8"></script>

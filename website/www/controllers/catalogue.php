@@ -62,6 +62,10 @@ class Catalogue extends MY_Controller {
       $id = $this->get_request('id');
       $this->load->model('catalogue_model');
       $this->data['catalogueDetail'] = $this->catalogue_model->searchDetail($id);
+      $cid = $this->data['catalogueDetail']->clazz_id;
+      $this->data['catalogueParent'] = $this->catalogue_model->searchParent($cid);
+      $this->data['firstLast'] = $this->catalogue_model->firstLast($id, $cid);
+      $this->data['otheritem'] = $this->catalogue_model->otheritem($id, $cid);
       $this->showPage('catalogue_detail', $this->data);
     }
 

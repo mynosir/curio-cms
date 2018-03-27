@@ -22,9 +22,10 @@
 	padding: 12px 0;
 	border-top: 1px solid #BDBDBF;
 	border-bottom: 1px solid #BDBDBF;
-	background: url("../../img/footer-bg.gif") no-repeat right;
+	background: url() !important;
+	background-color: rgba(255, 255, 255, .5) !important;
 	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#99ffffff,EndColorStr=#99ffffff);
-	background-color: rgba(255, 255, 255, 0.5);
+	rgba(255, 255, 255, .5)
 }
 #thumb-tray:not(:target){ /* IE9以上で filter を無効にする */
 	filter: none;
@@ -46,8 +47,8 @@ ul#thumb-list li {
 }
 
 ul#thumb-list li img {
-	width: 53px;
-	height: 53px;
+	width: 55px;
+	height: 55px;
 	border: 1px solid #ccc;
 	opacity: 0.8;
 }

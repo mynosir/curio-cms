@@ -1,11 +1,15 @@
 var galleryTop = new Swiper('.gallery-top', {
   direction : 'vertical',
+  loop:'true',
+  loopedSlides: 5,
     spaceBetween: 10,
     // nextButton: '.swiper-button-next',
     // prevButton: '.swiper-button-prev',
 });
 var galleryThumbs = new Swiper('.gallery-thumbs', {
     direction : 'vertical',
+    loop: 'true',
+    loopedSlides: 5,
     spaceBetween: 10,
     centeredSlides: true,
     slidesPerView: 'auto',
@@ -16,6 +20,9 @@ var galleryThumbs = new Swiper('.gallery-thumbs', {
 });
 galleryTop.params.control = galleryThumbs;
 galleryThumbs.params.control = galleryTop;
+
+$(".fancybox").fancybox();
+
 // $(function() {
 //     var page = {
 //

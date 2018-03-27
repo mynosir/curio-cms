@@ -49,7 +49,7 @@ class Content_model extends MY_Model {
      * @param  string  $keyword [description]
      * @return [type]           [description]
      */
-    public function getList($page=1, $size=10, $clazzId=0, $keyword='') {
+    public function getList($page=1, $size=20, $clazzId=0, $keyword='') {
         $result = array();
         if($keyword!='') {
             $where = ' where title like "%' . $keyword . '%" ';

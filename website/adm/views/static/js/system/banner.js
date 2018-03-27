@@ -156,7 +156,7 @@ $(function() {
     });
     $('body').delegate('.js_saveBtn', 'click', function() {
         var id = $('.js_id').text(),
-            photo = $('.js_update_photo').val()=='' ? $('.js_update_photo_prev').attr('src') : $('.js_update_photo').val(),
+            photo = $('.js_photo').val()=='' ? $('.js_photo_prev').attr('src') : $('.js_photo').val(),
             url_en = $('.js_update_url_en').val(),
             url_tc = $('.js_update_url_tc').val(),
             sort = $('.js_update_sort').val();

@@ -4,6 +4,7 @@ $(function() {
 
             // 渲染编辑菜单的选项
             // this.renderMenuTree();
+            this.renderPicPrev();
 
             $('#content_en').summernote({
                 minHeight: 200,
@@ -74,19 +75,43 @@ $(function() {
                     }
                 }
             });
+
+        },
+        // 渲染预览图片
+        renderPicPrev: function() {
+            if(!!$('.js_update_pic').val()) {
+              var picJson = $('.js_update_pic').val().split(','),
+                  picHtml = '';
+              for(var i=0; i<picJson.length; i++) {
+                  picHtml += '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + picJson[i] + '">x</em><img src="' + picJson[i] + '" class="prev-pic"></div></div>';
+              }
+              $('.js_picPrevArea').append(picHtml);
+            }
         }
+
     }
 
     page.init();
+    $('body').delegate('.js_delete_pic', 'click', function(e) {
+        $(e.currentTarget).parent().parent().remove();
+    });
 
     $('body').delegate('.js_submit', 'click', function() {
         var name_en = $('#name_en').val(),
             name_tc = $('#name_tc').val(),
-            pic = $('#prevArea').attr('src'),
+            pic = '',
             descript_en = $('#descript_en').val(),
             descript_tc = $('#descript_tc').val(),
             content_en = $('#content_en').summernote('code'),
             content_tc = $('#content_tc').summernote('code');
+            // 获取图片json
+            var prevPicDom = $('.prev-pic'),
+                picArr = new Array();
+            for(var i=0; i<prevPicDom.length; i++) {
+                picArr.push($(prevPicDom[i]).attr('src'));
+            }
+            pic =  picArr.toString();
+
         // if(pic == '') {
         //     alert('请上传封面图！');
         //     return;
@@ -130,7 +155,7 @@ $(function() {
     $('#pic').uploadifive({
         fileTypeDesc: '上传文件',
         fileTypeExts: '*.jpg;*.jpeg;*.gif;*.png',
-        multi: false,
+        multi: true,
         buttonText: '上传图片',
         height: '25',
         width: '100',
@@ -143,7 +168,8 @@ $(function() {
         onUploadComplete: function(file, data, response) {
             result = $.parseJSON(data);
             if(result['status']==0) {
-                $('#prevArea').attr('src', result['name']);
+                var html = '<div><div class="prev-frame"><em class="js_delete_pic" data-url="' + result['name'] + '">x</em><img src="' + result['name'] + '" class="prev-pic"></div></div>';
+                $('.js_picPrevArea').append(html);
             } else {
                 alert(result['msg']);
             }

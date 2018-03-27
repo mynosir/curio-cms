@@ -49,6 +49,10 @@ class Static_model extends MY_Model {
     public function about() {
         $query = $this->db->where('id', 4)->get($this->table);
         $row = $query->row();
+        if(count($row->pic)>0){
+          $row->pic = explode(',', $row->pic);
+        }
+
         return $row;
     }
     /**

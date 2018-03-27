@@ -18,6 +18,17 @@ class Press_media_model extends MY_Model {
      * 查询媒體報導數據
      * @return [type] [description]
      */
+    public function getMedia($id) {
+        $array = array('id' => $id, 'clazz_id' => 2);
+        $query = $this->db->where($array)->get($this->table);
+        $list = $query->row();
+        return $list;
+    }
+
+    /**
+     * 查询媒體報導數據
+     * @return [type] [description]
+     */
     public function search() {
         $query = $this->db->where('clazz_id', 2)->order_by('id asc')->get($this->table);
         $list = $query->result_array();

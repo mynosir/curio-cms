@@ -63,7 +63,7 @@ class Staticpage extends MY_Controller {
                     $targetFolder = '/public/static_page/img/';
                     $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
                     if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
-                    $now = time();
+                    $now = time() . myrandom(8);
                     $fileName = $now . '_org.' . $fileParts['extension'];
                     $compressFileName = $now . '.' . $fileParts['extension'];
                     $targetFile = rtrim($targetPath, '/') . '/' . $fileName;
@@ -78,6 +78,7 @@ class Staticpage extends MY_Controller {
                         $result = array('status'=> -1, 'msg'=> '文件格式不正确');
                     }
                 }
+
                 break;
             case 'upload_contentImg':
                 if(!empty($_FILES)) {

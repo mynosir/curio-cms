@@ -78,6 +78,29 @@ class Content extends MY_Controller {
                     if(in_array(strtolower($fileParts['extension']), $fileTypes)) {
                         move_uploaded_file($tempFile, $targetFile);
                         // 开始压缩图片
+                        // $this->compressImage($targetFile, $compressTargetFile);
+                        $result = array('status'=> 0, 'name'=> 'http://' . $_SERVER['HTTP_HOST'] . $targetFolder . $fileName);
+                    } else {
+                        $result = array('status'=> -1, 'msg'=> '文件格式不正确');
+                    }
+                }
+                break;
+            case 'upload_album':
+                if(!empty($_FILES)) {
+                    $fileParts = pathinfo($_FILES['uploadfile']['name']);
+                    $tempFile = $_FILES['uploadfile']['tmp_name'];
+                    $targetFolder = '/public/content/album/';
+                    $targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
+                    if(!is_dir($targetPath)) mkdir($targetPath, 0777, true);
+                    $now = time() . myrandom(8);
+                    $fileName = $now . '_org.' . $fileParts['extension'];
+                    $compressFileName = $now . '.' . $fileParts['extension'];
+                    $targetFile = rtrim($targetPath, '/') . '/' . $fileName;
+                    $compressTargetFile = rtrim($targetPath, '/') . '/' . $compressFileName;
+                    $fileTypes = array('jpg', 'jpeg', 'gif', 'png');
+                    if(in_array(strtolower($fileParts['extension']), $fileTypes)) {
+                        move_uploaded_file($tempFile, $targetFile);
+                        // 开始压缩图片
                         $this->compressImage($targetFile, $compressTargetFile);
                         $result = array('status'=> 0, 'name'=> 'http://' . $_SERVER['HTTP_HOST'] . $targetFolder . $compressFileName);
                     } else {

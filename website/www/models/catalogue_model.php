@@ -19,7 +19,7 @@ class Catalogue_model extends MY_Model {
      * 查询菜单数据
      * @return [type] [description]
      */
-    public function search($cid, $page=1, $size=2) {
+    public function search($cid, $page=1, $size=20) {
         if($page==0){
           $page = 1;
         }
@@ -107,6 +107,50 @@ class Catalogue_model extends MY_Model {
         if(count($list->pic)>0){
           $list->pic = explode(',', $list->pic);
         }
+        return $list;
+    }
+
+    /**
+     * 查询該数据是第一条还是最后一条
+     * @return [type] [description]
+     */
+    public function firstLast($id, $cid) {
+        $array1 = array('id' => $id-1, 'clazz_id' => $cid);
+        $array2 = array('id' => $id+1, 'clazz_id' => $cid);
+        $query1 = $this->db->where($array1)->get($this->table2);
+        $pre = $query1->row();
+        $query2 = $this->db->where($array2)->get($this->table2);
+        $next = $query2->row();
+        if(empty($pre)){
+            $pre = false;
+        }else{
+            $pre = true;
+        }
+        if(empty($next)){
+            $next = false;
+        }else{
+            $next = true;
+        }
+        $list = array(
+            'pre' => $pre,
+            'next' => $next
+        );
+        return $list;
+    }
+
+    /**
+     * 查询其他相关项目
+     * @return [type] [description]
+     */
+    public function otheritem($id, $cid) {
+        $array = array('id !=' => $id, 'clazz_id' => $cid);
+        $query = $this->db->where($array)->limit(5)->get($this->table2);
+        $list = $query->result_array();
+        shuffle($list);
+        // $list = array(
+        //     'pre' => $pre,
+        //     'next' => $next
+        // );
         return $list;
     }
 

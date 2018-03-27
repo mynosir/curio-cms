@@ -9,18 +9,18 @@ class Home extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->init_head_foot();
     }
 
 
     public function index() {
-        $this->load->model('banner_model');
+        $this->init_head_foot();
         $this->load->model('static_model');
         $this->load->model('pic_content_model');
         $this->load->model('pic_clazz_model');
-        $this->data['bannerlist'] = $this->banner_model->search();
+        $this->load->model('indexbg_model');
         $this->data['newcontent'] = $this->static_model->latest();
         $this->data['pic_clazz'] = $this->pic_clazz_model->search();
+        $this->data['indexbg'] = $this->indexbg_model->search();
         foreach ($this->data['pic_clazz'] as $k => &$v) {
           $id = $v['id'];
           $v['pic_content'] = $this->pic_content_model->search($id);
@@ -33,9 +33,10 @@ class Home extends MY_Controller {
         $actionxm = $this->get_request('actionxm');
         $result = array();
         switch($actionxm) {
-          // case 'search':
-          //     $result = $this->index_model->search();
-          //     break;
+          case 'getBanner':
+              $this->load->model('banner_model');
+              $result = $this->banner_model->search();
+              break;
         }
         echo json_encode($result);
     }

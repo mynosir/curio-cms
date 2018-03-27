@@ -34,8 +34,8 @@
       <div class="container3 <?=$curLang?>">
         <?php if ($curLang === 'tc'): ?>
           <?php foreach ($searchNews['list'] as $new): ?>
-            <div class="item">
-              <div class="pic">
+            <div class="release item">
+              <!-- <div class="pic">
                 <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                   <?php if(strpos($new['pic'],',')): ?>
                     <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
@@ -43,28 +43,23 @@
                     <img src="<?php echo $new['pic'] ?>" alt="">
                   <?php endif; ?>
                 </a>
-              </div>
+              </div> -->
               <div class="detail">
+                  <div class="date">
+                      <?php echo date('y-m-d',$new['create_time']) ?>
+                  </div>
                 <div class="tit">
                   <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                     <?php echo $new['title_tc'] ?>
                   </a>
-                </div>
-                <div class="article">
-                  <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
-                    <?php echo $new['descript_tc'] ?>
-                  </a>
-                </div>
-                <div class="date">
-                  <?php echo date('y-m-d',$new['create_time']) ?>
                 </div>
               </div>
             </div>
           <?php endforeach; ?>
         <?php else: ?>
           <?php foreach ($searchNews['list'] as $new): ?>
-            <div class="item">
-              <div class="pic">
+            <div class="release item">
+              <!-- <div class="pic">
                 <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                   <?php if(strpos($new['pic'],',')): ?>
                     <img src="<?php echo strstr($new['pic'], ',', TRUE) ?>" alt="">
@@ -72,20 +67,15 @@
                     <img src="<?php echo $new['pic'] ?>" alt="">
                   <?php endif; ?>
                 </a>
-              </div>
+              </div> -->
               <div class="detail">
+                  <div class="date">
+                      <?php echo date('y-m-d',$new['create_time']) ?>
+                  </div>
                 <div class="tit">
                   <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
                     <?php echo $new['title_en'] ?>
                   </a>
-                </div>
-                <div class="article">
-                  <a href="<?=$home?>press_release/detail?id=<?=$new['id']?>">
-                    <?php echo $new['descript_en'] ?>
-                  </a>
-                </div>
-                <div class="date">
-                  <?php echo date('y-m-d',$new['create_time']) ?>
                 </div>
               </div>
             </div>

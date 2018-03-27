@@ -24,7 +24,7 @@ class Banner_model extends MY_Model {
     public function getAds($page=1, $size=20) {
         $limitStart = ($page - 1) * $size;
         $where = ' where 1=1 ';
-        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . 'order by sort desc, id desc limit ' . $limitStart . ', ' . $size);
+        $query = $this->db->query('select ' . $this->fields . ' from ' . $this->table . $where . 'order by sort desc, id asc limit ' . $limitStart . ', ' . $size);
         $result = $query->result_array();
 
         $pageQuery = $this->db->query('select count(1) as num from ' . $this->table);
