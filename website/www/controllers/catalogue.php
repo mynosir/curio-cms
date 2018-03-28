@@ -19,8 +19,12 @@ class Catalogue extends MY_Controller {
       $this->load->model('catalogue_model');
       if(empty($cid)){
         $cid = $this->catalogue_model->getcid();
-        $this->load->helper('url');
-        redirect($this->data['base_url'].$this->uri->segment(1).'/'.$this->uri->segment(2).'?cid='.$cid);
+        if($cid){
+            $this->load->helper('url');
+            redirect($this->data['base_url'].$this->uri->segment(1).'/'.$this->uri->segment(2).'?cid='.$cid);
+        }else{
+            // header("location: ".);            
+        }
       }
       $this->data['catalogue'] = $this->catalogue_model->search($cid, $page);
       $this->load->model('notice_model');
