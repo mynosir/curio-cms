@@ -161,3 +161,7 @@ create table `curio_indexbg` (
     primary key(`id`)
 ) engine = myisam character set utf8 collate utf8_general_ci comment = '首页背景图表';
 INSERT INTO `curio_indexbg` VALUES (1,''),(2,'');
+
+-- qoohj 20180329
+-- 添加新闻分类
+INSERT INTO `curio_clazz` VALUES (1,'PRESS RELEASE AND PHOTO ALBUM','新聞稿及相冊','0','5'),(2,'IN THE NEWS','媒體報導','0','5');
